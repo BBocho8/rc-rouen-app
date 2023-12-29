@@ -7,7 +7,18 @@ const config: Config = {
 		"./app/**/*.{js,ts,jsx,tsx,mdx}",
 	],
 	theme: {
-		extend: {},
+		extend: {
+			fontFamily: {
+				sans: ["var(--font-roboto)"],
+			},
+			colors: {
+				primary: "#851440",
+				secondary: "#ECE5A5",
+				complementary: "#fff",
+				accent: "#FFD700",
+				dark: "#333333",
+			},
+		},
 	},
 	plugins: [],
 }
