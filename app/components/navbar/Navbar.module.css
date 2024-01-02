@@ -1,5 +1,5 @@
 .navbar {
-	@apply md:px-8  bg-white h-14 flex items-center justify-between md:h-24 fixed w-full lg:gap-x-8 z-10;
+	@apply md:px-8  bg-white h-14 flex items-center justify-between md:h-24 fixed w-full lg:gap-x-8 z-10 max-w-app;
 }
 
 .vl {

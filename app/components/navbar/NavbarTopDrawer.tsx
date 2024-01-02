@@ -37,7 +37,9 @@ export default function NavbarTopDrawer({
 
 	const list = (anchor: Anchor) => (
 		<Box
-			sx={{ width: anchor === "top" || anchor === "bottom" ? "auto" : 250 }}
+			sx={{
+				width: anchor === "top" || anchor === "bottom" ? "auto" : 250,
+			}}
 			role="presentation"
 			onClick={toggleDrawer(anchor, false)}
 			onKeyDown={toggleDrawer(anchor, false)}
@@ -77,7 +79,7 @@ export default function NavbarTopDrawer({
 					anchor="top"
 					open={isOpen}
 					onClose={toggleDrawer("top", false)}
-					className="translate-y-[56px] md:translate-y-[96px] z-[1] hidden md:block"
+					className="translate-y-[56px] md:translate-y-[96px] z-[1] hidden md:block app:max-w-app app:mx-auto"
 				>
 					{list("top")}
 				</Drawer>
