@@ -30,6 +30,9 @@ export default function RootLayout({
 				<footer>
 					<Footer />
 				</footer>
+				<div className="bg-black w-full py-2 text-white flex justify-center items-center">
+					&#169;RC Rouen - 2024 - All rights reserved
+				</div>
 			</body>
 		</html>
 	)
