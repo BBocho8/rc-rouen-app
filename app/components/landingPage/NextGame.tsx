@@ -18,6 +18,15 @@ const NextGame = ({ games }: NextGameProps) => {
 	const awayTeam = games.results[1].teams[1].name
 
 	const gameTime = getFormattedTime(games.results[0].date)
+
+	const homeTeamLogo =
+		games.results[1].teams[0].logo &&
+		`https://v1.scorenco.com${games.results[1].teams[0].logo}`
+
+	const awayTeamLogo =
+		games.results[1].teams[1].logo &&
+		`https://v1.scorenco.com${games.results[1].teams[1].logo}`
+
 	return (
 		<>
 			<p className="px-4 uppercase mb-3 mt-4 text-sm font-semibold tracking-tight ">
@@ -33,12 +42,12 @@ const NextGame = ({ games }: NextGameProps) => {
 					<span className="uppercase font-semibold  max-w-32 text-center line-clamp-2 leading-tight">
 						{homeTeam}
 					</span>
-					<Image src={logo} alt="PSG" width={50} height={50} />
+					<Image src={homeTeamLogo || logo} alt="PSG" width={50} height={50} />
 					<span className="py-2 px-3 text-gray-600  bg-gray-200 rounded-lg">
 						{gameTime}
 					</span>
 
-					<Image src={logo} alt="Metz" width={50} height={50} />
+					<Image src={awayTeamLogo || logo} alt="Metz" width={50} height={50} />
 					<span className="uppercase font-semibold  max-w-32 text-center line-clamp-2 leading-tight">
 						{awayTeam}
 					</span>

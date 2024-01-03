@@ -15,6 +15,13 @@ const PrevGame = ({ games }: PrevGameProps) => {
 	const homeTeam = games.results[0].teams[0].name
 	const awayScore = games.results[0].teams[1].score
 	const awayTeam = games.results[0].teams[1].name
+	const homeTeamLogo =
+		games.results[0].teams[0].logo &&
+		`https://v1.scorenco.com${games.results[1].teams[0].logo}`
+
+	const awayTeamLogo =
+		games.results[0].teams[1].logo &&
+		`https://v1.scorenco.com${games.results[1].teams[1].logo}`
 	return (
 		<>
 			<p className="px-4 uppercase mb-3 mt-4 text-sm font-semibold tracking-tight ">
@@ -30,7 +37,7 @@ const PrevGame = ({ games }: PrevGameProps) => {
 					<span className="uppercase font-semibold  max-w-32 text-center line-clamp-2 leading-tight">
 						{homeTeam}
 					</span>
-					<Image src={logo} alt="PSG" width={50} height={50} />
+					<Image src={homeTeamLogo || logo} alt="PSG" width={50} height={50} />
 					<div className="flex gap-x-1 justify-center items-center">
 						<span className="py-2 px-3 font-bold text-lg bg-gray-800 text-white rounded-lg">
 							{homeScore}
@@ -40,7 +47,7 @@ const PrevGame = ({ games }: PrevGameProps) => {
 						</span>
 					</div>
 
-					<Image src={logo} alt="Metz" width={50} height={50} />
+					<Image src={awayTeamLogo || logo} alt="Metz" width={50} height={50} />
 					<span className="uppercase font-semibold  max-w-32 text-center line-clamp-2 leading-tight">
 						{awayTeam}
 					</span>

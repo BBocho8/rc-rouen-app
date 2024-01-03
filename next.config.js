@@ -7,6 +7,11 @@ const nextConfig = {
 				hostname: "cdn.sanity.io",
 				port: "",
 			},
+			{
+				protocol: "https",
+				hostname: "v1.scorenco.com",
+				port: "",
+			},
 		],
 	},
 }
