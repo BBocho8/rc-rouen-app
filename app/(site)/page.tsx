@@ -3,14 +3,23 @@ import { getProjects } from "@/sanity/sanity-utils"
 import HeroHeader from "../components/landingPage/HeroHeader"
 import FeaturedPosts from "../components/landingPage/FeaturedPosts"
 
+import { getGames } from "../utils/getPrevNextGames"
+import PrevGame from "../components/landingPage/PrevGame"
+import NextGame from "../components/landingPage/NextGame"
+
 export default async function Home() {
 	const projects = await getProjects()
+	const games = await getGames()
 
 	return (
 		<>
 			<HeroHeader />
 
 			<FeaturedPosts />
+
+			<PrevGame games={games} />
+			<br />
+			<NextGame games={games} />
 
 			{/* <div className="bg-red-400">
 				<div className=" grid md:grid-cols-2 lg:grid-cols-3 gap-8 ">
