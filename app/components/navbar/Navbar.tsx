@@ -40,24 +40,31 @@ const Navbar = () => {
 				</div>
 				<div className={`${styles.vl} hidden lg:block`}></div>
 				<div className="flex justify-start items-center grow">
-					<Link href="#" className={styles["nav-link"]}>
+					<Link
+						href="/equipes/equipe-premiere/actualite"
+						className={styles["nav-link"]}
+					>
 						équipe Première
 					</Link>
 				</div>
-				<Image
-					className="md:hidden absolute top-[8px] ml-[-21px] left-[50%]"
-					src="/logoTest.png"
-					alt="logo"
-					height="42"
-					width="42"
-				/>
-				<Image
-					className="hidden md:block md:absolute md:top-[12px] md:ml-[-21px] md:left-[50%]"
-					src="/logoTest.png"
-					alt="logo"
-					height="72"
-					width="72"
-				/>
+				<Link href="/">
+					<Image
+						className="md:hidden absolute top-[8px] ml-[-21px] left-[50%]"
+						src="/logoTest.png"
+						alt="logo"
+						height="42"
+						width="42"
+					/>
+				</Link>
+				<Link href="/">
+					<Image
+						className="hidden md:block md:absolute md:top-[12px] md:ml-[-21px] md:left-[50%]"
+						src="/logoTest.png"
+						alt="logo"
+						height="72"
+						width="72"
+					/>
+				</Link>
 				<div className="flex justify-center items-center gap-x-2 pr-3 md:pr-0">
 					<FaRegUser size={20} className={styles["nav-icons"]} />
 					<div className={styles.vl}></div>
