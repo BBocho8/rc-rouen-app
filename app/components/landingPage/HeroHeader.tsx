@@ -10,15 +10,6 @@ type HeroHeaderProps = {
 	games: CurrentNextGame
 }
 const HeroHeader = ({ games }: HeroHeaderProps) => {
-	// console.log(moment(games.results[0].date).fromNow())
-	// console.log(moment(games.results[1].date).fromNow())
-	// console.log(
-	// 	moment(games.results[1].date).fromNow() <
-	// 		moment(games.results[0].date).fromNow()
-	// )
-	// console.log(games.results[0].date)
-	// console.log(games.results[1].date)
-
 	return (
 		<div className="lg:grid  lg:grid-cols-5 lg:grid-rows-1  bg-white ">
 			<div className="relative lg:row-span-1 h-80 sm:h-96 lg:h-screen-lg-nav lg:col-span-3 bg-emerald-200 w-full   md:h-screen-lg-nav-full">
