@@ -13,13 +13,17 @@ export default async function Home() {
 
 	return (
 		<>
-			<HeroHeader />
+			<HeroHeader games={games} />
 
 			<FeaturedPosts />
 
 			<PrevGame games={games} />
 			<br />
 			<NextGame games={games} />
+			<br />
+			<NextGame games={games} isHomePageHeader />
+			<br />
+			<PrevGame games={games} isHomePageHeader />
 
 			{/* <div className="bg-red-400">
 				<div className=" grid md:grid-cols-2 lg:grid-cols-3 gap-8 ">
