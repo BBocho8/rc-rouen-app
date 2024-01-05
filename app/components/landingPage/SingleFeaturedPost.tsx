@@ -50,7 +50,7 @@ const SingleFeaturedPost = ({ display, image }: SingleFeaturedPostProps) => {
 			)}
 
 			{display === "listIcon" && (
-				<div className="flex justify-start items-center gap-x-2">
+				<div className="flex justify-start items-center gap-x-2 ">
 					<Image
 						src={image}
 						width={100}

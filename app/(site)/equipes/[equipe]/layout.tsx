@@ -23,13 +23,15 @@ export default function RootLayout({
 }) {
 	return (
 		<>
-			<Image
-				src={heroForEquipe}
-				alt="Hero Actu Header"
-				width={0}
-				height={0}
-				className="object-cover  aspect-video"
-			/>
+			<div className="w-full max-h-96 overflow-hidden">
+				<Image
+					src={heroForEquipe}
+					alt="Hero Actu Header"
+					width={0}
+					height={0}
+					className="object-cover  aspect-video"
+				/>
+			</div>
 
 			{children}
 		</>
