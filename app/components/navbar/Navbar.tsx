@@ -43,6 +43,7 @@ const Navbar = () => {
 					<Link
 						href="/equipes/equipe-premiere/actualite"
 						className={styles["nav-link"]}
+						onClick={() => setIsOpen(false)}
 					>
 						équipe Première
 					</Link>
@@ -54,6 +55,7 @@ const Navbar = () => {
 						alt="logo"
 						height="42"
 						width="42"
+						onClick={() => setIsOpen(false)}
 					/>
 				</Link>
 				<Link href="/">
@@ -63,6 +65,7 @@ const Navbar = () => {
 						alt="logo"
 						height="72"
 						width="72"
+						onClick={() => setIsOpen(false)}
 					/>
 				</Link>
 				<div className="flex justify-center items-center gap-x-2 pr-3 md:pr-0">
