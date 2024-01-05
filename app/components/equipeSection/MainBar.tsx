@@ -37,16 +37,17 @@ const MainBar = ({ menuName }: MainBarProps) => {
 			<div className="flex justify-center flex-wrap items-center grow gap-x-2 gap-y-3 sm:gap-y-0 sm:gap-x-10 text-center">
 				{menuItem.map((item) => {
 					return (
-						<span
+						<Link
 							key={item.id}
+							href={`/equipes/${equipe}/${item.id}`}
 							className={twMerge(
 								"text-xs uppercase font-medium tracking-tight pb-1.5 sm:pb-5 md:pb-5 md:px-2 hover:text-primary-bright cursor-pointer hover:border-b-2 hover:border-b-primary-bright hover:pb-1 sm:hover:pb-5 ",
 								item.id === menuName &&
 									"text-primary-bright border-b-2  pb-1 sm:pb-5 md:pb-5 border-b-primary-bright "
 							)}
 						>
-							<Link href={`/equipes/${equipe}/${item.id}`}>{item.name}</Link>
-						</span>
+							{item.name}
+						</Link>
 					)
 				})}
 			</div>

@@ -7,7 +7,6 @@ import { getPosts } from "@/sanity/sanity-utils"
 
 const ActualitePage = async () => {
 	const posts = await getPosts()
-	console.log(posts)
 
 	return (
 		<div>
