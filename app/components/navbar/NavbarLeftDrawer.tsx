@@ -9,6 +9,8 @@ import ListItemButton from "@mui/material/ListItemButton"
 import ListItemIcon from "@mui/material/ListItemIcon"
 import ListItemText from "@mui/material/ListItemText"
 import { CiMail } from "react-icons/ci"
+import Link from "next/link"
+import NestedList from "./NestedList"
 
 type Anchor = "top" | "left" | "bottom" | "right"
 
@@ -39,33 +41,21 @@ export default function NavbarLeftDrawer({
 		<Box
 			sx={{ width: anchor === "top" || anchor === "bottom" ? "auto" : 250 }}
 			role="presentation"
-			onClick={toggleDrawer(anchor, false)}
-			onKeyDown={toggleDrawer(anchor, false)}
+			// onClick={toggleDrawer(anchor, false)}
+			// onKeyDown={toggleDrawer(anchor, false)}
 		>
 			<List>
-				{["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-					<ListItem key={text} disablePadding>
-						<ListItemButton>
-							<ListItemIcon>
-								{index % 2 === 0 ? <CiMail /> : <CiMail />}
-							</ListItemIcon>
-							<ListItemText primary={text} />
-						</ListItemButton>
-					</ListItem>
-				))}
+				{/* <Link href="/equipes/equipe-premiere/actualite">
+					<span className="uppercase font-bold text-xl cursor-pointer hover:text-primary">
+						Equipe Premiere
+					</span>
+				</Link> */}
+				<NestedList setIsOpen={setIsOpen} isOpen={isOpen} />
 			</List>
 			<Divider />
 			<List>
-				{["All mail", "Trash", "Spam"].map((text, index) => (
-					<ListItem key={text} disablePadding>
-						<ListItemButton>
-							<ListItemIcon>
-								{index % 2 === 0 ? <CiMail /> : <CiMail />}
-							</ListItemIcon>
-							<ListItemText primary={text} />
-						</ListItemButton>
-					</ListItem>
-				))}
+				<p>Test</p>
+				<p>Test</p>
 			</List>
 		</Box>
 	)

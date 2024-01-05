@@ -40,7 +40,7 @@ const MainBar = ({ menuName }: MainBarProps) => {
 						<span
 							key={item.id}
 							className={twMerge(
-								"text-xs uppercase font-medium tracking-tight pb-1.5 sm:pb-5 md:pb-5 md:px-2 hover:text-primary-bright cursor-pointer hover:border-b-2 hover:border-b-primary-bright hover:pb-1 md:hover:pb-4",
+								"text-xs uppercase font-medium tracking-tight pb-1.5 sm:pb-5 md:pb-5 md:px-2 hover:text-primary-bright cursor-pointer hover:border-b-2 hover:border-b-primary-bright hover:pb-1 sm:hover:pb-5 ",
 								item.id === menuName &&
 									"text-primary-bright border-b-2  pb-1 sm:pb-5 md:pb-5 border-b-primary-bright "
 							)}
