@@ -8,7 +8,7 @@ const ActualitePage = () => {
 	return (
 		<div>
 			<MainBar menuName="actualite" />
-			<div className="pt-8 bg-gray-100">
+			<div className="py-8 bg-gray-100">
 				<div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 md:px-8 md:gap-x-4 md:gap-y-6">
 					<SingleFeaturedPost display="icon" image={image1} />
 					<SingleFeaturedPost display="icon" image={image2} />

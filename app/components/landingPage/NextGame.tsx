@@ -32,7 +32,7 @@ const NextGame = ({ games, isHomePageHeader = false }: NextGameProps) => {
 		`https://v1.scorenco.com${games.results[1].teams[1].logo}`
 
 	return !isHomePageHeader ? (
-		<>
+		<div>
 			<p className="px-4 uppercase mb-3 mt-4 text-sm font-semibold tracking-tight ">
 				Prochain match
 			</p>
@@ -64,7 +64,7 @@ const NextGame = ({ games, isHomePageHeader = false }: NextGameProps) => {
 					<Link href="/">Informations</Link>
 				</button>
 			</div>
-		</>
+		</div>
 	) : (
 		<>
 			<div className="bg-primary-dark grid grid-cols-3 grid-rows-3 justify-between items-center px-4 py-2 gap-x-4 rounded-sm ">
