@@ -1,4 +1,6 @@
+"use client"
 import Link from "next/link"
+import { useParams } from "next/navigation"
 import { twMerge } from "tailwind-merge"
 
 const menuItem = [
@@ -22,14 +24,15 @@ const menuItem = [
 
 type MainBarProps = {
 	menuName: "actualite" | "effectif" | "calendrier-et-resultat" | "classement"
-	equipe: string
+	// equipe: string
 }
 
-const MainBar = ({ menuName, equipe }: MainBarProps) => {
+const MainBar = ({ menuName }: MainBarProps) => {
+	const { equipe } = useParams()
 	return (
 		<div className="  bg-white flex flex-col md:flex-row items-center justify-center md:items-start  mt-5 ">
 			<span className="px-8 uppercase font-medium tracking-tight text-gray-400 mb-4 md:mb-0">
-				{equipe.replace("-", " ")}
+				{(equipe as string).replace("-", " ")}
 			</span>
 			<div className="flex justify-center flex-wrap items-center grow gap-x-2 gap-y-3 sm:gap-y-0 sm:gap-x-10 text-center">
 				{menuItem.map((item) => {
