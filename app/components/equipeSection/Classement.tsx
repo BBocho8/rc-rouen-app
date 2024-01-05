@@ -39,7 +39,10 @@ const Classement = ({ classement }: ClassementProps) => {
 									key={item}
 									className={twMerge(
 										"uppercase px-2 border border-slate-200",
-										item === "équipe" && "text-left"
+										item === "équipe" && "text-left",
+										item === "bp" || item === "bc" || item === "diff."
+											? "hidden sm:table-cell "
+											: ""
 									)}
 								>
 									{item}
@@ -59,7 +62,9 @@ const Classement = ({ classement }: ClassementProps) => {
 						return (
 							<tr
 								key={ranking.clubId}
-								className={twMerge("text-center ")}
+								className={twMerge(
+									"text-center uppercase font-light text-sm tracking-tight "
+								)}
 								style={{
 									color: ranking.name === "Racing Club de Rouen" ? "#fff" : "",
 									backgroundColor:
@@ -74,22 +79,42 @@ const Classement = ({ classement }: ClassementProps) => {
 										width={35}
 										height={35}
 										className={twMerge(
-											"translate-x-[5px] aspect-square ",
+											"translate-x-[5px] aspect-square hidden sm:block",
 											!teamLogo &&
 												ranking.name !== "Racing Club de Rouen" &&
 												"opacity-10"
 										)}
 									/>
-									<span>{ranking.name}</span>
+									<Image
+										src={teamLogo}
+										alt="Paris"
+										width={20}
+										height={20}
+										className={twMerge(
+											"translate-x-[5px] aspect-square sm:hidden",
+											!teamLogo &&
+												ranking.name !== "Racing Club de Rouen" &&
+												"opacity-10"
+										)}
+									/>
+									<span className="line-clamp-2 font-medium ">
+										{ranking.name}
+									</span>
 								</td>
 								<td className={styles.borderX}>{ranking.data[0].pts}</td>
 								<td className={styles.borderX}>{ranking.data[1].jo}</td>
 								<td className={styles.borderX}>{ranking.data[2].g}</td>
 								<td className={styles.borderX}>{ranking.data[3].n}</td>
 								<td className={styles.borderX}>{ranking.data[4].p}</td>
-								<td className={styles.borderX}>{ranking.data[6].bp}</td>
-								<td className={styles.borderX}>{ranking.data[7].bc}</td>
-								<td className={styles.borderX}>{ranking.data[8].diff}</td>
+								<td className={`${styles.borderX} hidden sm:table-cell`}>
+									{ranking.data[6].bp}
+								</td>
+								<td className={`${styles.borderX} hidden sm:table-cell`}>
+									{ranking.data[7].bc}
+								</td>
+								<td className={`${styles.borderX} hidden sm:table-cell`}>
+									{ranking.data[8].diff}
+								</td>
 							</tr>
 						)
 					})}

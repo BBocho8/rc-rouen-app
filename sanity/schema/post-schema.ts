@@ -30,6 +30,13 @@ const post = {
 			options: {
 				hotspot: true,
 			},
+			fields: [
+				{
+					name: "alt",
+					title: "Alt",
+					type: "string",
+				},
+			],
 		},
 		{
 			name: "categories",
