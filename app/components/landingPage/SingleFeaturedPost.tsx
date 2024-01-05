@@ -4,13 +4,13 @@ import Image from "next/image"
 
 type SingleFeaturedPostProps = {
 	display: "icon" | "list" | "listIcon"
-	image?: any
+
 	post: Post
 }
 
 const SingleFeaturedPost = ({
 	display,
-	image,
+
 	post,
 }: SingleFeaturedPostProps) => {
 	const createdAt = getFullFormattedDate(post.publishedAt)
