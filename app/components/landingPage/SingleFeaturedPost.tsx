@@ -15,7 +15,6 @@ const SingleFeaturedPost = ({
 	post,
 }: SingleFeaturedPostProps) => {
 	const createdAt = getFullFormattedDate(post.publishedAt)
-	console.log(post.categories)
 	return (
 		<>
 			{display === "icon" && (

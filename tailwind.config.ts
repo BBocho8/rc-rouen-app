@@ -6,6 +6,7 @@ const config: Config = {
 		"./components/**/*.{js,ts,jsx,tsx,mdx}",
 		"./app/**/*.{js,ts,jsx,tsx,mdx}",
 	],
+	plugins: [require("@tailwindcss/typography")],
 	theme: {
 		extend: {
 			fontFamily: {
@@ -47,7 +48,6 @@ const config: Config = {
 				app: "1400px",
 			},
 		},
-		plugins: [],
 	},
 }
 export default config

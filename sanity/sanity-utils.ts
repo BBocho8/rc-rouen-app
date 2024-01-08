@@ -1,7 +1,7 @@
 import { createClient, groq } from "next-sanity"
 import clientConfig from "./config/client-config"
 import { Project } from "./types/Project"
-import { PostApiResponse } from "./types/Post"
+import { Post, PostApiResponse } from "./types/Post"
 
 export async function getProjects(): Promise<Project[]> {
 	return createClient(clientConfig).fetch(
@@ -46,5 +46,23 @@ export async function getPosts(): Promise<PostApiResponse> {
         "categories": categories[]->title
        
     }`
+	)
+}
+
+export async function getPost(postSlug: string): Promise<Post> {
+	return createClient(clientConfig).fetch(
+		groq`*[_type == "post" && slug.current == $postSlug][0]{
+      _id,
+      title,
+      publishedAt,
+      'slug': slug.current,
+        
+        "image_url": mainImage.asset->url,
+         "image_alt": mainImage.alt,
+        "author": author->name,
+      body,
+        "categories": categories[]->title
+    }`,
+		{ postSlug }
 	)
 }
