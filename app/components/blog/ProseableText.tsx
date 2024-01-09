@@ -38,7 +38,7 @@ export default function ProseableText({ post }: { post: Body[] }) {
 
 	return valueGroups.map((group: Body[]) =>
 		group[0]._type === "block" ? (
-			<div key={group[0]._key} className="prose mx-auto py-4 px-4 lg:px-0">
+			<div key={group[0]._key} className="prose lg:prose-xl ">
 				<PortableText value={group} />
 			</div>
 		) : (
