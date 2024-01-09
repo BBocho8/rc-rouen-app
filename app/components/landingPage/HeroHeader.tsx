@@ -2,9 +2,9 @@ import Image from "next/image"
 import testHero from "@/public/testHero.jpg"
 import { HiArrowLongRight } from "react-icons/hi2"
 import { CurrentNextGame } from "@/app/types/games"
-import PrevGame from "./PrevGame"
+import PrevGame from "../games/PrevGame"
 import moment from "moment"
-import NextGame from "./NextGame"
+import NextGame from "../games/NextGame"
 
 type HeroHeaderProps = {
 	games: CurrentNextGame

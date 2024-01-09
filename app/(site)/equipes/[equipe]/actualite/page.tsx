@@ -1,5 +1,5 @@
 import MainBar from "@/app/components/equipeSection/MainBar"
-import SingleFeaturedPost from "@/app/components/landingPage/SingleFeaturedPost"
+import SingleFeaturedPost from "@/app/components/blog/SingleFeaturedPost"
 
 import { getPosts } from "@/sanity/sanity-utils"
 

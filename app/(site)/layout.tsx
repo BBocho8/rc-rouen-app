@@ -3,6 +3,8 @@ import "../globals.css"
 import { Roboto } from "next/font/google"
 import Navbar from "../components/navbar/Navbar"
 import Footer from "../components/footer/Footer"
+import "react-toastify/dist/ReactToastify.css"
+import { ToastContainer } from "react-toastify"
 
 const roboto = Roboto({
 	subsets: ["latin"],
@@ -26,7 +28,10 @@ export default function RootLayout({
 				<header>
 					<Navbar />
 				</header>
-				<main className="pt-14 md:pt-24">{children}</main>
+				<main className="pt-14 md:pt-24">
+					<ToastContainer position="top-center" />
+					{children}
+				</main>
 				<footer>
 					<Footer />
 				</footer>

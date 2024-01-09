@@ -30,7 +30,7 @@ const PrevGame = ({ games, isHomePageHeader = false }: PrevGameProps) => {
 			<p className="px-4 uppercase mb-3 mt-4 text-sm font-semibold tracking-tight  ">
 				Dernier match
 			</p>
-			<div className="py-10 px-7 flex flex-col items-center justify-center bg-gray-100 gap-y-4">
+			<div className="py-10 px-7 flex flex-col items-center justify-center bg-gray-100 gap-y-4 rounded-md">
 				<div className="flex flex-col justify-center items-center">
 					<p className="font-medium text-sm uppercase">{prevGameDate}</p>
 					<p className="font-light uppercase text-xs">{competition}</p>

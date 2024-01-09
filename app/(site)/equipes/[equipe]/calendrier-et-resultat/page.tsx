@@ -1,6 +1,6 @@
 import MainBar from "@/app/components/equipeSection/MainBar"
-import NextGame from "@/app/components/landingPage/NextGame"
-import PrevGame from "@/app/components/landingPage/PrevGame"
+import NextGame from "@/app/components/games/NextGame"
+import PrevGame from "@/app/components/games/PrevGame"
 import { getGames } from "@/app/utils/getPrevNextGames"
 
 const CalendrierResultatsPage = async () => {

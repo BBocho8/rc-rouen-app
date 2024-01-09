@@ -1,11 +1,13 @@
 import { getProjects } from "@/sanity/sanity-utils"
 
 import HeroHeader from "../components/landingPage/HeroHeader"
-import FeaturedPosts from "../components/landingPage/FeaturedPosts"
+import FeaturedPosts from "../components/blog/FeaturedPosts"
 
 import { getGames } from "../utils/getPrevNextGames"
-import PrevGame from "../components/landingPage/PrevGame"
-import NextGame from "../components/landingPage/NextGame"
+import PrevGame from "../components/games/PrevGame"
+import NextGame from "../components/games/NextGame"
+
+import Contact from "../components/landingPage/contact/Contact"
 
 export default async function Home() {
 	const projects = await getProjects()
@@ -14,41 +16,17 @@ export default async function Home() {
 	return (
 		<>
 			<HeroHeader games={games} />
+			<div className="py-16">
+				<FeaturedPosts />
+			</div>
+			<div className="grid px-4 gap-y-4 md:gap-y-0 md:grid-cols-2 md:gap-x-4 mx-auto md:px-4">
+				<PrevGame games={games} />
 
-			<FeaturedPosts />
+				<NextGame games={games} />
+			</div>
+			<br />
 
-			<PrevGame games={games} />
-			<br />
-			<NextGame games={games} />
-			<br />
-			<NextGame games={games} isHomePageHeader />
-			<br />
-			<PrevGame games={games} isHomePageHeader />
-
-			{/* <div className="bg-red-400">
-				<div className=" grid md:grid-cols-2 lg:grid-cols-3 gap-8 ">
-					{projects.map((project) => (
-						<Link
-							href={`/projects/${project.slug}`}
-							key={project._id}
-							className="border-2 border-gray-500 rounded-lg p-1 hover:scale-105 hover:border-blue-500 transition"
-						>
-							{project.image && (
-								<Image
-									src={project.image}
-									alt={project.name}
-									width={750}
-									height={300}
-									className="object-cover rounded-lg border border-gray-500"
-								/>
-							)}
-							<div className="mt-2 font-extrabold bg-gradient-to-r from-orange-400 via-red-500 to-purple-600 bg-clip-text text-transparent">
-								{project.name}
-							</div>
-						</Link>
-					))}
-				</div>
-			</div> */}
+			<Contact />
 		</>
 	)
 }
