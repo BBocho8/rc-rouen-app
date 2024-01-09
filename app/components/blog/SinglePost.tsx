@@ -28,7 +28,7 @@ const SinglePost = ({ post }: SinglePostProps) => {
 					className="object-cover aspect-video  "
 				/>
 			</div>
-			<div className="xl:grid xl:grid-cols-4 xl:mx-auto">
+			<div className=" xl:grid xl:grid-cols-4 xl:mx-auto">
 				<Paper
 					elevation={15}
 					square
@@ -88,12 +88,43 @@ const SinglePost = ({ post }: SinglePostProps) => {
 						</div>
 					</div>
 				</Paper>
-				<div className="hidden xl:flex xl:flex-col xl:py-12 xl:px-8 xl:items-center xl:justify-start xl:col-span-1 xl:mx-auto xl:gap-y-4">
-					<SingleFeaturedPost display="icon" post={post} />
-					<div className="border-b border-b-gray-100  w-full  "></div>
-					<SingleFeaturedPost display="icon" post={post} />
-					<div className="border-b border-b-gray-100  w-full  "></div>
-					<SingleFeaturedPost display="icon" post={post} />
+				<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-4 px-6 xl:gap-x-0 xl:flex xl:flex-col xl:py-12 xl:px-8 xl:items-center xl:justify-start xl:col-span-1 xl:mx-auto xl:gap-y-4">
+					<div>
+						<div className=" sm:hidden">
+							<SingleFeaturedPost display="list" post={post} />
+						</div>
+						<div className=" hidden sm:block lg:hidden">
+							<SingleFeaturedPost display="listIcon" post={post} />
+						</div>
+						<div className="hidden lg:block">
+							<SingleFeaturedPost display="icon" post={post} />
+						</div>
+					</div>
+
+					<div className="hidden xl:border-b xl:border-b-gray-100  xl:w-full  "></div>
+					<div>
+						<div className=" sm:hidden">
+							<SingleFeaturedPost display="list" post={post} />
+						</div>
+						<div className="hidden sm:block lg:hidden">
+							<SingleFeaturedPost display="listIcon" post={post} />
+						</div>
+						<div className="hidden lg:block">
+							<SingleFeaturedPost display="icon" post={post} />
+						</div>
+					</div>
+					<div className="hidden xl:border-b xl:border-b-gray-100  xl:w-full  "></div>
+					<div>
+						<div className=" sm:hidden">
+							<SingleFeaturedPost display="list" post={post} />
+						</div>
+						<div className=" hidden sm:block lg:hidden">
+							<SingleFeaturedPost display="listIcon" post={post} />
+						</div>
+						<div className="hidden lg:block">
+							<SingleFeaturedPost display="icon" post={post} />
+						</div>
+					</div>
 				</div>
 			</div>
 		</section>
