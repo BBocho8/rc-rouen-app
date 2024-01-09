@@ -53,13 +53,13 @@ const SinglePost = ({ post }: SinglePostProps) => {
 				</div>
 				<div className="border-b border-b-gray-100 my-8  "></div>
 				<ProseableText post={post.body} />
-				<div className="flex justify-center items-center gap-x-2">
+				<div className="flex flex-wrap justify-center items-center gap-x-2 gap-y-2 my-8 ">
 					{tags.map((tag) => {
 						return (
-							<Link className="my-8" key={tag} href="#">
+							<Link className="" key={tag} href="#">
 								<button
 									type="button"
-									className=" py-2 px-4 bg-gray-300 text-black text-sm font-medium uppercase rounded-full hover:bg-gray-400 transition-all"
+									className=" overflow-hidden whitespace-nowrap py-2 px-4 bg-gray-300 text-black text-sm font-medium uppercase rounded-full hover:bg-gray-400 transition-all"
 								>
 									{tag}
 								</button>
@@ -71,7 +71,7 @@ const SinglePost = ({ post }: SinglePostProps) => {
 
 				<div className="flex justify-end items-center   ">
 					<div className="flex  gap-x-1">
-						<span className="text-body transition-all text-xs font-light uppercase cursor-pointer  hover:font-bold  ">
+						<span className=" text-body transition-all text-xs font-light uppercase cursor-pointer  hover:font-bold  ">
 							Partager
 						</span>
 						<CiShare1 className="text-body cursor-pointer   transition-all  " />
