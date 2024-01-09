@@ -1,5 +1,6 @@
 import SinglePost from "@/app/components/blog/SinglePost"
 import { getPost } from "@/sanity/sanity-utils"
+import Image from "next/image"
 
 const SinglePostPage = async ({
 	params,

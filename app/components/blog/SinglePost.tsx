@@ -5,6 +5,7 @@ import { Paper } from "@mui/material"
 import { getFullFormattedDate } from "@/app/utils/getFormattedDate"
 import { CiShare1 } from "react-icons/ci"
 import Link from "next/link"
+import SingleFeaturedPost from "./SingleFeaturedPost"
 
 type SinglePostProps = {
 	post: Post
@@ -27,22 +28,32 @@ const SinglePost = ({ post }: SinglePostProps) => {
 					className="object-cover aspect-video  "
 				/>
 			</div>
-			<Paper
-				elevation={15}
-				square
-				className="p-16 bg-white translate-y-[-6rem] mx-auto max-w-4xl"
-			>
-				<h1>{post.title}</h1>
-				<div className="flex justify-between items-center my-2">
-					<div className="flex justify-start items-center gap-x-2">
-						<span className="text-primary uppercase text-xs font-semibold">
-							{category}
-						</span>
-						<div className="border-l border-l-gray-300 h-4 md:h-4 "></div>
-						<span className="text-body text-xs font-light">{createdAt}</span>
-					</div>
+			<div className="xl:grid xl:grid-cols-4 xl:mx-auto">
+				<Paper
+					elevation={15}
+					square
+					className="xl:col-span-3 p-4 sm:p-12 bg-white translate-y-[-6rem] mx-auto max-w-2xl lg:max-w-[56rem]"
+				>
+					<h1 className="text-center">{post.title}</h1>
+					<div className="flex justify-center sm:justify-between  items-center my-2 text-center ">
+						<div className="flex justify-start items-center gap-x-2">
+							<span className="text-primary uppercase text-xs font-semibold">
+								{category}
+							</span>
+							<div className="border-l border-l-gray-300 h-4 md:h-4 "></div>
+							<span className="text-body text-xs font-light">{createdAt}</span>
+						</div>
 
-					<div className="flex justify-end items-center   ">
+						<div className="flex justify-end items-center   ">
+							<div className="hidden sm:flex  gap-x-1">
+								<span className="text-body transition-all text-xs font-light uppercase cursor-pointer  hover:font-bold  ">
+									Partager
+								</span>
+								<CiShare1 className="text-body cursor-pointer   transition-all  " />
+							</div>
+						</div>
+					</div>
+					<div className="flex justify-center items-center sm:hidden mt-3  ">
 						<div className="flex  gap-x-1">
 							<span className="text-body transition-all text-xs font-light uppercase cursor-pointer  hover:font-bold  ">
 								Partager
@@ -50,34 +61,41 @@ const SinglePost = ({ post }: SinglePostProps) => {
 							<CiShare1 className="text-body cursor-pointer   transition-all  " />
 						</div>
 					</div>
-				</div>
-				<div className="border-b border-b-gray-100 my-8  "></div>
-				<ProseableText post={post.body} />
-				<div className="flex flex-wrap justify-center items-center gap-x-2 gap-y-2 my-8 ">
-					{tags.map((tag) => {
-						return (
-							<Link className="" key={tag} href="#">
-								<button
-									type="button"
-									className=" overflow-hidden whitespace-nowrap py-2 px-4 bg-gray-300 text-black text-sm font-medium uppercase rounded-full hover:bg-gray-400 transition-all"
-								>
-									{tag}
-								</button>
-							</Link>
-						)
-					})}
-				</div>
-				<div className="border-b border-b-gray-100 my-6  "></div>
-
-				<div className="flex justify-end items-center   ">
-					<div className="flex  gap-x-1">
-						<span className=" text-body transition-all text-xs font-light uppercase cursor-pointer  hover:font-bold  ">
-							Partager
-						</span>
-						<CiShare1 className="text-body cursor-pointer   transition-all  " />
+					<div className="border-b border-b-gray-100 my-5 sm:my-8  "></div>
+					<ProseableText post={post.body} />
+					<div className="flex flex-wrap justify-center items-center gap-x-2 gap-y-2 my-8 ">
+						{tags.map((tag) => {
+							return (
+								<Link className="" key={tag} href="#">
+									<button
+										type="button"
+										className=" overflow-hidden whitespace-nowrap py-2 px-4 bg-gray-300 text-black text-sm font-medium uppercase rounded-full hover:bg-gray-400 transition-all"
+									>
+										{tag}
+									</button>
+								</Link>
+							)
+						})}
 					</div>
+					<div className="border-b border-b-gray-100 my-6  "></div>
+
+					<div className="flex justify-end items-center   ">
+						<div className="flex  gap-x-1">
+							<span className=" text-body transition-all text-xs font-light uppercase cursor-pointer  hover:font-bold  ">
+								Partager
+							</span>
+							<CiShare1 className="text-body cursor-pointer   transition-all  " />
+						</div>
+					</div>
+				</Paper>
+				<div className="hidden xl:flex xl:flex-col xl:py-12 xl:px-8 xl:items-center xl:justify-start xl:col-span-1 xl:mx-auto xl:gap-y-4">
+					<SingleFeaturedPost display="icon" post={post} />
+					<div className="border-b border-b-gray-100  w-full  "></div>
+					<SingleFeaturedPost display="icon" post={post} />
+					<div className="border-b border-b-gray-100  w-full  "></div>
+					<SingleFeaturedPost display="icon" post={post} />
 				</div>
-			</Paper>
+			</div>
 		</section>
 	)
 }

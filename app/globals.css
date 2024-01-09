@@ -17,9 +17,7 @@
 	}
 
 	h1 {
-		font-size: 2.625rem;
-		line-height: 1.4;
-		text-transform: uppercase;
+		@apply text-xl font-medium leading-[1.2] sm:text-4xl sm:leading-[1.4] uppercase my-4;
 	}
 	h2 {
 		font-size: 1.875rem;

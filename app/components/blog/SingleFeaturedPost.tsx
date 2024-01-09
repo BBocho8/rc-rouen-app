@@ -15,6 +15,7 @@ const SingleFeaturedPost = ({
 	post,
 }: SingleFeaturedPostProps) => {
 	const createdAt = getFullFormattedDate(post.publishedAt)
+	const category = post.categories[0].replace("-", " ")
 	return (
 		<>
 			{display === "icon" && (
@@ -29,7 +30,7 @@ const SingleFeaturedPost = ({
 						/>
 						<div className="flex justify-start items-center gap-x-2">
 							<span className="text-primary uppercase text-xs font-semibold">
-								{post.categories[0]}
+								{category}
 							</span>
 							<div className="border-l border-l-gray-300 h-4 md:h-6 "></div>
 							<span className="text-body text-xs font-light">{createdAt}</span>
