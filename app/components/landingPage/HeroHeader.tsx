@@ -1,5 +1,5 @@
 import Image from "next/image"
-import testHero from "@/public/testHero.png"
+import testHero from "@/public/testHero4.png"
 import { HiArrowLongRight } from "react-icons/hi2"
 import { CurrentNextGame } from "@/app/types/games"
 import PrevGame from "../games/PrevGame"
