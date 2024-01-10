@@ -14,9 +14,14 @@ const FeaturedPosts = async () => {
 				<SingleFeaturedPost display="list" post={posts[0]} />
 			</div>
 			<div className="flex flex-col gap-y-4 justify-start">
+				{posts.map((post) => {
+					return (
+						<SingleFeaturedPost key={post._id} display="listIcon" post={post} />
+					)
+				})}
+				{/* <SingleFeaturedPost display="listIcon" post={posts[0]} />
 				<SingleFeaturedPost display="listIcon" post={posts[0]} />
-				<SingleFeaturedPost display="listIcon" post={posts[0]} />
-				<SingleFeaturedPost display="listIcon" post={posts[0]} />
+				<SingleFeaturedPost display="listIcon" post={posts[0]} /> */}
 			</div>
 			<SingleFeaturedPost display="icon" post={posts[0]} />
 			<div className="flex flex-col gap-y-4 justify-center">
