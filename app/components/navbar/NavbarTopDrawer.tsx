@@ -2,9 +2,7 @@ import * as React from "react"
 import Box from "@mui/material/Box"
 import Drawer from "@mui/material/Drawer"
 import List from "@mui/material/List"
-import Divider from "@mui/material/Divider"
 
-import Link from "next/link"
 import NestedList from "./NestedList"
 
 type Anchor = "top" | "left" | "bottom" | "right"
@@ -12,11 +10,15 @@ type Anchor = "top" | "left" | "bottom" | "right"
 type NavbarTopDrawerProps = {
 	isOpen: boolean
 	setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
+	isTopDrawerNestedListOpen: boolean
+	setIsTopDrawerNestedListOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export default function NavbarTopDrawer({
 	isOpen,
 	setIsOpen,
+	isTopDrawerNestedListOpen,
+	setIsTopDrawerNestedListOpen,
 }: NavbarTopDrawerProps) {
 	const toggleDrawer =
 		(anchor: Anchor, open: boolean) =>
@@ -41,7 +43,15 @@ export default function NavbarTopDrawer({
 			// onClick={toggleDrawer(anchor, false)}
 			// onKeyDown={toggleDrawer(anchor, false)}
 		>
-			<List>
+			<List
+				sx={{
+					display: "flex",
+					flexDirection: "row",
+					justifyContent: "start",
+					alignItems: "start",
+					paddingX: "32px",
+				}}
+			>
 				{/* <Link href="/equipes/equipe-premiere/actualite">
 					<span className="uppercase font-bold text-xl cursor-pointer hover:text-primary">
 						Equipe Premiere
@@ -51,25 +61,25 @@ export default function NavbarTopDrawer({
 					setIsOpen={setIsOpen}
 					isOpen={isOpen}
 					title="équipe-première"
+					isNestedListOpen={isTopDrawerNestedListOpen}
+					setIsNestedListOpen={setIsTopDrawerNestedListOpen}
 				/>
 				<NestedList
 					setIsOpen={setIsOpen}
 					isOpen={isOpen}
 					title="équipe-féminine"
 					borderColor="border-b-accent"
+					isNestedListOpen={isTopDrawerNestedListOpen}
+					setIsNestedListOpen={setIsTopDrawerNestedListOpen}
 				/>
 				<NestedList
 					setIsOpen={setIsOpen}
 					isOpen={isOpen}
 					title="autres-équipes"
 					borderColor="border-b-gray-500"
+					isNestedListOpen={isTopDrawerNestedListOpen}
+					setIsNestedListOpen={setIsTopDrawerNestedListOpen}
 				/>
-			</List>
-			<Divider />
-			<List>
-				<p>Test</p>
-				<p>Test</p>
-				<p>Test</p>
 			</List>
 		</Box>
 	)

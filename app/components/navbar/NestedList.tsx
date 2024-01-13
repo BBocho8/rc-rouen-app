@@ -34,6 +34,8 @@ type NestedListProps = {
 	setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
 	title: string
 	borderColor?: string
+	isNestedListOpen: boolean
+	setIsNestedListOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export default function NestedList({
@@ -41,8 +43,10 @@ export default function NestedList({
 	setIsOpen,
 	title = "",
 	borderColor = "border-b-primary",
+	isNestedListOpen,
+	setIsNestedListOpen,
 }: NestedListProps) {
-	const [isNestedListOpen, setIsNestedListOpen] = useState(false)
+	// const [isNestedListOpen, setIsNestedListOpen] = useState(false)
 
 	const handleClick = () => {
 		setIsNestedListOpen(!isNestedListOpen)

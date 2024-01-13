@@ -11,11 +11,15 @@ type Anchor = "top" | "left" | "bottom" | "right"
 type NavbarLeftDrawerProps = {
 	isOpen: boolean
 	setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
+	isLeftDrawerNestedListOpen: boolean
+	setIsLeftDrawerNestedListOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export default function NavbarLeftDrawer({
 	isOpen,
 	setIsOpen,
+	isLeftDrawerNestedListOpen,
+	setIsLeftDrawerNestedListOpen,
 }: NavbarLeftDrawerProps) {
 	const toggleDrawer =
 		(anchor: Anchor, open: boolean) =>
@@ -56,18 +60,24 @@ export default function NavbarLeftDrawer({
 				setIsOpen={setIsOpen}
 				isOpen={isOpen}
 				title="équipe-première"
+				isNestedListOpen={isLeftDrawerNestedListOpen}
+				setIsNestedListOpen={setIsLeftDrawerNestedListOpen}
 			/>
 			<NestedList
 				setIsOpen={setIsOpen}
 				isOpen={isOpen}
 				title="équipe-féminine"
 				borderColor="border-b-accent"
+				isNestedListOpen={isLeftDrawerNestedListOpen}
+				setIsNestedListOpen={setIsLeftDrawerNestedListOpen}
 			/>
 			<NestedList
 				setIsOpen={setIsOpen}
 				isOpen={isOpen}
 				title="autres-équipes"
 				borderColor="border-b-gray-500"
+				isNestedListOpen={isLeftDrawerNestedListOpen}
+				setIsNestedListOpen={setIsLeftDrawerNestedListOpen}
 			/>
 		</Box>
 	)

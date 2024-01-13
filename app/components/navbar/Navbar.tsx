@@ -12,6 +12,10 @@ import NavbarLeftDrawer from "./NavbarLeftDrawer"
 
 const Navbar = () => {
 	const [isOpen, setIsOpen] = useState(false)
+	const [isTopDrawerNestedListOpen, setIsTopDrawerNestedListOpen] =
+		useState(true)
+	const [isLeftDrawerNestedListOpen, setIsLeftDrawerNestedListOpen] =
+		useState(false)
 	return (
 		<>
 			<div className={styles.navbar}>
@@ -26,10 +30,20 @@ const Navbar = () => {
 						onToggle={() => setIsOpen(!isOpen)}
 					/>
 					<div className="md:hidden block ">
-						<NavbarLeftDrawer isOpen={isOpen} setIsOpen={setIsOpen} />
+						<NavbarLeftDrawer
+							isOpen={isOpen}
+							setIsOpen={setIsOpen}
+							isLeftDrawerNestedListOpen={isLeftDrawerNestedListOpen}
+							setIsLeftDrawerNestedListOpen={setIsLeftDrawerNestedListOpen}
+						/>
 					</div>
 					<div className="hidden md:block">
-						<NavbarTopDrawer isOpen={isOpen} setIsOpen={setIsOpen} />
+						<NavbarTopDrawer
+							isOpen={isOpen}
+							setIsOpen={setIsOpen}
+							isTopDrawerNestedListOpen={isTopDrawerNestedListOpen}
+							setIsTopDrawerNestedListOpen={setIsTopDrawerNestedListOpen}
+						/>
 					</div>
 					<span
 						className="uppercase hidden lg:block cursor-pointer text-sm tracking-[0.9px] font-bold "
