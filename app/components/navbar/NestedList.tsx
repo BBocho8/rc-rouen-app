@@ -11,6 +11,7 @@ import { RxCross2 } from "react-icons/rx"
 import { FiPlus } from "react-icons/fi"
 import styles from "./NestedList.module.css"
 import { twMerge } from "tailwind-merge"
+import removeAccent from "@/app/utils/removeAccents"
 
 const menuItem = [
 	{
@@ -34,14 +35,24 @@ const menuItem = [
 type NestedListProps = {
 	isOpen: boolean
 	setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
+	title: string
+	borderColor?: string
 }
 
-export default function NestedList({ isOpen, setIsOpen }: NestedListProps) {
+export default function NestedList({
+	isOpen,
+	setIsOpen,
+	title = "",
+	borderColor = "border-b-primary",
+}: NestedListProps) {
 	const [isNestedListOpen, setIsNestedListOpen] = React.useState(true)
 
 	const handleClick = () => {
 		setIsNestedListOpen(!isNestedListOpen)
 	}
+
+	const formattedTitle = title.replace("-", " ")
+	const formattedLinkCategory = removeAccent(title)
 
 	return (
 		<List
@@ -60,9 +71,9 @@ export default function NestedList({ isOpen, setIsOpen }: NestedListProps) {
 				// }}
 			>
 				<div className="flex justify-between border-b w-[16.8rem] border-b-gray-300 pb-1 relative ">
-					<Link href="/equipes/equipe-premiere/actualite">
+					<Link href={`/equipes/${formattedLinkCategory}/actualite`}>
 						<span className="uppercase font-medium  text-xl cursor-pointer hover:text-primary">
-							équipe Première
+							{formattedTitle}
 						</span>
 					</Link>
 					<div className="flex items-center">
@@ -79,7 +90,12 @@ export default function NestedList({ isOpen, setIsOpen }: NestedListProps) {
 							/>
 						)}
 					</div>
-					<div className="  w-1/5   border-b-4 border-b-primary absolute bottom-[-2px] rounded-sm " />
+					<div
+						className={twMerge(
+							"w-1/5   border-b-4  absolute bottom-[-2px] rounded-sm",
+							borderColor
+						)}
+					/>
 				</div>
 			</ListItemButton>
 			<Collapse in={isNestedListOpen} timeout="auto" unmountOnExit>
@@ -91,7 +107,7 @@ export default function NestedList({ isOpen, setIsOpen }: NestedListProps) {
 								key={item.id}
 								className=" text-sm uppercase tracking-wide hover:text-pretty hover:border-b-2 hover:border-b-primary"
 							>
-								<Link href={`/equipes/equipe-premiere/${item.id}`}>
+								<Link href={`/equipes/${formattedLinkCategory}/${item.id}`}>
 									<span className="normal-case">{item.name}</span>
 								</Link>
 							</li>

@@ -54,13 +54,23 @@ export default function NavbarLeftDrawer({
 			{/* <Divider variant="middle" /> */}
 
 			{/* <List> */}
-			<NestedList setIsOpen={setIsOpen} isOpen={isOpen} />
+			<NestedList
+				setIsOpen={setIsOpen}
+				isOpen={isOpen}
+				title="équipe-première"
+			/>
+			<NestedList
+				setIsOpen={setIsOpen}
+				isOpen={isOpen}
+				title="équipe-féminine"
+				borderColor="border-b-accent"
+			/>
 			{/* </List> */}
-			<Divider />
+			{/* <Divider />
 			<List>
 				<p>Test</p>
 				<p>Test</p>
-			</List>
+			</List> */}
 		</Box>
 	)
 
