@@ -1,10 +1,7 @@
 import * as React from "react"
 import Box from "@mui/material/Box"
 import Drawer from "@mui/material/Drawer"
-import List from "@mui/material/List"
-import Divider from "@mui/material/Divider"
 
-import Link from "next/link"
 import NestedList from "./NestedList"
 import SearchInput from "./SearchInput"
 import Etiquettes from "./Etiquettes"
@@ -38,11 +35,12 @@ export default function NavbarLeftDrawer({
 		<Box
 			sx={{
 				width: 305,
+				height: "100%",
 				backgroundColor: "#f2f2f2",
 				display: "flex",
 				flexDirection: "column",
 				alignItems: "center",
-				justifyContent: "center",
+				justifyContent: "start",
 			}}
 			role="presentation"
 		>
@@ -65,12 +63,12 @@ export default function NavbarLeftDrawer({
 				title="équipe-féminine"
 				borderColor="border-b-accent"
 			/>
-			{/* </List> */}
-			{/* <Divider />
-			<List>
-				<p>Test</p>
-				<p>Test</p>
-			</List> */}
+			<NestedList
+				setIsOpen={setIsOpen}
+				isOpen={isOpen}
+				title="autres-équipes"
+				borderColor="border-b-gray-500"
+			/>
 		</Box>
 	)
 
@@ -81,7 +79,7 @@ export default function NavbarLeftDrawer({
 					anchor="left"
 					open={isOpen}
 					onClose={toggleDrawer("left", false)}
-					className="translate-y-[56px] md:translate-y-[96px]  md:hidden w-[305px] border-t border-t-sidenavBorder bg-sidenavBG z-10"
+					className="translate-y-[56px] md:translate-y-[96px]  md:hidden w-[305px] border-t border-t-sidenavBorder bg-sidenavBG z-10 "
 				>
 					{list("top")}
 				</Drawer>

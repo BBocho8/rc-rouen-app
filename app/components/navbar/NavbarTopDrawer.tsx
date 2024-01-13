@@ -47,7 +47,23 @@ export default function NavbarTopDrawer({
 						Equipe Premiere
 					</span>
 				</Link> */}
-				<NestedList setIsOpen={setIsOpen} isOpen={isOpen} />
+				<NestedList
+					setIsOpen={setIsOpen}
+					isOpen={isOpen}
+					title="équipe-première"
+				/>
+				<NestedList
+					setIsOpen={setIsOpen}
+					isOpen={isOpen}
+					title="équipe-féminine"
+					borderColor="border-b-accent"
+				/>
+				<NestedList
+					setIsOpen={setIsOpen}
+					isOpen={isOpen}
+					title="autres-équipes"
+					borderColor="border-b-gray-500"
+				/>
 			</List>
 			<Divider />
 			<List>

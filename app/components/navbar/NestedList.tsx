@@ -1,11 +1,8 @@
-import * as React from "react"
-import ListSubheader from "@mui/material/ListSubheader"
 import List from "@mui/material/List"
 import ListItemButton from "@mui/material/ListItemButton"
-import ListItemIcon from "@mui/material/ListItemIcon"
-import ListItemText from "@mui/material/ListItemText"
+import { useState } from "react"
+
 import Collapse from "@mui/material/Collapse"
-import { MdExpandLess, MdExpandMore } from "react-icons/md"
 import Link from "next/link"
 import { RxCross2 } from "react-icons/rx"
 import { FiPlus } from "react-icons/fi"
@@ -45,7 +42,7 @@ export default function NestedList({
 	title = "",
 	borderColor = "border-b-primary",
 }: NestedListProps) {
-	const [isNestedListOpen, setIsNestedListOpen] = React.useState(true)
+	const [isNestedListOpen, setIsNestedListOpen] = useState(false)
 
 	const handleClick = () => {
 		setIsNestedListOpen(!isNestedListOpen)

@@ -25,7 +25,7 @@ const Navbar = () => {
 						toggled={isOpen}
 						onToggle={() => setIsOpen(!isOpen)}
 					/>
-					<div className="md:hidden block">
+					<div className="md:hidden block ">
 						<NavbarLeftDrawer isOpen={isOpen} setIsOpen={setIsOpen} />
 					</div>
 					<div className="hidden md:block">
