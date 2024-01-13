@@ -6,6 +6,8 @@ import Divider from "@mui/material/Divider"
 
 import Link from "next/link"
 import NestedList from "./NestedList"
+import SearchInput from "./SearchInput"
+import Etiquettes from "./Etiquettes"
 
 type Anchor = "top" | "left" | "bottom" | "right"
 
@@ -33,8 +35,24 @@ export default function NavbarLeftDrawer({
 		}
 
 	const list = (anchor: Anchor) => (
-		<Box sx={{ width: 305, backgroundColor: "#f2f2f2" }} role="presentation">
-			<p>Hello</p>
+		<Box
+			sx={{
+				width: 305,
+				backgroundColor: "#f2f2f2",
+				display: "flex",
+				flexDirection: "column",
+				alignItems: "center",
+				justifyContent: "center",
+			}}
+			role="presentation"
+		>
+			<SearchInput />
+
+			<div className="mb-4">
+				<Etiquettes />
+			</div>
+			{/* <Divider variant="middle" /> */}
+
 			{/* <List> */}
 			<NestedList setIsOpen={setIsOpen} isOpen={isOpen} />
 			{/* </List> */}

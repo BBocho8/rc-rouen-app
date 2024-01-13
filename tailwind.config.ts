@@ -6,7 +6,12 @@ const config: Config = {
 		"./components/**/*.{js,ts,jsx,tsx,mdx}",
 		"./app/**/*.{js,ts,jsx,tsx,mdx}",
 	],
-	plugins: [require("@tailwindcss/typography")],
+	plugins: [
+		require("@tailwindcss/typography"),
+		require("tailwindcss/plugin")(({ addVariant }: any) => {
+			addVariant("search-cancel", "&::-webkit-search-cancel-button")
+		}),
+	],
 	theme: {
 		extend: {
 			fontFamily: {
