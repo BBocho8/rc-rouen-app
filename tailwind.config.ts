@@ -34,6 +34,8 @@ const config: Config = {
 				"complementary-dark": "#0E5D3E",
 				accent: "#FFD700",
 				body: "#333333",
+				sidenavBG: "#f2f2f2",
+				sidenavBorder: "#E0E0E0",
 			},
 			aspectRatio: {
 				"3/2": "3 / 2",

@@ -80,7 +80,7 @@ const NextGame = ({ games, isHomePageHeader = false }: NextGameProps) => {
 						height={35}
 						className={twMerge(
 							"translate-x-[5px]",
-							homeTeam.toLowerCase() === "racing club de rouen" && "z-10"
+							homeTeam.toLowerCase() === "racing club de rouen" && "z-[2]"
 						)}
 					/>
 					<Image
@@ -90,7 +90,7 @@ const NextGame = ({ games, isHomePageHeader = false }: NextGameProps) => {
 						height={35}
 						className={twMerge(
 							"translate-x-[-5px]",
-							awayTeam.toLowerCase() === "racing club de rouen" && "z-10"
+							awayTeam.toLowerCase() === "racing club de rouen" && "z-[2]"
 						)}
 					/>
 					<div className="flex flex-col justify-center items-start">

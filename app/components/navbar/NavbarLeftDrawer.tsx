@@ -1,14 +1,9 @@
 import * as React from "react"
 import Box from "@mui/material/Box"
 import Drawer from "@mui/material/Drawer"
-import Button from "@mui/material/Button"
 import List from "@mui/material/List"
 import Divider from "@mui/material/Divider"
-import ListItem from "@mui/material/ListItem"
-import ListItemButton from "@mui/material/ListItemButton"
-import ListItemIcon from "@mui/material/ListItemIcon"
-import ListItemText from "@mui/material/ListItemText"
-import { CiMail } from "react-icons/ci"
+
 import Link from "next/link"
 import NestedList from "./NestedList"
 
@@ -38,20 +33,11 @@ export default function NavbarLeftDrawer({
 		}
 
 	const list = (anchor: Anchor) => (
-		<Box
-			sx={{ width: anchor === "top" || anchor === "bottom" ? "auto" : 250 }}
-			role="presentation"
-			// onClick={toggleDrawer(anchor, false)}
-			// onKeyDown={toggleDrawer(anchor, false)}
-		>
-			<List>
-				{/* <Link href="/equipes/equipe-premiere/actualite">
-					<span className="uppercase font-bold text-xl cursor-pointer hover:text-primary">
-						Equipe Premiere
-					</span>
-				</Link> */}
-				<NestedList setIsOpen={setIsOpen} isOpen={isOpen} />
-			</List>
+		<Box sx={{ width: 305, backgroundColor: "#f2f2f2" }} role="presentation">
+			<p>Hello</p>
+			{/* <List> */}
+			<NestedList setIsOpen={setIsOpen} isOpen={isOpen} />
+			{/* </List> */}
 			<Divider />
 			<List>
 				<p>Test</p>
@@ -67,7 +53,7 @@ export default function NavbarLeftDrawer({
 					anchor="left"
 					open={isOpen}
 					onClose={toggleDrawer("left", false)}
-					className="translate-y-[56px] md:translate-y-[96px] z-[1] md:hidden"
+					className="translate-y-[56px] md:translate-y-[96px]  md:hidden w-[305px] border-t border-t-sidenavBorder bg-sidenavBG z-10"
 				>
 					{list("top")}
 				</Drawer>

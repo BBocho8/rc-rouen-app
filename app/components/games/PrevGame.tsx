@@ -110,7 +110,7 @@ const PrevGame = ({ games, isHomePageHeader = false }: PrevGameProps) => {
 					height={35}
 					className={twMerge(
 						"translate-x-[5px]",
-						homeTeam.toLowerCase() === "racing club de rouen" && "z-10",
+						homeTeam.toLowerCase() === "racing club de rouen" && "z-[2]",
 						!homeTeamLogo &&
 							homeTeam.toLowerCase() !== "racing club de rouen" &&
 							"opacity-10"
@@ -123,7 +123,7 @@ const PrevGame = ({ games, isHomePageHeader = false }: PrevGameProps) => {
 					height={35}
 					className={twMerge(
 						"translate-x-[-5px]",
-						awayTeam.toLowerCase() === "racing club de rouen" && "z-10",
+						awayTeam.toLowerCase() === "racing club de rouen" && "z-[2]",
 						!awayTeamLogo &&
 							awayTeam.toLowerCase() !== "racing club de rouen" &&
 							"opacity-10"
