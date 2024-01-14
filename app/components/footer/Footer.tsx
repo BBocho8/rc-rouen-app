@@ -11,6 +11,9 @@ import {
 } from "react-icons/fa6"
 import { FaFacebookSquare } from "react-icons/fa"
 import Link from "next/link"
+import jsonp from "jsonp"
+import { toast } from "react-toastify"
+import Error from "next/error"
 
 const menu = [
 	{ name: "Shop All", link: "/shop" },
@@ -68,8 +71,20 @@ const Footer = () => {
 
 	const handleNewsletter = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
-		console.log(email)
-		setEmail("")
+		try {
+			const url =
+				"https://gmail.us21.list-manage.com/subscribe/post-json?u=8dea8a733c5578eea005bfb23&amp;id=dff9fc0e9e&amp;f_id=00f2f5e6f0"
+			jsonp(`${url}&EMAIL=${email}`, { param: "c" }, (_, data) => {
+				const { msg, result } = data
+				// do something with response
+
+				setEmail("")
+				toast.success("Inscription à la newsletter complétée avec succès")
+			})
+		} catch (error) {
+			console.log(error)
+			toast.error("Erreur lors de l'inscription à la newsletter")
+		}
 	}
 
 	return (
@@ -99,7 +114,8 @@ const Footer = () => {
 						/>
 					</button>
 					<input
-						type="text"
+						type="email"
+						name="EMAIL"
 						value={email}
 						onChange={(e) => setEmail(e.target.value)}
 						placeholder="Email Address"
