@@ -23,12 +23,16 @@ const ContactForm = ({
 }: ContactFormProps) => {
 	const [isSubmitting, setIsSubmitting] = useState(false)
 
-	const handleFormSubmit = (e: React.FormEvent) => {
+	const handleFormSubmit = async (e: React.FormEvent) => {
 		e.preventDefault()
 		try {
 			setIsSubmitting(true)
 			const newUserMessage = { name, email, message }
-			console.log(newUserMessage)
+			await fetch("/api/contact", {
+				method: "post",
+				body: JSON.stringify(newUserMessage),
+			})
+
 			setIsSubmitting(false)
 			setName("")
 			setEmail("")
@@ -47,7 +51,6 @@ const ContactForm = ({
 				back soon in a day
 			</h2>
 			<form
-				action=""
 				className="flex flex-col w-full max-w-xs sm:max-w-lg gap-y-4"
 				onSubmit={handleFormSubmit}
 				id="contact"
