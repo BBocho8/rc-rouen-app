@@ -37,9 +37,9 @@ const HeroHeader = ({ games }: HeroHeaderProps) => {
 				<div className="mx-auto shadow-md w-full">
 					{moment(games.results[1].date).fromNow() <
 					moment(games.results[0].date).fromNow() ? (
-						<PrevGame games={games} isHomePageHeader />
-					) : (
 						<NextGame games={games} isHomePageHeader />
+					) : (
+						<PrevGame games={games} isHomePageHeader />
 					)}
 				</div>
 			</div>

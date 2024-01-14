@@ -34,8 +34,7 @@ type NestedListProps = {
 	setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
 	title: string
 	borderColor?: string
-	isNestedListOpen: boolean
-	setIsNestedListOpen: React.Dispatch<React.SetStateAction<boolean>>
+	isLeftDrawer?: boolean
 }
 
 export default function NestedList({
@@ -43,13 +42,14 @@ export default function NestedList({
 	setIsOpen,
 	title = "",
 	borderColor = "border-b-primary",
-	isNestedListOpen,
-	setIsNestedListOpen,
+	isLeftDrawer = false,
 }: NestedListProps) {
-	// const [isNestedListOpen, setIsNestedListOpen] = useState(false)
+	const [isNestedListOpen, setIsNestedListOpen] = useState(false)
 
 	const handleClick = () => {
-		setIsNestedListOpen(!isNestedListOpen)
+		if (isLeftDrawer) {
+			setIsNestedListOpen(!isNestedListOpen)
+		} else return null
 	}
 
 	const formattedTitle = title.replace("-", " ")
@@ -58,38 +58,32 @@ export default function NestedList({
 	return (
 		<List
 			sx={{ width: "100%", maxWidth: 305 }}
-			// className="py-0"
 			component="nav"
 			aria-labelledby="nested-list-subheader"
 		>
 			<ListItemButton
-				className="hover:bg-transparent"
+				className="hover:bg-transparent "
+				disableRipple
 				onClick={handleClick}
-				// sx={{
-				// 	display: "flex",
-				// 	flexDirection: "row",
-				// 	justifyContent: "space-between",
-				// }}
 			>
 				<div className="flex justify-between border-b w-[16.8rem] border-b-gray-300 pb-1 relative ">
-					<Link href={`/equipes/${formattedLinkCategory}/actualite`}>
-						<span className="uppercase font-medium  text-xl cursor-pointer hover:text-primary">
-							{formattedTitle}
-						</span>
-					</Link>
+					<span className="uppercase font-medium  text-xl  ">
+						{formattedTitle}
+					</span>
+
 					<div className="flex items-center">
-						{isNestedListOpen ? (
+						{isNestedListOpen && isLeftDrawer ? (
 							<RxCross2
 								className={twMerge(
 									styles["rotate-center-reverse"],
 									"text-gray-400"
 								)}
 							/>
-						) : (
+						) : !isNestedListOpen && isLeftDrawer ? (
 							<FiPlus
 								className={twMerge(styles["rotate-center"], "text-gray-400")}
 							/>
-						)}
+						) : null}
 					</div>
 					<div
 						className={twMerge(
@@ -99,23 +93,43 @@ export default function NestedList({
 					/>
 				</div>
 			</ListItemButton>
-			<Collapse in={isNestedListOpen} timeout="auto" unmountOnExit>
-				<ul className="flex flex-col justify-center items-start py-4 px-8 gap-y-1">
-					{menuItem.map((item) => {
-						return (
-							<li
-								onClick={() => setIsOpen(false)}
-								key={item.id}
-								className=" text-sm uppercase tracking-wide hover:text-pretty hover:border-b-2 hover:border-b-primary"
-							>
-								<Link href={`/equipes/${formattedLinkCategory}/${item.id}`}>
-									<span className="normal-case">{item.name}</span>
-								</Link>
-							</li>
-						)
-					})}
-				</ul>
-			</Collapse>
+			{isLeftDrawer ? (
+				<Collapse in={isNestedListOpen} timeout="auto" unmountOnExit>
+					<ul className="flex flex-col justify-center items-start py-4 px-8 gap-y-1">
+						{menuItem.map((item) => {
+							return (
+								<li
+									onClick={() => setIsOpen(false)}
+									key={item.id}
+									className=" text-sm uppercase tracking-wide hover:text-pretty hover:border-b-2 hover:border-b-primary"
+								>
+									<Link href={`/equipes/${formattedLinkCategory}/${item.id}`}>
+										<span className="normal-case">{item.name}</span>
+									</Link>
+								</li>
+							)
+						})}
+					</ul>
+				</Collapse>
+			) : (
+				<Collapse in={true} timeout="auto" unmountOnExit>
+					<ul className="flex flex-col justify-center items-start py-4 px-8 gap-y-1 ">
+						{menuItem.map((item) => {
+							return (
+								<li
+									onClick={() => setIsOpen(false)}
+									key={item.id}
+									className=" text-sm uppercase tracking-wide hover:text-pretty hover:border-b-2 hover:border-b-primary"
+								>
+									<Link href={`/equipes/${formattedLinkCategory}/${item.id}`}>
+										<span className="normal-case">{item.name}</span>
+									</Link>
+								</li>
+							)
+						})}
+					</ul>
+				</Collapse>
+			)}
 		</List>
 	)
 }
