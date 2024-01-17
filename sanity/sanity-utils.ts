@@ -2,6 +2,8 @@ import { createClient, groq } from "next-sanity"
 import clientConfig from "./config/client-config"
 import { Project } from "./types/Project"
 import { Post, PostApiResponse } from "./types/Post"
+import { Product, ProductApiResponse } from "./types/Product"
+import { BannerApiResponse } from "./types/Banner"
 
 export async function getProjects(): Promise<Project[]> {
 	return createClient(clientConfig).fetch(
@@ -65,4 +67,55 @@ export async function getPost(postSlug: string): Promise<Post> {
     }`,
 		{ postSlug }
 	)
+}
+
+export async function getProducts(): Promise<ProductApiResponse> {
+	return createClient(clientConfig).fetch(
+		groq`*[_type == "product"] {
+      _id,
+      name,
+      price,
+      details,
+      'slug': slug.current,
+      image[] {
+          "url": asset->url,
+          "alt": alt
+              }
+    }`
+	)
+}
+export async function getProduct(productSlug: string): Promise<Product> {
+	return createClient(clientConfig).fetch(
+		groq`*[_type == "product" && slug.current == $productSlug][0] {
+      _id,
+      name,
+      price,
+      details,
+      'slug': slug.current,
+      image[] {
+          "url": asset->url,
+          "alt": alt
+              }
+    }`,
+		{ productSlug }
+	)
+}
+export async function getBanner(): Promise<BannerApiResponse> {
+	return createClient(clientConfig).fetch(groq`*[_type == "banner"] {
+    _id,
+    buttonText,
+    "image_url": image.asset->url,
+    "image_alt": image.alt,
+    discount,
+    smallText,
+    _createdAt,
+    _updatedAt,
+    desc,
+    product,
+    _type,
+    largeText2,
+    largeText1,
+    midText,
+    saleTime
+  }`)
 }
