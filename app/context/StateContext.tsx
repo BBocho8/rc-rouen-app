@@ -7,10 +7,11 @@ import {
 	useContext,
 	useState,
 	useEffect,
+	use,
 } from "react"
 
 import { toast } from "react-toastify"
-import { set } from "sanity"
+import { useLocalStorage } from "usehooks-ts"
 
 type ShopContextValues = {
 	showCart: boolean
@@ -27,7 +28,7 @@ type ShopContextValues = {
 	decQty: () => void
 	onAdd: (product: Product, quantity: number) => void
 	onRemove: (product: Product) => void
-	toggleCartItemQuanitity: (id: string, value: string) => void
+	toggleCartItemQuantity: (id: string, value: string) => void
 }
 
 const Context = createContext<ShopContextValues>({
@@ -45,16 +46,30 @@ const Context = createContext<ShopContextValues>({
 	decQty: () => {},
 	onAdd: () => {},
 	onRemove: () => {},
-	toggleCartItemQuanitity: () => {},
+	toggleCartItemQuantity: () => {},
 })
 
 export const StateContext: FunctionComponent<PropsWithChildren> = ({
 	children,
 }) => {
 	const [showCart, setShowCart] = useState(false)
-	const [cartItems, setCartItems] = useState<Product[]>([])
-	const [totalPrice, setTotalPrice] = useState(0)
-	const [totalQuantities, setTotalQuantities] = useState(0)
+	const [cartItems, setCartItems] = useLocalStorage<Product[]>("cart", [])
+	const [totalPrice, setTotalPrice] = useLocalStorage<number>("total", 0)
+	const [totalQuantities, setTotalQuantities] = useLocalStorage<number>(
+		"quantity",
+		0
+	)
+
+	useEffect(() => {
+		const cartItems = JSON.parse(localStorage.getItem("cart") || "[]")
+		const totalPrice = JSON.parse(localStorage.getItem("total") || "0")
+		const totalQuantities = JSON.parse(localStorage.getItem("quantity") || "0")
+
+		setCartItems(cartItems)
+		setTotalPrice(totalPrice)
+		setTotalQuantities(totalQuantities)
+	}, [])
+
 	const [qty, setQty] = useState(1)
 
 	let foundProduct: Product | undefined
@@ -102,7 +117,7 @@ export const StateContext: FunctionComponent<PropsWithChildren> = ({
 		setCartItems(newCartItems)
 	}
 
-	const toggleCartItemQuanitity = (id: string, value: string) => {
+	const toggleCartItemQuantity = (id: string, value: string) => {
 		foundProduct = cartItems.find((item) => item._id === id) as Product
 		index = cartItems.findIndex((product) => product._id === id)
 		const newCartItems = cartItems.filter((item) => item._id !== id)
@@ -168,7 +183,7 @@ export const StateContext: FunctionComponent<PropsWithChildren> = ({
 				decQty,
 				onAdd,
 				onRemove,
-				toggleCartItemQuanitity,
+				toggleCartItemQuantity,
 			}}
 		>
 			{children}

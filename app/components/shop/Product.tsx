@@ -16,7 +16,7 @@ const Product = ({ product }: ProductProps) => {
 						alt={product.image[0].alt}
 						width={250}
 						height={250}
-						className="product-image"
+						className="product-image "
 					/>
 					<p className="product-name">{product.name}</p>
 					<p className="product-price">${product.price}</p>

@@ -23,7 +23,7 @@ const Cart = () => {
 		cartItems,
 		setShowCart,
 		onRemove,
-		toggleCartItemQuanitity,
+		toggleCartItemQuantity,
 	} = useStateContext()
 
 	const handleCheckout = async () => {
@@ -96,7 +96,7 @@ const Cart = () => {
 												<span
 													className="minus"
 													onClick={() =>
-														toggleCartItemQuanitity(item._id, "dec")
+														toggleCartItemQuantity(item._id, "dec")
 													}
 												>
 													<AiOutlineMinus />
@@ -105,7 +105,7 @@ const Cart = () => {
 												<span
 													className="plus"
 													onClick={() =>
-														toggleCartItemQuanitity(item._id, "inc")
+														toggleCartItemQuantity(item._id, "inc")
 													}
 												>
 													<AiOutlinePlus />

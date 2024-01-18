@@ -424,8 +424,6 @@
 		border-radius: 15px;
 		background-color: #ebebeb;
 
-		width: 400px;
-		height: 400px;
 		cursor: pointer;
 		transition: 0.3s ease-in-out;
 	}
@@ -440,8 +438,7 @@
 	.small-image {
 		border-radius: 8px;
 		background-color: #ebebeb;
-		width: 70px;
-		height: 70px;
+
 		cursor: pointer;
 	}
 

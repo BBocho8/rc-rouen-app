@@ -39,7 +39,7 @@ export async function POST(req: Request) {
 			}),
 
 			success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/shop/success`,
-			cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/shop/canceled`,
+			cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/shop`,
 		})
 
 		return NextResponse.json({ session }, { status: 200 })

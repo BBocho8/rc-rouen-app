@@ -36,9 +36,10 @@ const ProductDetails = ({ product, products }: ProductDetailsProps) => {
 						<Image
 							width={400}
 							height={400}
+							priority
 							src={image[index].url}
 							alt={image[index].alt}
-							className="product-detail-image"
+							className="product-detail-image "
 						/>
 					</div>
 					<div className="small-images-container">
@@ -46,11 +47,12 @@ const ProductDetails = ({ product, products }: ProductDetailsProps) => {
 							<Image
 								width={70}
 								height={70}
+								priority
 								key={i}
 								src={image.url}
 								alt={image.alt}
 								className={
-									i === index ? "small-image selected-image" : "small-image"
+									i === index ? "small-image selected-image " : "small-image "
 								}
 								onMouseEnter={() => setIndex(i)}
 							/>
