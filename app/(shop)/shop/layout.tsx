@@ -7,6 +7,8 @@ import { StateContext } from "@/app/context/StateContext"
 import "react-toastify/dist/ReactToastify.css"
 import { ToastContainer } from "react-toastify"
 import dynamic from "next/dynamic"
+import NavbarMui from "@/app/components/shop/NavbarMui"
+import NavbarBottomBar from "@/app/components/shop/NavbarBottomBar"
 
 const roboto = Roboto({
 	subsets: ["latin"],
@@ -30,9 +32,13 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang="en" className={`${roboto.variable} font-sans`}>
-			<body className="layout">
+			<body>
 				<StateContext>
 					<header className="">
+						<div className="pb-14 sm:pb-16">
+							<NavbarMui />
+						</div>
+						<NavbarBottomBar />
 						<Navbar />
 					</header>
 					<main className="main-container">

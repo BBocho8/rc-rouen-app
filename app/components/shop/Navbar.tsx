@@ -5,8 +5,10 @@ import { AiOutlineShopping } from "react-icons/ai"
 
 import { useStateContext } from "@/app/context/StateContext"
 import { Cart } from "."
+
 const Navbar = () => {
 	const { showCart, setShowCart, totalQuantities } = useStateContext()
+
 	return (
 		<div className="navbar-container ">
 			<p className="logo">
