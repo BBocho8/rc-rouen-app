@@ -28,7 +28,11 @@ export async function POST(req: Request) {
 							name: item.name,
 							images: [img],
 						},
-						unit_amount: item.price * 100,
+
+						// unit_amount: item.price * 100,
+						unit_amount: item.is_discounted
+							? ((item.discounted_price as number) || item.price) * 100
+							: item.price * 100,
 					},
 					adjustable_quantity: {
 						enabled: true,

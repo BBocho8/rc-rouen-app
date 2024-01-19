@@ -80,7 +80,13 @@ export async function getProducts(): Promise<ProductApiResponse> {
       image[] {
           "url": asset->url,
           "alt": alt
-              }
+              },
+      sizes,
+      is_discounted,
+      discounted_price,
+      expedition,
+      description,
+      in_stock
     }`
 	)
 }
@@ -95,7 +101,13 @@ export async function getProduct(productSlug: string): Promise<Product> {
       image[] {
           "url": asset->url,
           "alt": alt
-              }
+              },
+      sizes,
+      is_discounted,
+      discounted_price,
+      expedition,
+      description,
+      in_stock
     }`,
 		{ productSlug }
 	)

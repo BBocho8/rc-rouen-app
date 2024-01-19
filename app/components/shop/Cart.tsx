@@ -14,6 +14,7 @@ import { useStateContext } from "@/app/context/StateContext"
 import { Product } from "@/sanity/types/Product"
 import Image from "next/image"
 import getStripe from "@/app/utils/getStripe"
+import getFormattedPrice from "@/app/utils/getFormattedPrice"
 
 const Cart = () => {
 	const cartRef = useRef(null)
@@ -88,7 +89,13 @@ const Cart = () => {
 								<div className="item-desc">
 									<div className="flex top">
 										<h5>{item.name}</h5>
-										<h4>${item.price}</h4>
+										<h4>
+											{item.is_discounted
+												? getFormattedPrice(
+														(item.discounted_price as number) || item.price
+												  )
+												: getFormattedPrice(item.price)}
+										</h4>
 									</div>
 									<div className="flex bottom">
 										<div>
@@ -128,11 +135,11 @@ const Cart = () => {
 					<div className="cart-bottom">
 						<div className="total">
 							<h3>Subtotal:</h3>
-							<h3>${totalPrice}</h3>
+							<h3>{totalPrice}</h3>
 						</div>
 						<div className="btn-container">
 							<button type="button" className="btn" onClick={handleCheckout}>
-								Pay with Stripe
+								Payer avec Stripe
 							</button>
 						</div>
 					</div>

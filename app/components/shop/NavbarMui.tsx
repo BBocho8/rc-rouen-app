@@ -23,6 +23,7 @@ import { IoIosSearch } from "react-icons/io"
 import { IoCartOutline, IoCloseCircleOutline } from "react-icons/io5"
 import { FaChevronRight } from "react-icons/fa"
 import Link from "next/link"
+import { Cart } from "."
 
 interface Props {
 	/**
@@ -63,7 +64,7 @@ const theme = createTheme({
 })
 
 export default function NavbarMui(props: Props) {
-	const { setShowCart } = useStateContext()
+	const { showCart, setShowCart, totalQuantities } = useStateContext()
 	const { window } = props
 	const [mobileOpen, setMobileOpen] = React.useState(false)
 
@@ -153,15 +154,21 @@ export default function NavbarMui(props: Props) {
 						</div>
 
 						<div className="flex justify-center items-center gap-x-2">
-							<div className="cursor-pointer hover:scale-110 flex justify-center items-center">
+							<div className="nav-icon">
 								<IoIosSearch size={25} />
 							</div>
-							<div
-								className="cursor-pointer hover:scale-110 flex justify-center items-center"
+							<button
+								type="button"
+								className="nav-icon"
 								onClick={() => setShowCart(true)}
 							>
 								<IoCartOutline size={25} />
-							</div>
+
+								<span className="absolute top-[-6px] right-[-8px]  text-xs text-white bg-[#f02d34] w-[16px] h-[16px] rounded-[50%] text-center font-semibold">
+									{totalQuantities}
+								</span>
+							</button>
+							{showCart && <Cart />}
 						</div>
 					</Toolbar>
 				</AppBar>

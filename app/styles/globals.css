@@ -54,4 +54,7 @@
 			#c56d92 100%
 		);
 	}
+	.nav-icon {
+		@apply text-[25px]  cursor-pointer relative transition-transform duration-300 ease-in-out border-none bg-transparent hover:scale-110;
+	}
 }

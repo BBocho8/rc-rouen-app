@@ -79,8 +79,16 @@ export const StateContext: FunctionComponent<PropsWithChildren> = ({
 		const checkProductInCart = cartItems.find(
 			(item) => item._id === product._id
 		)
+		product.is_discounted
+			? setTotalPrice(
+					(prevTotalPrice) =>
+						prevTotalPrice +
+						((product.discounted_price as number) || product.price) * quantity
+			  )
+			: setTotalPrice(
+					(prevTotalPrice) => prevTotalPrice + product.price * quantity
+			  )
 
-		setTotalPrice((prevTotalPrice) => prevTotalPrice + product.price * quantity)
 		setTotalQuantities((prevTotalQuantities) => prevTotalQuantities + quantity)
 
 		if (checkProductInCart) {
@@ -132,7 +140,17 @@ export const StateContext: FunctionComponent<PropsWithChildren> = ({
 				})
 			)
 
-			setTotalPrice((prevTotalPrice) => prevTotalPrice + foundProduct!.price)
+			foundProduct.is_discounted
+				? setTotalPrice(
+						(prevTotalPrice) =>
+							prevTotalPrice +
+							((foundProduct!.discounted_price as number) ||
+								foundProduct!.price)
+				  )
+				: setTotalPrice(
+						(prevTotalPrice) => prevTotalPrice + foundProduct!.price
+				  )
+
 			setTotalQuantities((prevTotalQuantities) => prevTotalQuantities + 1)
 		} else if (value === "dec") {
 			if (foundProduct.quantity! > 1) {
@@ -144,7 +162,16 @@ export const StateContext: FunctionComponent<PropsWithChildren> = ({
 						return item
 					})
 				)
-				setTotalPrice((prevTotalPrice) => prevTotalPrice - foundProduct!.price)
+				foundProduct.is_discounted
+					? setTotalPrice(
+							(prevTotalPrice) =>
+								prevTotalPrice -
+								((foundProduct!.discounted_price as number) ||
+									foundProduct!.price)
+					  )
+					: setTotalPrice(
+							(prevTotalPrice) => prevTotalPrice - foundProduct!.price
+					  )
 				setTotalQuantities((prevTotalQuantities) => prevTotalQuantities - 1)
 			}
 		}

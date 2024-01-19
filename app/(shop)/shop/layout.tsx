@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import "@/app/styles/globals.css"
 import "@/app/styles/shop.css"
 import { Roboto } from "next/font/google"
 
@@ -7,8 +8,7 @@ import { StateContext } from "@/app/context/StateContext"
 import "react-toastify/dist/ReactToastify.css"
 import { ToastContainer } from "react-toastify"
 import dynamic from "next/dynamic"
-import NavbarMui from "@/app/components/shop/NavbarMui"
-import NavbarBottomBar from "@/app/components/shop/NavbarBottomBar"
+import { NavbarBottomBar } from "@/app/components/shop/"
 
 const roboto = Roboto({
 	subsets: ["latin"],
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 	description: "Boutique officiel du Racing Club de Rouen",
 }
 
-const Navbar = dynamic(() => import("@/app/components/shop/Navbar"), {
+const NavbarMui = dynamic(() => import("@/app/components/shop/NavbarMui"), {
 	ssr: false,
 })
 
@@ -39,7 +39,6 @@ export default function RootLayout({
 							<NavbarMui />
 						</div>
 						<NavbarBottomBar />
-						<Navbar />
 					</header>
 					<main className="main-container">
 						<ToastContainer position="top-center" />
