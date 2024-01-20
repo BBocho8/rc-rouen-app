@@ -19,6 +19,28 @@
 }
 
 @layer components {
+	.hero {
+		background: #ece9e6; /* fallback for old browsers */
+		background: -webkit-linear-gradient(
+			to right,
+			#ffffff,
+			#ece9e6
+		); /* Chrome 10-25, Safari 5.1-6 */
+		background: linear-gradient(
+			to right,
+			#ffffff,
+			#ece9e6
+		); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+		/* background-color: #c56d92;
+		background-image: linear-gradient(
+			168deg,
+			#c56d92 0%,
+			#851440 36%,
+			#851440 66%,
+			#c56d92 100%
+		); */
+	}
 	.main-container {
 		max-width: 1400px;
 		margin: auto;
