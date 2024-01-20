@@ -34,8 +34,8 @@ export default function RootLayout({
 		<html lang="en" className={`${roboto.variable} font-sans`}>
 			<body>
 				<StateContext>
-					<header className="">
-						<div className="fixed h-[100px] max-w-app w-full">
+					<header className="relative">
+						<div className="h-[100px] max-w-app w-full mx-auto fixed top-0 z-[10000]">
 							<NavbarMui />
 							<NavbarBottomBar />
 						</div>

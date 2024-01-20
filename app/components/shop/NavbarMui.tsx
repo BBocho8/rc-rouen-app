@@ -112,7 +112,7 @@ export default function NavbarMui(props: Props) {
 
 	return (
 		<ThemeProvider theme={theme}>
-			<Box className="flex relative ">
+			<Box className="max-w-app  ">
 				{mobileOpen && (
 					<span
 						className="absolute top-2 left-[19.5rem] z-[1201] transition"
@@ -124,8 +124,7 @@ export default function NavbarMui(props: Props) {
 						/>
 					</span>
 				)}
-				<CssBaseline />
-				<AppBar component="nav" className="max-w-app mx-auto relative">
+				<AppBar component="nav" position="relative">
 					<Toolbar className="flex justify-between ">
 						<IconButton
 							color="inherit"

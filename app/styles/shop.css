@@ -3,15 +3,13 @@
 @tailwind utilities;
 
 @layer base {
-	html,
-	* {
+	html {
 		padding: 0;
 		margin: 0;
 	}
 
 	body {
-		margin: 0 auto;
-		@apply max-w-app;
+		@apply mx-auto max-w-app;
 	}
 
 	a {
@@ -691,7 +689,7 @@
 		}
 		.hero-banner-container button {
 			margin-top: 90px;
-			z-index: 10000;
+			z-index: 9;
 		}
 		.desc {
 			bottom: 60px;
