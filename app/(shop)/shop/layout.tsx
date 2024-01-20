@@ -40,7 +40,7 @@ export default function RootLayout({
 							<NavbarBottomBar />
 						</div>
 					</header>
-					<main className="main-container pt-14 sm:pt-15 md:pt-[100px]">
+					<main className="main-container pt-14 sm:pt-15 md:pt-[100px] bg-white">
 						<ToastContainer position="top-center" />
 						{children}
 					</main>
