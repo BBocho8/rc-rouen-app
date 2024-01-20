@@ -24,6 +24,8 @@ type ShopContextValues = {
 	setTotalQuantities: (totalQuantities: number) => void
 	qty: number
 	setQty: (qty: number) => void
+	size: string | undefined
+	setSize: (size: string) => void
 	incQty: () => void
 	decQty: () => void
 	onAdd: (product: Product, quantity: number) => void
@@ -42,6 +44,8 @@ const Context = createContext<ShopContextValues>({
 	setTotalQuantities: () => {},
 	qty: 1,
 	setQty: () => {},
+	size: "",
+	setSize: () => {},
 	incQty: () => {},
 	decQty: () => {},
 	onAdd: () => {},
@@ -71,6 +75,7 @@ export const StateContext: FunctionComponent<PropsWithChildren> = ({
 	}, [])
 
 	const [qty, setQty] = useState(1)
+	const [size, setSize] = useState("")
 
 	let foundProduct: Product | undefined
 	let index
@@ -206,6 +211,8 @@ export const StateContext: FunctionComponent<PropsWithChildren> = ({
 				setTotalQuantities,
 				qty,
 				setQty,
+				size,
+				setSize,
 				incQty,
 				decQty,
 				onAdd,

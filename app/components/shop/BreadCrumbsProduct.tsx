@@ -16,9 +16,9 @@ type BreadCrumbsProps = {
 
 export default function BreadCrumbsProduct({ productName }: BreadCrumbsProps) {
 	return (
-		<div role="presentation" onClick={handleClick} className="py-2 px-8">
+		<div role="presentation" onClick={handleClick} className="py-4 px-8 ">
 			<Breadcrumbs aria-label="breadcrumb">
-				<Link className="flex items-center gap-x-2" color="inherit" href="/">
+				<Link className="flex  items-center gap-x-2" color="inherit" href="/">
 					<FaHome className="text-primary-dark" />
 					<span className="hover:font-medium uppercase text-xs font-light text-primary-dark">
 						RC Rouen Boutique

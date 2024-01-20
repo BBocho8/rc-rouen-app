@@ -35,12 +35,12 @@ export default function RootLayout({
 			<body>
 				<StateContext>
 					<header className="">
-						<div className="pb-14 sm:pb-16">
+						<div className="fixed h-[100px] max-w-app w-full">
 							<NavbarMui />
+							<NavbarBottomBar />
 						</div>
-						<NavbarBottomBar />
 					</header>
-					<main className="main-container">
+					<main className="main-container pt-14 sm:pt-15 md:pt-[100px]">
 						<ToastContainer position="top-center" />
 						{children}
 					</main>

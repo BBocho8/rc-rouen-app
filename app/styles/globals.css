@@ -6,13 +6,12 @@
 	html {
 		padding: 0;
 		margin: 0;
-
 		@apply hero;
 	}
 
 	body {
 		margin: 0 auto;
-		background-color: white;
+
 		@apply max-w-app;
 	}
 

@@ -21,4 +21,4 @@ export interface Image {
 	alt: string
 }
 
-type size = "XS" | "S" | "M" | "L" | "XL" | "2XL" | "3XL"
+export type size = "XS" | "S" | "M" | "L" | "XL" | "2XL" | "3XL"

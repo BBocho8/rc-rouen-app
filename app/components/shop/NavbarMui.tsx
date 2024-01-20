@@ -125,7 +125,7 @@ export default function NavbarMui(props: Props) {
 					</span>
 				)}
 				<CssBaseline />
-				<AppBar component="nav">
+				<AppBar component="nav" className="max-w-app mx-auto relative">
 					<Toolbar className="flex justify-between ">
 						<IconButton
 							color="inherit"

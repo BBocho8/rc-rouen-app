@@ -13,11 +13,16 @@ import { useState } from "react"
 import { useStateContext } from "@/app/context/StateContext"
 import BreadCrumbsProduct from "./BreadCrumbsProduct"
 import getFormattedPrice from "@/app/utils/getFormattedPrice"
+import { MenuItem, Select } from "@mui/material"
+import { twMerge } from "tailwind-merge"
+import ProductPageAccordion from "./ProductPageAccordion"
 
 type ProductDetailsProps = {
 	product: ProductType
 	products: ProductType[]
 }
+
+const allSizes = ["XS", "S", "M", "L", "XL", "2XL", "3XL"]
 
 const ProductDetails = ({ product, products }: ProductDetailsProps) => {
 	const {
@@ -33,8 +38,8 @@ const ProductDetails = ({ product, products }: ProductDetailsProps) => {
 		in_stock,
 	} = product
 	const [index, setIndex] = useState(0)
-	const { decQty, incQty, qty, onAdd, setShowCart } = useStateContext()
-
+	const { decQty, incQty, qty, setQty, onAdd, setShowCart, size, setSize } =
+		useStateContext()
 	const handleBuyNow = () => {
 		onAdd(product, qty)
 
@@ -70,10 +75,10 @@ const ProductDetails = ({ product, products }: ProductDetailsProps) => {
 						))}
 					</div>
 				</div>
-				<div className="product-detail-desc flex flex-col items-start">
-					<h1 className="uppercase font-medium text-base">{name}</h1>
+				<div className="product-detail-desc flex flex-col items-start px-2">
+					<h1 className="uppercase font-medium text-base ">{name}</h1>
 					<div className="flex items-center gap-x-1 ">
-						<div className="flex text-primary-dark">
+						<div className="flex text-primary-dark my-2 text-sm">
 							<AiFillStar />
 							<AiFillStar />
 							<AiFillStar />
@@ -94,7 +99,7 @@ const ProductDetails = ({ product, products }: ProductDetailsProps) => {
 					)}
 
 					{is_discounted ? (
-						<div>
+						<div className="my-2">
 							<p className="text-sm font-medium">
 								Promotion:{" "}
 								<span className="font-semibold text-xl text-primary-bright">
@@ -106,13 +111,77 @@ const ProductDetails = ({ product, products }: ProductDetailsProps) => {
 							</p>
 						</div>
 					) : (
-						<p className="text-sm font-medium">
+						<p className="text-sm font-medium my-2">
 							Prix:{" "}
 							<span className="font-semibold text-xl text-primary-bright">
 								{getFormattedPrice(price)}
 							</span>
 						</p>
 					)}
+
+					<div className="my-8 flex flex-col gap-y-2 p-4 bg-gray-100 w-full">
+						<div className="flex flex-col gap-y-1">
+							<span className="font-medium text-sm tracking-wide">
+								Tailles:
+							</span>
+
+							<ul className="flex flex-row flex-wrap gap-x-1 gap-y-2 justify-start items-center">
+								{allSizes.map((taille) => (
+									<li key={taille} className="">
+										<button
+											type="button"
+											onClick={() => setSize(taille.toLowerCase())}
+											className={twMerge(
+												taille.toLowerCase() !== size
+													? "rounded-sm bg-white text-black border border-black py-0.5 px-3 hover:bg-gray-200 transition-all"
+													: "rounded-sm bg-black text-white border border-black py-0.5 px-3 transition-all"
+											)}
+										>
+											<span className="uppercase">{taille}</span>
+										</button>
+									</li>
+								))}
+							</ul>
+							{/* <button className="rounded-sm bg-white text-body border border-body py-1 px-2">
+									XS
+								</button>
+								<button>S</button>
+								<button>M</button>
+								<button>L</button>
+								<button>XL</button> */}
+						</div>
+						<div className="flex flex-col gap-y-1">
+							<span className="font-medium text-sm tracking-wide">
+								Quantité:
+							</span>
+							<div className="flex justify-between gap-x-4">
+								<Select
+									size="small"
+									value={qty}
+									sx={{ minWidth: "80px" }}
+									onChange={(e) => setQty(e.target.value as number)}
+									displayEmpty
+									inputProps={{ "aria-label": "Without label" }}
+								>
+									<MenuItem value={1}>1</MenuItem>
+									<MenuItem value={2}>2</MenuItem>
+									<MenuItem value={3}>3</MenuItem>
+									<MenuItem value={4}>4</MenuItem>
+									<MenuItem value={5}>5</MenuItem>
+								</Select>
+								<button
+									type="button"
+									// className="add-to-cart grow"
+									className=" overflow-hidden whitespace-nowrap py-1 px-4 bg-primary-bright text-white text-base font-medium uppercase  hover:bg-primary transition-all grow"
+									onClick={() => onAdd(product, qty)}
+								>
+									Add to Cart
+								</button>
+							</div>
+						</div>
+					</div>
+
+					<ProductPageAccordion />
 
 					<h4>Details: </h4>
 					<p>{details}</p>
