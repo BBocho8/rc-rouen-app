@@ -35,13 +35,13 @@ export default function RootLayout({
 			<body>
 				<StateContext>
 					<header className="relative">
-						<div className="h-[100px] max-w-app w-full mx-auto fixed top-0 z-[10000]">
+						<div className="h-[100px] max-w-app w-full mx-auto fixed top-0 z-[100]">
 							<NavbarMui />
 							<NavbarBottomBar />
 						</div>
 					</header>
 					<main className="main-container pt-14 sm:pt-15 md:pt-[100px] bg-white">
-						<ToastContainer position="top-center" />
+						<ToastContainer position="top-center" style={{ zIndex: 101 }} />
 						{children}
 					</main>
 					<footer>
