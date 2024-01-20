@@ -115,7 +115,7 @@ export default function NavbarMui(props: Props) {
 			<Box className="max-w-app  ">
 				{mobileOpen && (
 					<span
-						className="absolute top-2 left-[19.5rem] z-[1201] transition"
+						className="absolute top-2 left-[19.5rem] z-[12] transition translate-y-14 sm:translate-y-16"
 						onClick={() => setMobileOpen(false)}
 					>
 						<IoCloseCircleOutline
@@ -188,6 +188,7 @@ export default function NavbarMui(props: Props) {
 								width: drawerWidth,
 							},
 						}}
+						className="translate-y-14 sm:translate-y-16"
 					>
 						{drawer}
 					</Drawer>
