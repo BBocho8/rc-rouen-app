@@ -16,8 +16,8 @@ import { useLocalStorage } from "usehooks-ts"
 type ShopContextValues = {
 	showCart: boolean
 	setShowCart: (showCart: boolean) => void
-	cartItems: any
-	setCartItems: (cartItems: any) => void
+	cartItems: Product[]
+	setCartItems: (cartItems: Product[]) => void
 	totalPrice: number
 	setTotalPrice: (totalPrice: number) => void
 	totalQuantities: number
