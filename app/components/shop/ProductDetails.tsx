@@ -1,6 +1,6 @@
 "use client"
 
-import { Product as ProductType } from "@/sanity/types/Product"
+import { Product as ProductType, Size } from "@/sanity/types/Product"
 import { Product } from "@/app/components/shop"
 import Image from "next/image"
 import {
@@ -17,13 +17,14 @@ import { Divider, MenuItem, Select } from "@mui/material"
 import { twMerge } from "tailwind-merge"
 import ProductPageAccordion from "./ProductPageAccordion"
 import { TbPointFilled } from "react-icons/tb"
+import { toast } from "react-toastify"
 
 type ProductDetailsProps = {
 	product: ProductType
 	products: ProductType[]
 }
 
-const allSizes = ["XS", "S", "M", "L", "XL", "2XL", "3XL"]
+const allSizes: Size[] = ["xs", "s", "m", "l", "xl", "2xl", "3xl"]
 
 const ProductDetails = ({ product, products }: ProductDetailsProps) => {
 	const {
@@ -41,10 +42,16 @@ const ProductDetails = ({ product, products }: ProductDetailsProps) => {
 	const [index, setIndex] = useState(0)
 	const { decQty, incQty, qty, setQty, onAdd, setShowCart, size, setSize } =
 		useStateContext()
-	const handleBuyNow = () => {
-		onAdd(product, qty)
+	// const handleBuyNow = () => {
+	// 	onAdd(product, qty)
 
-		setShowCart(true)
+	// 	setShowCart(true)
+	// }
+
+	const handleAddToCart = () => {
+		if (sizes && !size) return toast.error("Veuillez choisir une taille")
+		product.size = size
+		onAdd(product, qty)
 	}
 
 	return (
@@ -53,12 +60,12 @@ const ProductDetails = ({ product, products }: ProductDetailsProps) => {
 			<div className="grid sm:grid-cols-2 md:grid-cols-5 lg:grid-cols-3 mx-auto gap-y-4 sm:gap-y-0">
 				<div className="md:col-span-3 lg:col-span-2">
 					<Image
-						width={400}
-						height={400}
+						width={600}
+						height={600}
 						priority
 						src={image[index].url}
 						alt={image[index].alt}
-						className="bg-white cursor-pointer transition-all duration-300 ease-in-out mx-auto object-cover aspect-square"
+						className="w-[400px] lg:w-[600px] bg-white cursor-pointer transition-all duration-300 ease-in-out mx-auto object-cover aspect-square"
 					/>
 
 					<div className=" flex justify-center gap-2.5 mt-5 ">
@@ -70,7 +77,7 @@ const ProductDetails = ({ product, products }: ProductDetailsProps) => {
 								key={i}
 								src={image.url}
 								alt={image.alt}
-								className="bg-white cursor-pointer rounded-lg border border-gray-100 p-1 hover:bg-gray-100 w-[65px] aspect-square"
+								className="bg-white cursor-pointer rounded-lg border border-gray-100 p-1 hover:bg-gray-100 w-[65px] lg:w-[80px] aspect-square"
 								onMouseEnter={() => setIndex(i)}
 							/>
 						))}
@@ -129,10 +136,10 @@ const ProductDetails = ({ product, products }: ProductDetailsProps) => {
 
 							<ul className="flex flex-row flex-wrap gap-x-1 gap-y-2 justify-start items-center">
 								{allSizes.map((taille) => (
-									<li key={taille} className="">
+									<li key={taille}>
 										<button
 											type="button"
-											onClick={() => setSize(taille.toLowerCase())}
+											onClick={() => setSize(taille)}
 											className={twMerge(
 												taille.toLowerCase() !== size
 													? "tracking-wider rounded-sm bg-white text-black border border-black py-0.5 px-3 hover:bg-gray-200 transition-all"
@@ -166,11 +173,10 @@ const ProductDetails = ({ product, products }: ProductDetailsProps) => {
 								</Select>
 								<button
 									type="button"
-									// className="add-to-cart grow"
 									className=" overflow-hidden whitespace-nowrap py-1 px-4 bg-primary-bright text-white text-base font-medium uppercase  hover:bg-primary transition-all grow"
-									onClick={() => onAdd(product, qty)}
+									onClick={handleAddToCart}
 								>
-									Add to Cart
+									Add to cart
 								</button>
 							</div>
 						</div>
@@ -201,40 +207,6 @@ const ProductDetails = ({ product, products }: ProductDetailsProps) => {
 					<ProductPageAccordion title="Description">
 						<p>{product.description}</p>
 					</ProductPageAccordion>
-					{/* <button
-						type="button"
-						className="w-full overflow-hidden whitespace-nowrap py-1 px-4 bg-primary-bright text-white text-base font-medium uppercase  hover:bg-primary transition-all "
-						onClick={handleBuyNow}
-					>
-						Buy Now
-					</button> */}
-					{/* <h4>Details: </h4>
-					<p>{details}</p>
-					<p className="price">${price}</p> */}
-					{/* <div className="quantity">
-						<h3>Quantity:</h3>
-						<p className="quantity-desc">
-							<span className="minus" onClick={decQty}>
-								<AiOutlineMinus />
-							</span>
-							<span className="num">{qty}</span>
-							<span className="plus" onClick={incQty}>
-								<AiOutlinePlus />
-							</span>
-						</p>
-					</div> */}
-					{/* <div className="buttons">
-						<button
-							type="button"
-							className="add-to-cart"
-							onClick={() => onAdd(product, qty)}
-						>
-							Add to Cart
-						</button>
-						<button type="button" className="buy-now" onClick={handleBuyNow}>
-							Buy Now
-						</button>
-					</div> */}
 				</div>
 			</div>
 

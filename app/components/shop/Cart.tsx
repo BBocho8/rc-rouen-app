@@ -7,6 +7,7 @@ import {
 	AiOutlineShopping,
 } from "react-icons/ai"
 import { TiDeleteOutline } from "react-icons/ti"
+import { MdDelete } from "react-icons/md"
 
 import { toast } from "react-toastify"
 
@@ -15,6 +16,7 @@ import { Product } from "@/sanity/types/Product"
 import Image from "next/image"
 import getStripe from "@/app/utils/getStripe"
 import getFormattedPrice from "@/app/utils/getFormattedPrice"
+import ConfirmDialog from "./ConfirmDialog"
 
 const Cart = () => {
 	const cartRef = useRef(null)
@@ -22,11 +24,13 @@ const Cart = () => {
 		totalPrice,
 		totalQuantities,
 		cartItems,
+		setCartItems,
 		setShowCart,
 		onRemove,
 		toggleCartItemQuantity,
 	} = useStateContext()
 
+	console.log(totalPrice)
 	const handleCheckout = async () => {
 		const stripe = await getStripe()
 
@@ -50,15 +54,18 @@ const Cart = () => {
 	return (
 		<div className="cart-wrapper" ref={cartRef}>
 			<div className="cart-container">
-				<button
-					type="button"
-					className="cart-heading"
-					onClick={() => setShowCart(false)}
-				>
-					<AiOutlineLeft />
-					<span className="heading">Your Cart</span>
-					<span className="cart-num-items">({totalQuantities} items)</span>
-				</button>
+				<div className="flex justify-between items-center px-4 mt-9">
+					<button
+						type="button"
+						className="cart-heading text-black"
+						onClick={() => setShowCart(false)}
+					>
+						<AiOutlineLeft />
+						<span className="heading">Your Cart</span>
+						<span className="cart-num-items">({totalQuantities} items)</span>
+					</button>
+					<ConfirmDialog />
+				</div>
 
 				{cartItems.length < 1 && (
 					<div className="empty-cart">
@@ -78,7 +85,7 @@ const Cart = () => {
 				<div className="product-container">
 					{cartItems.length >= 1 &&
 						cartItems.map((item: Product) => (
-							<div className="product" key={item._id}>
+							<div className="product" key={`${item._id}-${item.size}`}>
 								<Image
 									width={150}
 									height={150}
@@ -97,13 +104,14 @@ const Cart = () => {
 												: getFormattedPrice(item.price)}
 										</h4>
 									</div>
+									<h4 className="uppercase text-xl">Size : {item.size}</h4>
 									<div className="flex bottom">
 										<div>
 											<p className="quantity-desc">
 												<span
 													className="minus"
 													onClick={() =>
-														toggleCartItemQuantity(item._id, "dec")
+														toggleCartItemQuantity(item._id, "dec", item.size)
 													}
 												>
 													<AiOutlineMinus />
@@ -112,7 +120,7 @@ const Cart = () => {
 												<span
 													className="plus"
 													onClick={() =>
-														toggleCartItemQuantity(item._id, "inc")
+														toggleCartItemQuantity(item._id, "inc", item.size)
 													}
 												>
 													<AiOutlinePlus />
@@ -135,7 +143,7 @@ const Cart = () => {
 					<div className="cart-bottom">
 						<div className="total">
 							<h3>Subtotal:</h3>
-							<h3>{totalPrice}</h3>
+							<h3 className="text-black">{totalPrice}€</h3>
 						</div>
 						<div className="btn-container">
 							<button type="button" className="btn" onClick={handleCheckout}>

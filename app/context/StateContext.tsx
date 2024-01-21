@@ -1,5 +1,5 @@
 "use client"
-import { Product } from "@/sanity/types/Product"
+import { Product, Size } from "@/sanity/types/Product"
 import {
 	FunctionComponent,
 	PropsWithChildren,
@@ -24,13 +24,17 @@ type ShopContextValues = {
 	setTotalQuantities: (totalQuantities: number) => void
 	qty: number
 	setQty: (qty: number) => void
-	size: string | undefined
-	setSize: (size: string) => void
+	size: Size | undefined
+	setSize: (size: Size) => void
 	incQty: () => void
 	decQty: () => void
 	onAdd: (product: Product, quantity: number) => void
 	onRemove: (product: Product) => void
-	toggleCartItemQuantity: (id: string, value: string) => void
+	toggleCartItemQuantity: (
+		id: string,
+		value: string,
+		itemSize: Size | undefined
+	) => void
 }
 
 const Context = createContext<ShopContextValues>({
@@ -44,7 +48,7 @@ const Context = createContext<ShopContextValues>({
 	setTotalQuantities: () => {},
 	qty: 1,
 	setQty: () => {},
-	size: "",
+	size: undefined,
 	setSize: () => {},
 	incQty: () => {},
 	decQty: () => {},
@@ -75,14 +79,14 @@ export const StateContext: FunctionComponent<PropsWithChildren> = ({
 	}, [])
 
 	const [qty, setQty] = useState(1)
-	const [size, setSize] = useState("")
+	const [size, setSize] = useState<Size | undefined>(undefined)
 
 	let foundProduct: Product | undefined
 	let index
 
 	const onAdd = (product: Product, quantity: number) => {
 		const checkProductInCart = cartItems.find(
-			(item) => item._id === product._id
+			(item) => item._id === product._id && item.size === product.size
 		)
 		product.is_discounted
 			? setTotalPrice(
@@ -98,13 +102,15 @@ export const StateContext: FunctionComponent<PropsWithChildren> = ({
 
 		if (checkProductInCart) {
 			const updatedCartItems = cartItems.map((cartProduct) => {
-				if (cartProduct._id === product._id)
+				if (
+					cartProduct._id === product._id &&
+					cartProduct.size === product.size
+				)
 					return {
 						...cartProduct,
 						quantity: (cartProduct.quantity || 0) + quantity,
 					}
 			})
-
 			setCartItems(updatedCartItems as Product[])
 		} else {
 			product.quantity = quantity
@@ -117,28 +123,46 @@ export const StateContext: FunctionComponent<PropsWithChildren> = ({
 	}
 
 	const onRemove = (product: Product) => {
-		foundProduct = cartItems.find((item) => item._id === product._id)
-		const newCartItems = cartItems.filter((item) => item._id !== product._id)
+		foundProduct = cartItems.find(
+			(item) => item._id === product._id && item.size === product.size
+		) as Product
+		const newCartItems = cartItems.filter((item) => item.size !== product.size)
+		// const newCartItems = cartItems.filter((item) => item._id !== product._id)
 
-		setTotalPrice(
-			(prevTotalPrice) =>
-				prevTotalPrice - foundProduct!.price * foundProduct!.quantity!
-		)
+		foundProduct.is_discounted
+			? setTotalPrice(
+					(prevTotalPrice) =>
+						prevTotalPrice -
+						((foundProduct!.discounted_price as number) ||
+							foundProduct!.price) *
+							foundProduct!.quantity!
+			  )
+			: setTotalPrice(
+					(prevTotalPrice) =>
+						prevTotalPrice - foundProduct!.price * foundProduct!.quantity!
+			  )
+
 		setTotalQuantities(
 			(prevTotalQuantities) => prevTotalQuantities - foundProduct!.quantity!
 		)
 		setCartItems(newCartItems)
 	}
 
-	const toggleCartItemQuantity = (id: string, value: string) => {
-		foundProduct = cartItems.find((item) => item._id === id) as Product
+	const toggleCartItemQuantity = (
+		id: string,
+		value: string,
+		itemSize: Size | undefined
+	) => {
+		foundProduct = cartItems.find(
+			(item) => item._id === id && item.size === itemSize
+		) as Product
 		index = cartItems.findIndex((product) => product._id === id)
 		const newCartItems = cartItems.filter((item) => item._id !== id)
 
 		if (value === "inc") {
 			setCartItems((prevCartItems) =>
 				prevCartItems.map((item) => {
-					if (item._id === id) {
+					if (item._id === id && item.size === itemSize) {
 						return { ...item, quantity: foundProduct!.quantity! + 1 }
 					}
 					return item
@@ -161,7 +185,7 @@ export const StateContext: FunctionComponent<PropsWithChildren> = ({
 			if (foundProduct.quantity! > 1) {
 				setCartItems((prevCartItems) =>
 					prevCartItems.map((item) => {
-						if (item._id === id) {
+						if (item._id === id && item.size === itemSize) {
 							return { ...item, quantity: foundProduct!.quantity! - 1 }
 						}
 						return item

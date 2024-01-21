@@ -13,7 +13,8 @@ export interface Product {
 	details: string[]
 	image: Image[]
 	quantity?: number
-	sizes: size[]
+	sizes: Size[]
+	size?: Size
 }
 
 export interface Image {
@@ -21,4 +22,4 @@ export interface Image {
 	alt: string
 }
 
-export type size = "XS" | "S" | "M" | "L" | "XL" | "2XL" | "3XL"
+export type Size = "xs" | "s" | "m" | "l" | "xl" | "2xl" | "3xl"

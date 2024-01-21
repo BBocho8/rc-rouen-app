@@ -119,7 +119,7 @@ export default function NavbarMui(props: Props) {
 						onClick={() => setMobileOpen(false)}
 					>
 						<IoCloseCircleOutline
-							className="cursor-pointer text-sidenavBG"
+							className="cursor-pointer text-black"
 							size={30}
 						/>
 					</span>
