@@ -1,7 +1,7 @@
 import { useStateContext } from "@/app/context/StateContext"
+import getFormattedPrice from "@/app/utils/getFormattedPrice"
 import { Product } from "@/sanity/types/Product"
 import Image from "next/image"
-import { AiOutlineShopping } from "react-icons/ai"
 import { GoTrash } from "react-icons/go"
 
 type CartItemProps = {
@@ -9,15 +9,7 @@ type CartItemProps = {
 }
 
 const CartItem = ({ product }: CartItemProps) => {
-	const {
-		totalPrice,
-		totalQuantities,
-		cartItems,
-		setCartItems,
-		setShowCart,
-		onRemove,
-		toggleCartItemQuantity,
-	} = useStateContext()
+	const { onRemove } = useStateContext()
 
 	return (
 		<div className="flex items-center justify-center gap-x-2 p-2 ">
@@ -31,14 +23,14 @@ const CartItem = ({ product }: CartItemProps) => {
 
 			<div className="grow flex flex-col items-start justify-center">
 				<p className="text-sm tracking-wide font-medium  line-clamp-1 ">
-					{product.name}fdfdhgfdhgf
+					{product.name}
 				</p>
 				<p className="text-xs tracking-wide font-light flex items-center gap-x-1">
-					Size :
+					Taille :
 					<span className="font-medium">{product.size?.toUpperCase()}</span>
 				</p>
 				<p className="text-xs tracking-wide font-light flex items-center gap-x-1">
-					Quantity :<span className="font-medium">{product.quantity}</span>
+					Quantité :<span className="font-medium">{product.quantity}</span>
 				</p>
 			</div>
 
@@ -46,7 +38,13 @@ const CartItem = ({ product }: CartItemProps) => {
 				<div onClick={() => onRemove(product)} className="cursor-pointer pr-2">
 					<GoTrash size={15} />
 				</div>
-				<p className="text-sm font-medium tracking-wide">39.99€</p>
+				<p className="text-sm font-medium tracking-wide">
+					{product.is_discounted
+						? getFormattedPrice(
+								(product.discounted_price as number) * product.quantity! || 0
+						  )
+						: getFormattedPrice(product.price * product.quantity!)}
+				</p>
 			</div>
 		</div>
 	)

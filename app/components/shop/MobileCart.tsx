@@ -6,9 +6,10 @@ import CartItem from "./CartItem"
 import getStripe from "@/app/utils/getStripe"
 import { toast } from "react-toastify"
 import { AiOutlineShopping } from "react-icons/ai"
+import getFormattedPrice from "@/app/utils/getFormattedPrice"
 
 const MobileCart = () => {
-	const { showCart, setShowCart, cartItems } = useStateContext()
+	const { setShowCart, cartItems, totalPrice } = useStateContext()
 
 	const handleCheckout = async () => {
 		const stripe = await getStripe()
@@ -30,16 +31,6 @@ const MobileCart = () => {
 		stripe.redirectToCheckout({ sessionId: data.session.id })
 	}
 
-	// showCart && cartItems.length < 1 && ( return
-	// 	<div className="empty-cart">
-	// 		<AiOutlineShopping size={150} />
-	// 		<h3>Your shopping bag is empty</h3>
-
-	// 		<button type="button" onClick={() => setShowCart(false)} className="btn">
-	// 			Continue Shopping
-	// 		</button>
-	// 	</div>
-	// )
 	return (
 		<section
 			className={twMerge(
@@ -93,7 +84,7 @@ const MobileCart = () => {
 			</div>
 			<div className={twMerge(styles["mobile-cart-details-container"])}>
 				<p className="self-end  text-white font-medium text-lg tracking-wider">
-					Total: 96.99€
+					Total: {getFormattedPrice(totalPrice)}
 				</p>
 				<button
 					className=" w-full uppercase text-lg font-bold text-white bg-complementary-dark  py-4 rounded-md cursor-pointer hover:bg-complementary"

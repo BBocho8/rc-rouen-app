@@ -110,6 +110,7 @@ export const StateContext: FunctionComponent<PropsWithChildren> = ({
 						...cartProduct,
 						quantity: (cartProduct.quantity || 0) + quantity,
 					}
+				return cartProduct
 			})
 			setCartItems(updatedCartItems as Product[])
 		} else {
@@ -120,6 +121,7 @@ export const StateContext: FunctionComponent<PropsWithChildren> = ({
 
 		toast.success(`${qty} ${product.name} added to the cart.`)
 		setQty(1)
+		setSize(undefined)
 	}
 
 	const onRemove = (product: Product) => {

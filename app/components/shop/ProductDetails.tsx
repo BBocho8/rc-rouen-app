@@ -135,21 +135,25 @@ const ProductDetails = ({ product, products }: ProductDetailsProps) => {
 							</span>
 
 							<ul className="flex flex-row flex-wrap gap-x-1 gap-y-2 justify-start items-center">
-								{allSizes.map((taille) => (
-									<li key={taille}>
-										<button
-											type="button"
-											onClick={() => setSize(taille)}
-											className={twMerge(
-												taille.toLowerCase() !== size
-													? "tracking-wider rounded-sm bg-white text-black border border-black py-0.5 px-3 hover:bg-gray-200 transition-all"
-													: "tracking-wider rounded-sm bg-black text-white border border-black py-0.5 px-3 transition-all"
-											)}
-										>
-											<span className="uppercase">{taille}</span>
-										</button>
-									</li>
-								))}
+								{allSizes
+									// .filter((size) => product.sizes.includes(size))
+									.map((taille) => (
+										<li key={taille}>
+											<button
+												type="button"
+												onClick={() => setSize(taille)}
+												disabled={!sizes?.includes(taille)}
+												className={twMerge(
+													taille.toLowerCase() !== size
+														? "tracking-wider rounded-sm bg-white text-black border border-black py-0.5 px-3 hover:bg-gray-200 transition-all"
+														: "tracking-wider rounded-sm bg-black text-white border border-black py-0.5 px-3 transition-all",
+													" disabled:border-gray-300 disabled:text-gray-400"
+												)}
+											>
+												<span className="uppercase">{taille}</span>
+											</button>
+										</li>
+									))}
 							</ul>
 						</div>
 						<div className="flex flex-col gap-y-1">
