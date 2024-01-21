@@ -24,6 +24,7 @@ import { IoCartOutline, IoCloseCircleOutline } from "react-icons/io5"
 import { FaChevronRight } from "react-icons/fa"
 import Link from "next/link"
 import { Cart } from "."
+import MobileCart from "./MobileCart"
 
 interface Props {
 	/**
@@ -159,7 +160,7 @@ export default function NavbarMui(props: Props) {
 							<button
 								type="button"
 								className="nav-icon"
-								onClick={() => setShowCart(true)}
+								onClick={() => setShowCart(!showCart)}
 							>
 								<IoCartOutline size={25} />
 
@@ -167,7 +168,8 @@ export default function NavbarMui(props: Props) {
 									{totalQuantities}
 								</span>
 							</button>
-							{showCart && <Cart />}
+							{showCart && <MobileCart />}
+							{/* {showCart && <Cart />} */}
 						</div>
 					</Toolbar>
 				</AppBar>
