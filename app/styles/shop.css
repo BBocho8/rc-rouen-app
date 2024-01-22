@@ -133,12 +133,11 @@
 	}
 	.product-card {
 		cursor: pointer;
-		transform: scale(1, 1);
+
 		transition: transform 0.5s ease;
 		color: #324d67;
 	}
 	.product-card:hover {
-		transform: scale(1.1, 1.1);
 	}
 	.product-image {
 		border-radius: 15px;
@@ -797,6 +796,20 @@
 		.btn-container {
 			width: 300px;
 			margin: auto;
+		}
+
+		.slick-slide {
+			height: auto !important;
+		}
+
+		.slick-track {
+			display: flex !important;
+			flex-direction: row !important;
+			flex-wrap: nowrap !important;
+			align-items: stretch !important;
+		}
+
+		.slick-slide > div {
 		}
 	}
 }

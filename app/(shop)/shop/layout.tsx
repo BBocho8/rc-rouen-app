@@ -10,6 +10,9 @@ import { ToastContainer } from "react-toastify"
 import dynamic from "next/dynamic"
 import { NavbarBottomBar } from "@/app/components/shop/"
 
+import "slick-carousel/slick/slick.css"
+import "slick-carousel/slick/slick-theme.css"
+
 const roboto = Roboto({
 	subsets: ["latin"],
 	variable: "--font-roboto",

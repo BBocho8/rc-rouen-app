@@ -1,3 +1,4 @@
+import getFormattedPrice from "@/app/utils/getFormattedPrice"
 import { Product } from "@/sanity/types/Product"
 import Image from "next/image"
 import Link from "next/link"
@@ -18,8 +19,10 @@ const Product = ({ product }: ProductProps) => {
 						height={250}
 						className="product-image "
 					/>
-					<p className="product-name">{product.name}</p>
-					<p className="product-price">${product.price}</p>
+					<p className="product-name px-2">{product.name}</p>
+					<p className="product-price px-2">
+						{getFormattedPrice(product.price)}
+					</p>
 				</div>
 			</Link>
 		</div>

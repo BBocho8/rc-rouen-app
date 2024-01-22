@@ -18,6 +18,7 @@ import { twMerge } from "tailwind-merge"
 import ProductPageAccordion from "./ProductPageAccordion"
 import { TbPointFilled } from "react-icons/tb"
 import { toast } from "react-toastify"
+import MayAlsoLikeCarousel from "./MayAlsoLikeCarousel"
 
 type ProductDetailsProps = {
 	product: ProductType
@@ -55,7 +56,7 @@ const ProductDetails = ({ product, products }: ProductDetailsProps) => {
 	}
 
 	return (
-		<div>
+		<div className="">
 			<BreadCrumbsProduct productName={product.name} />
 			<div className="grid sm:grid-cols-2 md:grid-cols-5 lg:grid-cols-3 mx-auto gap-y-4 sm:gap-y-0">
 				<div className="md:col-span-3 lg:col-span-2">
@@ -214,7 +215,9 @@ const ProductDetails = ({ product, products }: ProductDetailsProps) => {
 				</div>
 			</div>
 
-			<div className="maylike-products-wrapper">
+			<MayAlsoLikeCarousel products={products} />
+
+			{/* <div className="maylike-products-wrapper">
 				<h2>You may also like</h2>
 				<div className="marquee">
 					<div className="maylike-products-container track">
@@ -223,7 +226,8 @@ const ProductDetails = ({ product, products }: ProductDetailsProps) => {
 						))}
 					</div>
 				</div>
-			</div>
+				
+			</div> */}
 		</div>
 	)
 }
