@@ -85,7 +85,7 @@ const DesktopCart = () => {
 									<th className="table-header  pl-16"></th>
 								</tr>
 							</thead>
-							<tbody>
+							<tbody className="[&>*:nth-child(odd)]:bg-gray-200 [&>*:nth-child(even)]:bg-gray-100 ">
 								{cartItems.map((item) => {
 									return (
 										<tr

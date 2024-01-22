@@ -71,7 +71,7 @@ export default function NavbarMui(props: Props) {
 	const drawer = (
 		<Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
 			<Link href="/shop">
-				<div className="flex items-center justify-center gap-x-1 py-4">
+				<div className="flex items-center justify-center gap-x-1 py-4 cursor-pointer">
 					<Image
 						src="/logoTest.png"
 						width={45}
@@ -132,22 +132,24 @@ export default function NavbarMui(props: Props) {
 						>
 							<GiHamburgerMenu />
 						</IconButton>
-						<div className="flex items-center justify-start lg:justify-center  gap-x-1 sm:grow ">
-							<Image
-								src="/logoTest.png"
-								width={45}
-								height={45}
-								alt="logo rcr"
-							/>
-							<div className="flex flex-col items-start justify-center">
-								<span className="uppercase text-xs font-medium">
-									Racing Club de Rouen
-								</span>
-								<span className="uppercase text-xs font-extralight">
-									Boutique officielle
-								</span>
+						<Link href="/shop">
+							<div className="flex items-center justify-start lg:justify-center  gap-x-1 sm:grow cursor-pointer ">
+								<Image
+									src="/logoTest.png"
+									width={45}
+									height={45}
+									alt="logo rcr"
+								/>
+								<div className="flex flex-col items-start justify-center">
+									<span className="uppercase text-xs font-medium">
+										Racing Club de Rouen
+									</span>
+									<span className="uppercase text-xs font-extralight">
+										Boutique officielle
+									</span>
+								</div>
 							</div>
-						</div>
+						</Link>
 
 						<div className="flex justify-center items-center gap-x-2">
 							<div className="nav-icon">
