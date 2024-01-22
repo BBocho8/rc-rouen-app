@@ -3,19 +3,14 @@
 import * as React from "react"
 import AppBar from "@mui/material/AppBar"
 import Box from "@mui/material/Box"
-import CssBaseline from "@mui/material/CssBaseline"
 import Divider from "@mui/material/Divider"
 import Drawer from "@mui/material/Drawer"
 import IconButton from "@mui/material/IconButton"
-import List from "@mui/material/List"
-import ListItem from "@mui/material/ListItem"
-import ListItemButton from "@mui/material/ListItemButton"
-import ListItemText from "@mui/material/ListItemText"
+
 import { GiHamburgerMenu } from "react-icons/gi"
 
 import Toolbar from "@mui/material/Toolbar"
-import Typography from "@mui/material/Typography"
-import Button from "@mui/material/Button"
+
 import { ThemeProvider, createTheme } from "@mui/material"
 import Image from "next/image"
 import { useStateContext } from "@/app/context/StateContext"
@@ -23,8 +18,8 @@ import { IoIosSearch } from "react-icons/io"
 import { IoCartOutline, IoCloseCircleOutline } from "react-icons/io5"
 import { FaChevronRight } from "react-icons/fa"
 import Link from "next/link"
-import { Cart } from "."
 import MobileCart from "./MobileCart"
+import DesktopCart from "./DesktopCart"
 
 interface Props {
 	/**
@@ -126,17 +121,18 @@ export default function NavbarMui(props: Props) {
 					</span>
 				)}
 				<AppBar component="nav" position="relative">
-					<Toolbar className="flex justify-between ">
+					<Toolbar className="flex justify-between  ">
 						<IconButton
 							color="inherit"
 							aria-label="open drawer"
 							edge="start"
 							onClick={handleDrawerToggle}
 							className="mr-2 md:hidden"
+							sx={{ display: { xs: "block", md: "none" } }}
 						>
 							<GiHamburgerMenu />
 						</IconButton>
-						<div className="flex items-center justify-start gap-x-1 sm:grow lg:grow-0">
+						<div className="flex items-center justify-start lg:justify-center  gap-x-1 sm:grow ">
 							<Image
 								src="/logoTest.png"
 								width={45}
@@ -169,7 +165,7 @@ export default function NavbarMui(props: Props) {
 								</span>
 							</button>
 							{showCart && <MobileCart />}
-							{/* {showCart && <Cart />} */}
+							{showCart && <DesktopCart />}
 						</div>
 					</Toolbar>
 				</AppBar>

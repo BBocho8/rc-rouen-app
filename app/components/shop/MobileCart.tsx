@@ -1,15 +1,23 @@
 import { twMerge } from "tailwind-merge"
 import styles from "./Cart.module.css"
 import { useStateContext } from "@/app/context/StateContext"
-import { FaCcStripe, FaChevronLeft } from "react-icons/fa6"
-import CartItem from "./CartItem"
+import { FaCcStripe, FaChevronLeft, FaTrash } from "react-icons/fa6"
+import MobileCartItem from "./MobileCartItem"
 import getStripe from "@/app/utils/getStripe"
 import { toast } from "react-toastify"
 import { AiOutlineShopping } from "react-icons/ai"
 import getFormattedPrice from "@/app/utils/getFormattedPrice"
+import ConfirmDialog from "./ConfirmDialog"
 
 const MobileCart = () => {
-	const { setShowCart, cartItems, totalPrice } = useStateContext()
+	const {
+		setShowCart,
+		cartItems,
+		totalPrice,
+		setCartItems,
+		setTotalPrice,
+		setTotalQuantities,
+	} = useStateContext()
 
 	const handleCheckout = async () => {
 		const stripe = await getStripe()
@@ -64,14 +72,19 @@ const MobileCart = () => {
 						>
 							<FaChevronLeft size={20} />
 						</span>
-						<div className=" flex flex-col gap-y-4 ">
-							<h2 className="text-3xl font-medium text-gray-500 tracking-wider self-start normal-case px-6">
-								Shopping cart{" "}
-							</h2>
-							<div className=" [&>*:nth-child(odd)]:bg-gray-200 [&>*:nth-child(even)]:bg-gray-100">
+						<div className=" flex flex-col gap-y-4 w-full">
+							<div className="flex justify-between items-center">
+								<h2 className="text-3xl font-medium text-gray-500 tracking-wider self-start normal-case px-6">
+									Shopping cart{" "}
+								</h2>
+								<div className="pr-4">
+									<ConfirmDialog />
+								</div>
+							</div>
+							<div className=" [&>*:nth-child(odd)]:bg-gray-200 [&>*:nth-child(even)]:bg-gray-100 ">
 								{cartItems.map((product) => {
 									return (
-										<CartItem
+										<MobileCartItem
 											key={`${product._id}-${product.size}`}
 											product={product}
 										/>

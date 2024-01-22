@@ -1,7 +1,5 @@
 import { useStateContext } from "@/app/context/StateContext"
-import { Divider } from "@mui/material"
 import Dialog from "@mui/material/Dialog"
-import DialogActions from "@mui/material/DialogActions"
 
 import { Fragment, useState } from "react"
 import { MdDelete } from "react-icons/md"
@@ -30,7 +28,7 @@ export default function ConfirmDialog() {
 			<button
 				onClick={handleClickOpen}
 				title="Vider le panier"
-				className="text-black"
+				className="text-black sm:text-primary-dark"
 			>
 				<MdDelete size={25} />
 			</button>
