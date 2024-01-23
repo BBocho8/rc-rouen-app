@@ -24,7 +24,6 @@ const PrevGame = ({ games, isHomePageHeader = false }: PrevGameProps) => {
 	const awayTeamLogo =
 		games.results[0].teams[1].logo &&
 		`https://v1.scorenco.com${games.results[0].teams[1].logo}`
-	console.log(games)
 	return !isHomePageHeader ? (
 		<div>
 			<p className="px-4 uppercase mb-3 mt-4 text-sm font-semibold tracking-tight  ">
