@@ -10,31 +10,14 @@ import styles from "./NestedList.module.css"
 import { twMerge } from "tailwind-merge"
 import removeAccent from "@/app/utils/removeAccents"
 
-const menuItem = [
-	{
-		name: "Actualité",
-		id: "actualite",
-	},
-	{
-		name: "Effectif",
-		id: "effectif",
-	},
-	{
-		name: "Calendrier et resultats",
-		id: "calendrier-et-resultat",
-	},
-	{
-		name: "Classement",
-		id: "classement",
-	},
-]
-
 type NestedListProps = {
 	isOpen: boolean
 	setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
 	title: string
 	borderColor?: string
 	isLeftDrawer?: boolean
+	list: { name: string; id: string }[]
+	isDefaultLink?: boolean
 }
 
 export default function NestedList({
@@ -43,6 +26,8 @@ export default function NestedList({
 	title = "",
 	borderColor = "border-b-primary",
 	isLeftDrawer = false,
+	list,
+	isDefaultLink = true,
 }: NestedListProps) {
 	const [isNestedListOpen, setIsNestedListOpen] = useState(false)
 
@@ -96,14 +81,20 @@ export default function NestedList({
 			{isLeftDrawer ? (
 				<Collapse in={isNestedListOpen} timeout="auto" unmountOnExit>
 					<ul className="flex flex-col justify-center items-start py-4 px-8 gap-y-1">
-						{menuItem.map((item) => {
+						{list.map((item) => {
 							return (
 								<li
 									onClick={() => setIsOpen(false)}
 									key={item.id}
 									className=" text-sm uppercase tracking-wide hover:text-pretty hover:border-b-2 hover:border-b-primary"
 								>
-									<Link href={`/equipes/${formattedLinkCategory}/${item.id}`}>
+									<Link
+										href={
+											isDefaultLink
+												? `/equipes/${formattedLinkCategory}/${item.id}`
+												: `/${item.id}`
+										}
+									>
 										<span className="normal-case">{item.name}</span>
 									</Link>
 								</li>
@@ -114,14 +105,20 @@ export default function NestedList({
 			) : (
 				<Collapse in={true} timeout="auto" unmountOnExit>
 					<ul className="flex flex-col justify-center items-start py-4 px-8 gap-y-1 ">
-						{menuItem.map((item) => {
+						{list.map((item) => {
 							return (
 								<li
 									onClick={() => setIsOpen(false)}
 									key={item.id}
 									className=" text-sm uppercase tracking-wide hover:text-pretty hover:border-b-2 hover:border-b-primary"
 								>
-									<Link href={`/equipes/${formattedLinkCategory}/${item.id}`}>
+									<Link
+										href={
+											isDefaultLink
+												? `/equipes/${formattedLinkCategory}/${item.id}`
+												: `/${item.id}`
+										}
+									>
 										<span className="normal-case">{item.name}</span>
 									</Link>
 								</li>

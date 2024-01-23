@@ -30,14 +30,7 @@ interface Props {
 }
 
 const drawerWidth = 300
-export const navItems = [
-	"MAILLOTS",
-	"ENTRAINEMENTS",
-	"HOMME",
-	"FEMME",
-	"ENFANT",
-	"PROMOTIONS",
-]
+export const navItems = ["MAILLOTS", "HOMME", "FEMME", "ENFANT", "PROMOTIONS"]
 
 const theme = createTheme({
 	breakpoints: {
@@ -99,6 +92,12 @@ export default function NavbarMui(props: Props) {
 						</li>
 					</Link>
 				))}
+				<Link href="/">
+					<li className="pl-4 pr-2 flex justify-between items-center py-3 cursor-pointer border-b border-b-gray-200 hover:bg-gray-100 transition">
+						<span className="pl-2 uppercase text-sm font-medium">RC ROUEN</span>
+						<FaChevronRight size={15} />
+					</li>
+				</Link>
 			</ul>
 		</Box>
 	)

@@ -9,10 +9,19 @@ const NavbarBottomBar = () => {
 			{navItems.map((item) => (
 				<Link key={item} href={`/shop/category/${item.toLowerCase()}`}>
 					<button className="px-4 py-1.5 hover:bg-secondary-dark ">
-						<span className="text-primary-dark font-semibold">{item}</span>
+						<span className="text-primary-dark font-semibold uppercase">
+							{item}
+						</span>
 					</button>
 				</Link>
 			))}
+			<Link href="/">
+				<button className="px-4 py-1.5 hover:bg-secondary-dark ">
+					<span className="text-primary-dark font-semibold uppercase">
+						RC Rouen
+					</span>
+				</button>
+			</Link>
 		</div>
 	)
 }

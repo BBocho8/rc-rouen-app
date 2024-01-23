@@ -8,6 +8,7 @@ const HeroHeader = () => {
 				src={img}
 				width={2048}
 				height={1365}
+				priority
 				alt="hero shop"
 				className="object-cover aspect-3/2 bg-gradient-to-r from-indigo-500 to-blue-500"
 			/>

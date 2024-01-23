@@ -4,6 +4,7 @@ import Drawer from "@mui/material/Drawer"
 import List from "@mui/material/List"
 
 import NestedList from "./NestedList"
+import { menuItem, shopItem } from "./NavbarMenuItems"
 
 type Anchor = "top" | "left" | "bottom" | "right"
 
@@ -54,6 +55,7 @@ export default function NavbarTopDrawer({
 					isOpen={isOpen}
 					title="équipe-première"
 					isLeftDrawer={false}
+					list={menuItem}
 				/>
 				<NestedList
 					setIsOpen={setIsOpen}
@@ -61,6 +63,7 @@ export default function NavbarTopDrawer({
 					title="équipe-féminine"
 					borderColor="border-b-accent"
 					isLeftDrawer={false}
+					list={menuItem}
 				/>
 				<NestedList
 					setIsOpen={setIsOpen}
@@ -68,6 +71,16 @@ export default function NavbarTopDrawer({
 					title="autres-équipes"
 					borderColor="border-b-gray-500"
 					isLeftDrawer={false}
+					list={menuItem}
+				/>
+				<NestedList
+					setIsOpen={setIsOpen}
+					isOpen={isOpen}
+					title="boutique"
+					borderColor="border-b-complementary"
+					isLeftDrawer={false}
+					list={shopItem}
+					isDefaultLink={false}
 				/>
 			</List>
 		</Box>
