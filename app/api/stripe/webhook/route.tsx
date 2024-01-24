@@ -30,5 +30,5 @@ export async function POST(req: Request) {
 		console.warn(`🤷‍♀️ Unhandled event type: ${event.type}`)
 	}
 
-	return NextResponse.json({ received: true })
+	return NextResponse.json({ received: true }, { status: 200 })
 }
