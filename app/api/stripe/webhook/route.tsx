@@ -3,19 +3,14 @@ import { buffer } from "micro"
 
 const stripe = new Stripe(process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY as string)
 
-// export const config = {
-// 	api: {
-// 		bodyParser: false,
-// 	},
-// }
-
 export async function POST(req: any, res: any) {
+	const body = await req.json()
 	let event
-
+	console.log(req)
 	try {
 		// 1. Retrieve the event by verifying the signature using the raw body and secret
-		const rawBody = await buffer(req.text())
-		const signature = req.headers["stripe-signature"]
+		const rawBody = await buffer(body)
+		const signature = body.headers["stripe-signature"]
 
 		event = stripe.webhooks.constructEvent(
 			rawBody.toString(),
@@ -39,5 +34,6 @@ export async function POST(req: any, res: any) {
 	}
 
 	// 3. Return a response to acknowledge receipt of the event.
-	res.json({ received: true })
+	return res.json({ received: true })
+	// res.json({ received: true })
 }
