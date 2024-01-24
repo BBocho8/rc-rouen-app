@@ -40,13 +40,20 @@ const Navbar = () => {
 					</span>
 				</div>
 				<div className={`${styles.vl} hidden lg:block`}></div>
-				<div className="flex justify-start items-center grow">
+				<div className="flex justify-start items-center grow gap-x-8">
 					<Link
 						href="/equipes/equipe-premiere/actualite"
 						className={styles["nav-link"]}
 						onClick={() => setIsOpen(false)}
 					>
 						équipe Première
+					</Link>
+					<Link
+						href="/shop"
+						className={styles["nav-link"]}
+						onClick={() => setIsOpen(false)}
+					>
+						shop
 					</Link>
 				</div>
 				<Link href="/">

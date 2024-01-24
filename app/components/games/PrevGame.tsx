@@ -20,11 +20,10 @@ const PrevGame = ({ games, isHomePageHeader = false }: PrevGameProps) => {
 	const awayTeam = games.results[0].teams[1].name
 	const homeTeamLogo =
 		games.results[0].teams[0].logo &&
-		`https://v1.scorenco.com${games.results[1].teams[0].logo}`
-
+		`https://v1.scorenco.com${games.results[0].teams[0].logo}`
 	const awayTeamLogo =
 		games.results[0].teams[1].logo &&
-		`https://v1.scorenco.com${games.results[1].teams[1].logo}`
+		`https://v1.scorenco.com${games.results[0].teams[1].logo}`
 	return !isHomePageHeader ? (
 		<div>
 			<p className="px-4 uppercase mb-3 mt-4 text-sm font-semibold tracking-tight  ">
@@ -59,7 +58,7 @@ const PrevGame = ({ games, isHomePageHeader = false }: PrevGameProps) => {
 									"bg-gray-800"
 							)}
 						>
-							{homeScore}
+							{homeScore || "-"}
 						</span>
 						<span
 							className={twMerge(
@@ -68,7 +67,7 @@ const PrevGame = ({ games, isHomePageHeader = false }: PrevGameProps) => {
 									"bg-gray-800"
 							)}
 						>
-							{awayScore}
+							{awayScore || "-"}
 						</span>
 					</div>
 

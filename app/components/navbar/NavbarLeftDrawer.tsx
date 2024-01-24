@@ -5,6 +5,7 @@ import Drawer from "@mui/material/Drawer"
 import NestedList from "./NestedList"
 import SearchInput from "./SearchInput"
 import Etiquettes from "./Etiquettes"
+import { menuItem, shopItem } from "./NavbarMenuItems"
 
 type Anchor = "top" | "left" | "bottom" | "right"
 
@@ -57,6 +58,7 @@ export default function NavbarLeftDrawer({
 				isOpen={isOpen}
 				title="équipe-première"
 				isLeftDrawer={true}
+				list={menuItem}
 			/>
 			<NestedList
 				setIsOpen={setIsOpen}
@@ -64,6 +66,7 @@ export default function NavbarLeftDrawer({
 				title="équipe-féminine"
 				borderColor="border-b-accent"
 				isLeftDrawer={true}
+				list={menuItem}
 			/>
 			<NestedList
 				setIsOpen={setIsOpen}
@@ -71,6 +74,16 @@ export default function NavbarLeftDrawer({
 				title="autres-équipes"
 				borderColor="border-b-gray-500"
 				isLeftDrawer={true}
+				list={menuItem}
+			/>
+			<NestedList
+				setIsOpen={setIsOpen}
+				isOpen={isOpen}
+				title="boutique"
+				borderColor="border-b-complementary"
+				isLeftDrawer={true}
+				list={shopItem}
+				isDefaultLink={false}
 			/>
 		</Box>
 	)

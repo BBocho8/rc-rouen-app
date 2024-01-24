@@ -46,12 +46,28 @@ const NextGame = ({ games, isHomePageHeader = false }: NextGameProps) => {
 					<span className="uppercase font-semibold  max-w-32 text-center line-clamp-2 leading-tight">
 						{homeTeam}
 					</span>
-					<Image src={homeTeamLogo || logo} alt="PSG" width={50} height={50} />
+					<Image
+						src={homeTeamLogo || logo}
+						alt="PSG"
+						width={50}
+						height={50}
+						className={twMerge(
+							homeTeam.toLowerCase() !== "racing club de rouen" && "opacity-10"
+						)}
+					/>
 					<span className="py-2 px-3 text-gray-600  bg-gray-200 rounded-lg">
 						{gameTime}
 					</span>
 
-					<Image src={awayTeamLogo || logo} alt="Metz" width={50} height={50} />
+					<Image
+						src={awayTeamLogo || logo}
+						alt="Metz"
+						width={50}
+						height={50}
+						className={twMerge(
+							awayTeam.toLowerCase() !== "racing club de rouen" && "opacity-10"
+						)}
+					/>
 					<span className="uppercase font-semibold  max-w-32 text-center line-clamp-2 leading-tight">
 						{awayTeam}
 					</span>
@@ -80,7 +96,9 @@ const NextGame = ({ games, isHomePageHeader = false }: NextGameProps) => {
 						height={35}
 						className={twMerge(
 							"translate-x-[5px]",
-							homeTeam.toLowerCase() === "racing club de rouen" && "z-[2]"
+							homeTeam.toLowerCase() === "racing club de rouen"
+								? "z-[2]"
+								: "z-[2] opacity-10"
 						)}
 					/>
 					<Image
@@ -90,7 +108,9 @@ const NextGame = ({ games, isHomePageHeader = false }: NextGameProps) => {
 						height={35}
 						className={twMerge(
 							"translate-x-[-5px]",
-							awayTeam.toLowerCase() === "racing club de rouen" && "z-[2]"
+							awayTeam.toLowerCase() === "racing club de rouen"
+								? "z-[2]"
+								: "z-[2] opacity-10"
 						)}
 					/>
 					<div className="flex flex-col justify-center items-start">

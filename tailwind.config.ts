@@ -35,6 +35,7 @@ const config: Config = {
 				"primary-bright": "#9D4266",
 				secondary: "#ECE5A5",
 				"secondary-bright": "#f3efc9",
+				"secondary-dark": "#D4CE94",
 				complementary: "#148559",
 				"complementary-dark": "#0E5D3E",
 				accent: "#FFD700",

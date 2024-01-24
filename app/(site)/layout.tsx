@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import "../globals.css"
+import "@/app/styles/globals.css"
 import { Roboto } from "next/font/google"
 import Navbar from "../components/navbar/Navbar"
 import Footer from "../components/footer/Footer"
@@ -28,7 +28,7 @@ export default function RootLayout({
 				<header>
 					<Navbar />
 				</header>
-				<main className="pt-14 md:pt-24">
+				<main className="pt-14 md:pt-24 bg-white">
 					<ToastContainer position="top-center" />
 					{children}
 				</main>

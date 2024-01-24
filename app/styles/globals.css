@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	html {
+		padding: 0;
+		margin: 0;
+		@apply hero;
+	}
+
+	body {
+		margin: 0 auto;
+
+		@apply max-w-app;
+	}
+
+	h1 {
+		@apply text-xl font-medium leading-[1.2] sm:text-4xl sm:leading-[1.4] uppercase my-4;
+	}
+	h2 {
+		font-size: 1.875rem;
+		line-height: 1.25;
+		text-transform: uppercase;
+	}
+	h3 {
+		font-size: 1.25rem;
+		line-height: 1.2;
+		text-transform: uppercase;
+	}
+}
+
+@layer components {
+	.btn-primary {
+		@apply bg-primary text-white px-3 py-1.5 rounded-md text-base cursor-pointer uppercase;
+	}
+
+	.btn-secondary {
+		@apply bg-secondary text-primary px-3 py-1.5 rounded-md text-base cursor-pointer uppercase;
+	}
+
+	.btn-primary:hover,
+	.btn-secondary:hover {
+		@apply opacity-80;
+	}
+	.hero {
+		background: #ee9ca7;
+		background: -webkit-linear-gradient(to right, #ffdde1, #ee9ca7);
+		background: linear-gradient(to right, #ffdde1, #ee9ca7);
+	}
+	.nav-icon {
+		@apply text-[25px]  cursor-pointer relative transition-transform duration-300 ease-in-out border-none bg-transparent hover:scale-110;
+	}
+}
