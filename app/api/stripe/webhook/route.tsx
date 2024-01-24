@@ -1,11 +1,11 @@
 import Stripe from "stripe"
-import { buffer } from "micro"
 import { NextResponse } from "next/server"
 
 const stripe = new Stripe(process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY as string)
 
 export async function POST(req: Request) {
 	let event
+	console.log(req.headers.get("stripe-signature") as string)
 
 	try {
 		// 1. Retrieve the event by verifying the signature using the raw body and secret
