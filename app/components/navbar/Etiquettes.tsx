@@ -10,7 +10,7 @@ const Etiquettes = () => {
 					</p>
 				</div>
 			</Link>
-			<Link href="#">
+			<Link href="/shop">
 				<div className="w-32 bg-gray-300 p-1.5 rounded-sm hover:bg-gray-400 cursor-pointer ">
 					<p className="uppercase text-body text-center text-sm tracking-wide font-medium shadow-sm">
 						BOUTIQUE
