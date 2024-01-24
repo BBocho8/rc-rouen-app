@@ -1,7 +1,9 @@
 import Stripe from "stripe"
-import { NextResponse } from "next/server"
+import { NextRequest, NextResponse } from "next/server"
 
 const stripe = new Stripe(process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY as string)
+
+export async function middleware(request: NextRequest) {}
 
 export async function POST(req: Request) {
 	let event: Stripe.Event
@@ -10,7 +12,6 @@ export async function POST(req: Request) {
 		// 1. Retrieve the event by verifying the signature using the raw body and secret
 		const body = await req.text()
 		const signature = req.headers.get("stripe-signature") as string
-		// const signature = body.headers["stripe-signature"]
 
 		event = stripe.webhooks.constructEvent(
 			body,
