@@ -76,6 +76,7 @@ export const StateContext: FunctionComponent<PropsWithChildren> = ({
 		setCartItems(cartItems)
 		setTotalPrice(totalPrice)
 		setTotalQuantities(totalQuantities)
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [])
 
 	const [qty, setQty] = useState(1)
