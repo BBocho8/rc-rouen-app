@@ -9,7 +9,7 @@ export async function POST(req: Request) {
 	try {
 		// 1. Retrieve the event by verifying the signature using the raw body and secret
 		const body = await req.text()
-		const signature = req.headers.get("Stripe-Signature") as string
+		const signature = req.headers.get("stripe-signature") as string
 		// const signature = body.headers["stripe-signature"]
 
 		event = stripe.webhooks.constructEvent(
