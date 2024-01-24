@@ -25,7 +25,9 @@ export async function POST(req: Request) {
 
 	if (event.type === "checkout.session.completed") {
 		console.log(`💰  Payment received!`)
-		console.log(session)
+		console.log("SESSION -----", session)
+		const lineItems = await stripe.checkout.sessions.listLineItems(session.id)
+		console.log("LIST OF ITEMS -----", lineItems)
 	} else {
 		console.warn(`🤷‍♀️ Unhandled event type: ${event.type}`)
 	}
