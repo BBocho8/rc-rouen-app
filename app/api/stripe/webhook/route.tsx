@@ -4,14 +4,14 @@ import { NextResponse } from "next/server"
 
 const stripe = new Stripe(process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY as string)
 
-export async function POST(req: any, res: any) {
-	const body = await req.json()
+export async function POST(req: Request) {
 	let event
 
 	try {
 		// 1. Retrieve the event by verifying the signature using the raw body and secret
 		const rawBody = await req.text()
-		const signature = body.headers["stripe-signature"]
+		const signature = req.headers.get("stripe-signature") as string
+		// const signature = body.headers["stripe-signature"]
 
 		event = stripe.webhooks.constructEvent(
 			rawBody.toString(),
@@ -20,8 +20,7 @@ export async function POST(req: any, res: any) {
 		)
 	} catch (err: any) {
 		console.log(`❌ Error message: ${err.message}`)
-		res.status(400).send(`Webhook Error: ${err.message}`)
-		return
+		return NextResponse.json({ error: err.message }, { status: 400 })
 	}
 
 	// Successfully constructed event
