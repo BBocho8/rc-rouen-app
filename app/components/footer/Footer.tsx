@@ -88,7 +88,7 @@ const Footer = () => {
 	}
 
 	return (
-		<div className="grid py-16 px-8 gap-y-8">
+		<div className="grid py-16 px-8 gap-y-8 bg-white">
 			<div className="flex gap-x-3 justify-center group-indeterminate:">
 				{social.map((item) => {
 					return (

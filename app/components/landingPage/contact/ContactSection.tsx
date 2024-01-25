@@ -5,7 +5,7 @@ import { IoCall } from "react-icons/io5"
 const ContactSection = () => {
 	return (
 		<section>
-			<div className="grid grid-cols-1 sm:grid-cols-3 text-base-100">
+			<div className="grid grid-cols-1 sm:grid-cols-3 text-base-100 ">
 				<div className="flex flex-col items-center justify-center text-center py-7 sm:py-16 bg-secondary gap-y-4">
 					<div>
 						<FaEnvelope className="w-8 h-8" />
