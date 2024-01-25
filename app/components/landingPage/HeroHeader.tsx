@@ -1,5 +1,5 @@
 import Image from "next/image"
-import testHero from "@/public/testHero4.png"
+import testHero from "@/public/testHero5.jpg"
 import { HiArrowLongRight } from "react-icons/hi2"
 import { CurrentNextGame } from "@/app/types/games"
 import PrevGame from "../games/PrevGame"
@@ -21,7 +21,7 @@ const HeroHeader = ({ games }: HeroHeaderProps) => {
 					className="object-cover"
 				/>
 			</div>
-			<div className="    h-[25rem]  md:h-[28rem] lg:row-span-1  lg:h-screen-lg-nav lg:col-span-2 hero w-full  flex flex-col gap-y-5  lg:px-8 justify-center items-start px-4 ">
+			<div className="    h-[25rem]  md:h-[28rem] lg:row-span-1  lg:h-screen-lg-nav lg:col-span-2 hero-header w-full  flex flex-col gap-y-5  lg:px-8 justify-center items-start px-4 ">
 				<div className="flex flex-col gap-y-2 lg:gap-y-4">
 					<span className="uppercase text-secondary font-bold text-[14px]">
 						équipe première

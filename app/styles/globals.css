@@ -48,6 +48,10 @@
 		background: -webkit-linear-gradient(to right, #ffdde1, #ee9ca7);
 		background: linear-gradient(to right, #ffdde1, #ee9ca7);
 	}
+	.hero-header {
+		background-color: #4f0c26;
+		background-image: linear-gradient(19deg, #4f0c26 0%, #9d4266 45%);
+	}
 	.nav-icon {
 		@apply text-[25px]  cursor-pointer relative transition-transform duration-300 ease-in-out border-none bg-transparent hover:scale-110;
 	}
