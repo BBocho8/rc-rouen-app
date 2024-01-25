@@ -35,15 +35,19 @@ const SingleFeaturedPost = ({
 							<div className="border-l border-l-gray-300 h-4 md:h-6 "></div>
 							<span className="text-body text-xs font-light">{createdAt}</span>
 						</div>
-						<p className="font-bold text-lg text-body">{post.title}</p>
+						<p className="font-bold text-lg text-body line-clamp-1 sm:line-clamp-2">
+							{post.title}
+						</p>
 					</div>
 				</Link>
 			)}
 
 			{display === "list" && (
 				<Link href={`/equipes/${post.categories[0]}/content/${post.slug}`}>
-					<div className="border-l-4 border-l-gray-300 pl-4 flex flex-col gap-y-2 py-2 max-h-20">
-						<p className="font-bold  text-body">{post.title}</p>
+					<div className="border-l-4 border-l-gray-300 pl-4 flex flex-col gap-y-2 py-2 max-h-24">
+						<p className="font-bold  text-body line-clamp-1 sm:line-clamp-2">
+							{post.title}
+						</p>
 						<div className="flex justify-start items-center gap-x-2">
 							<span className="text-primary uppercase text-xs font-semibold">
 								{post.categories[0]}
@@ -76,7 +80,9 @@ const SingleFeaturedPost = ({
 									{createdAt}
 								</span>
 							</div>
-							<p className="font-bold  text-body">{post.title}</p>
+							<p className="font-bold  text-body line-clamp-1 sm:line-clamp-2">
+								{post.title}
+							</p>
 						</div>
 					</div>
 				</Link>

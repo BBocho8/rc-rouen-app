@@ -45,7 +45,7 @@ const ContactForm = ({
 	}
 
 	return (
-		<section className="flex flex-col items-center justify-center py-16  ">
+		<section className="flex flex-col items-center justify-center py-8 sm:py-16  ">
 			<h2 className="w-full max-w-md px-4 mb-4 text-xl font-bold text-center uppercase sm:mb-8 sm:text-2xl sm:px-0">
 				Ask us anything <span className="text-primary">and we&apos;ll get</span>{" "}
 				back soon in a day
