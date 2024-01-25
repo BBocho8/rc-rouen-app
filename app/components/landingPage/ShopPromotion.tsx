@@ -11,14 +11,14 @@ const ShopPromotion = ({ image, title, buttonText }: ShopPromotionProps) => {
 	return (
 		<Link
 			href="/shop"
-			className="bg-white flex flex-col gap-y-3  justify-center items-center px-4 lg:px-10 py-10"
+			className="bg-white flex flex-col gap-y-3  justify-center items-center px-4 lg:px-10 py-10 "
 		>
 			<Image
 				src={image}
 				alt="test"
 				width={1400}
 				height={788}
-				className="aspect-3/2 max-h-96 "
+				className="aspect-3/2 max-h-96 object-cover "
 			/>
 			<h2 className="font-bold text-lg sm:text-2xl tracking-wide capitalize text-center">
 				{title}
