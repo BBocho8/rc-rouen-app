@@ -4,11 +4,14 @@ import { useState } from "react"
 import styles from "./Navbar.module.css"
 import { Divide as Hamburger } from "hamburger-react"
 import Image from "next/image"
-import { FaRegUser } from "react-icons/fa"
 import { IoIosSearch } from "react-icons/io"
 import Link from "next/link"
 import NavbarTopDrawer from "./NavbarTopDrawer"
 import NavbarLeftDrawer from "./NavbarLeftDrawer"
+
+import { GrContact } from "react-icons/gr"
+import { GoMail } from "react-icons/go"
+import { CiMail } from "react-icons/ci"
 
 const Navbar = () => {
 	const [isOpen, setIsOpen] = useState(false)
@@ -63,6 +66,7 @@ const Navbar = () => {
 						alt="logo"
 						height="42"
 						width="42"
+						priority
 						onClick={() => setIsOpen(false)}
 					/>
 				</Link>
@@ -73,13 +77,18 @@ const Navbar = () => {
 						alt="logo"
 						height="72"
 						width="72"
+						priority
 						onClick={() => setIsOpen(false)}
 					/>
 				</Link>
 				<div className="flex justify-center items-center gap-x-2 pr-3 md:pr-0">
-					<FaRegUser size={20} className={styles["nav-icons"]} />
+					<div className="hover:scale-105">
+						<IoIosSearch size={25} className={styles["nav-icons"]} />
+					</div>
 					<div className={styles.vl}></div>
-					<IoIosSearch size={25} className={styles["nav-icons"]} />
+					<Link href="/contact" className="hover:scale-105">
+						<GrContact size={21} className={styles["nav-icons"]} />
+					</Link>
 				</div>
 			</div>
 		</>

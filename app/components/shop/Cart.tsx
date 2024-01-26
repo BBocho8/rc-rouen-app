@@ -30,7 +30,6 @@ const Cart = () => {
 		toggleCartItemQuantity,
 	} = useStateContext()
 
-	console.log(totalPrice)
 	const handleCheckout = async () => {
 		const stripe = await getStripe()
 

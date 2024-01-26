@@ -5,6 +5,7 @@ import Navbar from "../components/navbar/Navbar"
 import Footer from "../components/footer/Footer"
 import "react-toastify/dist/ReactToastify.css"
 import { ToastContainer } from "react-toastify"
+import dynamic from "next/dynamic"
 
 const roboto = Roboto({
 	subsets: ["latin"],

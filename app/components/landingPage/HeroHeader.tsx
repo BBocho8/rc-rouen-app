@@ -17,6 +17,7 @@ const HeroHeader = ({ games }: HeroHeaderProps) => {
 					src={testHero}
 					alt="hero"
 					fill
+					sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
 					priority
 					className="object-cover"
 				/>

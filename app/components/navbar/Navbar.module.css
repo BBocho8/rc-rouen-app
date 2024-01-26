@@ -3,7 +3,7 @@
 }
 
 .vl {
-	@apply border-l border-l-gray-300 h-4 md:h-6;
+	@apply border-l border-l-gray-300 h-4 md:h-6 px-0.5;
 }
 
 .nav-icons {
