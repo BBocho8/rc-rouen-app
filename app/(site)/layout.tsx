@@ -5,7 +5,8 @@ import Navbar from "../components/navbar/Navbar"
 import Footer from "../components/footer/Footer"
 import "react-toastify/dist/ReactToastify.css"
 import { ToastContainer } from "react-toastify"
-import dynamic from "next/dynamic"
+import { Analytics } from "@vercel/analytics/react"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const roboto = Roboto({
 	subsets: ["latin"],
@@ -32,6 +33,8 @@ export default function RootLayout({
 				<main className="pt-14 md:pt-24 bg-white">
 					<ToastContainer position="top-center" />
 					{children}
+					<SpeedInsights />
+					<Analytics />
 				</main>
 				<footer>
 					<Footer />
