@@ -6,11 +6,11 @@ import { Footer } from "@/app/components/shop"
 import { StateContext } from "@/app/context/StateContext"
 import "react-toastify/dist/ReactToastify.css"
 import { ToastContainer } from "react-toastify"
-import dynamic from "next/dynamic"
 import { NavbarBottomBar } from "@/app/components/shop/"
 
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
+import NavbarMui from "@/app/components/shop/NavbarMui"
 
 const roboto = Roboto({
 	subsets: ["latin"],
@@ -22,10 +22,6 @@ export const metadata: Metadata = {
 	title: "RC Rouen - Official Shop",
 	description: "Boutique officiel du Racing Club de Rouen",
 }
-
-const NavbarMui = dynamic(() => import("@/app/components/shop/NavbarMui"), {
-	ssr: false,
-})
 
 export default function RootLayout({
 	children,

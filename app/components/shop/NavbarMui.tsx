@@ -11,7 +11,7 @@ import { GiHamburgerMenu } from "react-icons/gi"
 
 import Toolbar from "@mui/material/Toolbar"
 
-import { ThemeProvider, createTheme } from "@mui/material"
+import { NoSsr, ThemeProvider, createTheme } from "@mui/material"
 import Image from "next/image"
 import { useStateContext } from "@/app/context/StateContext"
 import { IoIosSearch } from "react-icons/io"
@@ -149,7 +149,6 @@ export default function NavbarMui(props: Props) {
 								</div>
 							</div>
 						</Link>
-
 						<div className="flex justify-center items-center gap-x-2">
 							<div className="nav-icon">
 								<IoIosSearch size={25} />
@@ -161,9 +160,11 @@ export default function NavbarMui(props: Props) {
 							>
 								<IoCartOutline size={25} />
 
-								<span className="absolute top-[-6px] right-[-8px]  text-xs text-white bg-[#f02d34] w-[16px] h-[16px] rounded-[50%] text-center font-semibold">
-									{totalQuantities}
-								</span>
+								<NoSsr>
+									<span className="absolute top-[-6px] right-[-8px]  text-xs text-white bg-[#f02d34] w-[16px] h-[16px] rounded-[50%] text-center font-semibold">
+										{totalQuantities}
+									</span>
+								</NoSsr>
 							</button>
 							{showCart && <MobileCart />}
 							{showCart && <DesktopCart />}
