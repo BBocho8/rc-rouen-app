@@ -13,11 +13,12 @@ const MayAlsoLikeCarousel = ({ products }: MayAlsoLikeCarouselProps) => {
 		infinite: true,
 
 		autoplay: true,
-		speed: 3000,
+		speed: 2000,
 		pauseOnHover: true,
-		autoplaySpeed: 3000,
+		autoplaySpeed: 2000,
 		cssEase: "linear",
 		swipeToSlide: true,
+
 		centerMode: true,
 	}
 	return (
