@@ -7,49 +7,41 @@ import {
 	FaCcMastercard,
 	FaCcPaypal,
 	FaCcVisa,
+	FaFacebook,
+	FaSquareInstagram,
 	FaSquareXTwitter,
+	FaXTwitter,
 } from "react-icons/fa6"
 import { FaFacebookSquare } from "react-icons/fa"
 import Link from "next/link"
 import jsonp from "jsonp"
 import { toast } from "react-toastify"
-import Error from "next/error"
+import { legal, menu, support } from "./footerMenus"
+import { AiFillInstagram } from "react-icons/ai"
+import moment from "moment"
+import Image from "next/image"
 
-const menu = [
-	{ name: "Shop All", link: "/shop" },
-	{ name: "About Us", link: "/about" },
-	{ name: "équipe Première", link: "/first-team" },
-]
-
-const support = [
-	{ name: "Refund", link: "/refund" },
-	{ name: "Help & FAQ", link: "/help" },
-	{ name: "Contact", link: "/contact" },
-	{ name: "Refund", link: "/refund-test" },
-	{ name: "Refund", link: "/refund-second" },
-]
-
-const social = [
-	{
-		name: "Facebook",
-		link: "https://www.instagram.com/",
-		icon: <FaFacebookSquare size={40} className=" " />,
-	},
-	{
-		name: "Twitter",
-		link: "https://www.instagram.com/",
-		icon: <FaSquareXTwitter size={40} className=" " />,
-	},
-	{
-		name: "Instagram",
-		link: "https://www.instagram.com/",
-		icon: <RiInstagramFill size={40} className=" " />,
-	},
-]
+// const social = [
+// 	{
+// 		name: "Facebook",
+// 		link: "https://www.instagram.com/",
+// 		icon: <FaFacebookSquare size={40} className="" />,
+// 	},
+// 	{
+// 		name: "Twitter",
+// 		link: "https://www.instagram.com/",
+// 		icon: <FaSquareXTwitter size={40} className="" />,
+// 	},
+// 	{
+// 		name: "Instagram",
+// 		link: "https://www.instagram.com/",
+// 		icon: <RiInstagramFill size={40} className="" />,
+// 	},
+// ]
 const paymentMethods = [
 	{
 		name: "Paypal",
-		icon: <FaCcPaypal size={40} className=" text-gray-500" />,
+		icon: <FaCcPaypal size={40} className="text-gray-500 " />,
 	},
 	{
 		name: "Visa",
@@ -57,82 +49,63 @@ const paymentMethods = [
 	},
 	{
 		name: "Mastercard",
-		icon: <FaCcMastercard size={40} className=" text-gray-500" />,
+		icon: <FaCcMastercard size={40} className="text-gray-500 " />,
 	},
 	{
 		name: "Apple Pay",
-		icon: <FaCcApplePay size={40} className=" text-gray-500" />,
+		icon: <FaCcApplePay size={40} className="text-gray-500 " />,
 	},
 ]
 
 const Footer = () => {
-	//TODO: Regex for email
-	const [email, setEmail] = useState<string>("")
-
-	const handleNewsletter = (e: React.FormEvent<HTMLFormElement>) => {
-		e.preventDefault()
-		try {
-			const url =
-				"https://gmail.us21.list-manage.com/subscribe/post-json?u=8dea8a733c5578eea005bfb23&amp;id=dff9fc0e9e&amp;f_id=00f2f5e6f0"
-			jsonp(`${url}&EMAIL=${email}`, { param: "c" }, (_, data) => {
-				const { msg, result } = data
-				// do something with response
-
-				setEmail("")
-				toast.success("Inscription à la newsletter complétée avec succès")
-			})
-		} catch (error) {
-			console.log(error)
-			toast.error("Erreur lors de l'inscription à la newsletter")
-		}
-	}
+	const date = moment().year()
 
 	return (
-		<div className="grid py-16 px-8 gap-y-8 bg-white">
-			<div className="flex gap-x-3 justify-center group-indeterminate:">
-				{social.map((item) => {
-					return (
-						<div key={item.name}>
-							<Link href={item.link}>{item.icon}</Link>
-						</div>
-					)
-				})}
-			</div>
-			<div className="flex flex-col gap-y-8  mx-auto">
-				<p className="text-center text-4xl font-light">
-					Pour recevoir directement les dernières informations du club dans ta
-					boîte mail.
-				</p>
-				<form
-					onSubmit={(e) => handleNewsletter(e)}
-					className="flex w-3/4 relative  mx-auto"
-				>
-					<button type="submit">
-						<RiArrowRightLine
-							size={25}
-							className=" text-black min-w-10 text-center absolute right-0 top-0 z-[1] "
-						/>
-					</button>
-					<input
-						type="email"
-						name="EMAIL"
-						value={email}
-						onChange={(e) => setEmail(e.target.value)}
-						placeholder="Email Address"
-						className="pl-2 border-b pb-1 border-b-black placeholder:text-black placeholder:font-bold w-full focus:outline-none"
+		<>
+			<div className="grid items-start justify-start grid-cols-2 px-4 py-8 mx-auto sm:grid-cols-4 gap-x-2 gap-y-4 bg-gray-50">
+				<div className="flex items-center justify-start col-span-2 sm:justify-center sm:self-center sm:col-span-1 gap-x-2 sm:gap-x-4">
+					<Image
+						src="/logoTest.png"
+						alt="Logo"
+						width={35}
+						height={35}
+						className="aspect-square"
 					/>
-				</form>
-			</div>
-			<div className="flex justify-around">
+					<span className="text-xl font-semibold uppercase sm:text-lg md:text-xl">
+						RC Rouen
+					</span>
+				</div>
+
 				{getFooterMenu({ name: "Menu", arr: menu })}
 				{getFooterMenu({ name: "Support", arr: support })}
+				{getFooterMenu({ name: "Legal", arr: legal })}
 			</div>
-			<div className="flex gap-x-3 justify-center group-indeterminate:">
-				{paymentMethods.map((item) => {
-					return <div key={item.name}>{item.icon}</div>
-				})}
+			<div className="flex flex-col items-center justify-center w-full py-3 text-xs font-light text-white sm:text-sm bg-primary gap-y-2 md:px-8 md:gap-y-0 md:flex-row md:justify-between">
+				<p className="text-slate-200">
+					&#169;Racing Club de Rouen - {date} - All rights reserved
+				</p>
+				<div className="flex  gap-[10px] justify-center items-center">
+					<Link href="https://www.instagram.com/">
+						<AiFillInstagram
+							className="cursor-pointer text-slate-200 hover:text-slate-50"
+							size={22}
+						/>
+					</Link>
+					<Link href="https://twitter.com/">
+						<FaXTwitter
+							className="cursor-pointer text-slate-200 hover:text-slate-50"
+							size={20}
+						/>
+					</Link>
+					<Link href="https://facebook.com/">
+						<FaFacebook
+							className="cursor-pointer text-slate-200 hover:text-slate-50"
+							size={20}
+						/>
+					</Link>
+				</div>
 			</div>
-		</div>
+		</>
 	)
 }
 export default Footer

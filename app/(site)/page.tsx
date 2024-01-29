@@ -9,6 +9,7 @@ import NextGame from "../components/games/NextGame"
 import Contact from "../components/landingPage/contact/Contact"
 import FeaturedArticles from "../components/landingPage/FeaturedArticles"
 import ShopPromotion from "../components/landingPage/ShopPromotion"
+import Newsletter from "../components/landingPage/Newsletter"
 
 export default async function Home() {
 	const games = await getGames()
@@ -21,7 +22,7 @@ export default async function Home() {
 			{/* <div className="py-16">
 				<FeaturedPosts />
 			</div> */}
-			<div className="grid py-10 px-4 gap-y-4 md:gap-y-0 md:grid-cols-2 md:gap-x-4 mx-auto md:px-4 bg-gray-50">
+			<div className="grid px-4 py-10 mx-auto gap-y-4 md:gap-y-0 md:grid-cols-2 md:gap-x-4 md:px-4 bg-gray-50">
 				<PrevGame games={games} />
 
 				<NextGame games={games} />
@@ -34,6 +35,9 @@ export default async function Home() {
 			/>
 			<div className="bg-gray-50">
 				<Contact />
+			</div>
+			<div className="py-16 ">
+				<Newsletter />
 			</div>
 		</>
 	)
