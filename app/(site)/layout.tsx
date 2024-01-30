@@ -26,11 +26,11 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang="en" className={`${roboto.variable} font-sans`}>
-			<body>
+			<body className="">
 				<header>
 					<Navbar />
 				</header>
-				<main className=" bg-white">
+				<main className=" bg-white pt-14 md:pt-24">
 					<ToastContainer position="top-center" />
 					{children}
 					<SpeedInsights />

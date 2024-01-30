@@ -23,7 +23,7 @@ export default function RootLayout({
 }) {
 	return (
 		<>
-			<div className="w-full max-h-96 overflow-hidden">
+			<div className="w-full max-h-96 overflow-hidden bg-white ">
 				<Image
 					src={heroForEquipe}
 					alt="Hero Actu Header"
