@@ -1,43 +1,21 @@
 "use client"
 import getFooterMenu from "@/app/utils/footer/getFooterMenu"
-import { useState } from "react"
-import { RiArrowRightLine, RiInstagramFill } from "react-icons/ri"
+
 import {
 	FaCcApplePay,
 	FaCcMastercard,
 	FaCcPaypal,
 	FaCcVisa,
 	FaFacebook,
-	FaSquareInstagram,
-	FaSquareXTwitter,
 	FaXTwitter,
 } from "react-icons/fa6"
-import { FaFacebookSquare } from "react-icons/fa"
 import Link from "next/link"
-import jsonp from "jsonp"
-import { toast } from "react-toastify"
+
 import { legal, menu, support } from "./footerMenus"
 import { AiFillInstagram } from "react-icons/ai"
 import moment from "moment"
 import Image from "next/image"
 
-// const social = [
-// 	{
-// 		name: "Facebook",
-// 		link: "https://www.instagram.com/",
-// 		icon: <FaFacebookSquare size={40} className="" />,
-// 	},
-// 	{
-// 		name: "Twitter",
-// 		link: "https://www.instagram.com/",
-// 		icon: <FaSquareXTwitter size={40} className="" />,
-// 	},
-// 	{
-// 		name: "Instagram",
-// 		link: "https://www.instagram.com/",
-// 		icon: <RiInstagramFill size={40} className="" />,
-// 	},
-// ]
 const paymentMethods = [
 	{
 		name: "Paypal",
@@ -82,7 +60,7 @@ const Footer = () => {
 			</div>
 			<div className="flex flex-col items-center justify-center w-full py-3 text-xs font-light text-white sm:text-sm bg-primary gap-y-2 md:px-8 md:gap-y-0 md:flex-row md:justify-between">
 				<p className="text-slate-200">
-					&#169;Racing Club de Rouen - {date} - All rights reserved
+					&#169; Racing Club de Rouen - {date} - All rights reserved
 				</p>
 				<div className="flex  gap-[10px] justify-center items-center">
 					<Link href="https://www.instagram.com/">

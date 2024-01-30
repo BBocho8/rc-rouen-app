@@ -30,7 +30,7 @@ export default function RootLayout({
 				<header>
 					<Navbar />
 				</header>
-				<main className="pt-14 md:pt-24 bg-white">
+				<main className=" bg-white">
 					<ToastContainer position="top-center" />
 					{children}
 					<SpeedInsights />

@@ -29,24 +29,22 @@ export default function RootLayout({
 	children: React.ReactNode
 }) {
 	return (
-		<html lang="en" className={`${roboto.variable} font-sans`}>
-			<body>
-				<StateContext>
-					<header className="relative">
-						<div className="h-[100px] max-w-app w-full mx-auto fixed top-0 z-[100]">
-							<NavbarMui />
-							<NavbarBottomBar />
-						</div>
-					</header>
-					<main className="main-container pt-14 sm:pt-15 md:pt-[100px] bg-white pb-10">
-						<ToastContainer position="top-center" style={{ zIndex: 101 }} />
-						{children}
-					</main>
-					<footer>
-						<Footer />
-					</footer>
-				</StateContext>
-			</body>
-		</html>
+		<div className={`${roboto.variable} font-sans`}>
+			<StateContext>
+				<header className="relative">
+					<div className="h-[100px] max-w-app w-full mx-auto fixed top-0 z-[100]">
+						<NavbarMui />
+						<NavbarBottomBar />
+					</div>
+				</header>
+				<main className="main-container pt-14 sm:pt-15 md:pt-[100px] bg-white pb-10">
+					<ToastContainer position="top-center" style={{ zIndex: 101 }} />
+					{children}
+				</main>
+				<footer>
+					<Footer />
+				</footer>
+			</StateContext>
+		</div>
 	)
 }

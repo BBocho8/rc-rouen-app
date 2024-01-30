@@ -10,8 +10,6 @@ import NavbarTopDrawer from "./NavbarTopDrawer"
 import NavbarLeftDrawer from "./NavbarLeftDrawer"
 
 import { GrContact } from "react-icons/gr"
-import { GoMail } from "react-icons/go"
-import { CiMail } from "react-icons/ci"
 
 const Navbar = () => {
 	const [isOpen, setIsOpen] = useState(false)
@@ -52,7 +50,7 @@ const Navbar = () => {
 						équipe Première
 					</Link>
 					<Link
-						href="/shop"
+						href={`/shop`}
 						className={styles["nav-link"]}
 						onClick={() => setIsOpen(false)}
 					>

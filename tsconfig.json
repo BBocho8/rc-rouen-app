@@ -27,7 +27,7 @@
 		"**/*.ts",
 		"**/*.tsx",
 		".next/types/**/*.ts",
-		"app/(shop)/shop/success"
+		"app/(site)/(shop)/shop/success"
 	],
 	"exclude": ["node_modules"]
 }
