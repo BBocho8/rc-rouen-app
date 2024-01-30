@@ -16,7 +16,7 @@ export default async function Home() {
 	const posts = await getPosts()
 
 	return (
-		<>
+		<div className="pt-14 md:pt-24">
 			<HeroHeader games={games} />
 			<FeaturedArticles posts={posts} />
 			{/* <div className="py-16">
@@ -39,6 +39,6 @@ export default async function Home() {
 			<div className="py-16 ">
 				<Newsletter />
 			</div>
-		</>
+		</div>
 	)
 }
