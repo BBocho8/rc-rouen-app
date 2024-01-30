@@ -12,7 +12,7 @@ type HeroHeaderProps = {
 const HeroHeader = ({ games }: HeroHeaderProps) => {
 	return (
 		<div className="lg:grid  lg:grid-cols-5 lg:grid-rows-1  bg-white ">
-			<div className="relative lg:row-span-1 h-80 sm:h-96 lg:h-screen-lg-nav lg:col-span-3 bg-emerald-200 w-full   md:h-screen-lg-nav-full">
+			<div className="relative lg:row-span-1 h-80 sm:h-96 lg:h-screen-lg-nav lg:col-span-3 hero w-full   md:h-screen-lg-nav-full">
 				<Image
 					src={testHero}
 					alt="hero"
