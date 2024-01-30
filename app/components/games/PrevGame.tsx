@@ -26,17 +26,17 @@ const PrevGame = ({ games, isHomePageHeader = false }: PrevGameProps) => {
 		`https://v1.scorenco.com${games.results[0].teams[1].logo}`
 	return !isHomePageHeader ? (
 		<div>
-			<p className="px-4 uppercase mb-3 mt-4 text-sm font-semibold tracking-tight  ">
+			<p className="px-4 uppercase mb-3 mt-4 text-sm font-semibold tracking-tight text-center ">
 				Dernier match
 			</p>
-			<div className="py-10 px-7 flex flex-col items-center justify-center bg-gray-100 gap-y-4 rounded-md">
+			<div className="py-10 px-7 flex flex-col items-center justify-center bg-white gap-y-4 rounded-md">
 				<div className="flex flex-col justify-center items-center">
 					<p className="font-medium text-sm uppercase">{prevGameDate}</p>
 					<p className="font-light uppercase text-xs">{competition}</p>
 				</div>
 
 				<div className="flex justify-center items-center gap-x-2">
-					<span className="uppercase font-semibold  max-w-32 text-center line-clamp-2 leading-tight">
+					<span className="uppercase font-medium   text-center line-clamp-2 leading-tight text-sm grow">
 						{homeTeam}
 					</span>
 					<Image
@@ -58,7 +58,7 @@ const PrevGame = ({ games, isHomePageHeader = false }: PrevGameProps) => {
 									"bg-gray-800"
 							)}
 						>
-							{homeScore || "-"}
+							{homeScore === 0 ? 0 : homeScore || "-"}
 						</span>
 						<span
 							className={twMerge(
@@ -67,7 +67,7 @@ const PrevGame = ({ games, isHomePageHeader = false }: PrevGameProps) => {
 									"bg-gray-800"
 							)}
 						>
-							{awayScore || "-"}
+							{awayScore === 0 ? 0 : awayScore || "-"}
 						</span>
 					</div>
 
@@ -82,7 +82,7 @@ const PrevGame = ({ games, isHomePageHeader = false }: PrevGameProps) => {
 								"opacity-10"
 						)}
 					/>
-					<span className="uppercase font-semibold  max-w-32 text-center line-clamp-2 leading-tight">
+					<span className="uppercase font-medium   text-center line-clamp-2 leading-tight text-sm grow">
 						{awayTeam}
 					</span>
 				</div>

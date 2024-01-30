@@ -22,7 +22,7 @@ export default async function Home() {
 			{/* <div className="py-16">
 				<FeaturedPosts />
 			</div> */}
-			<div className="grid px-4 py-10 mx-auto gap-y-4 md:gap-y-0 md:grid-cols-2 md:gap-x-4 md:px-4 bg-gray-50">
+			<div className="grid px-4 py-4 mx-auto gap-y-4 md:gap-y-0 md:grid-cols-2 md:gap-x-4 md:px-4 bg-gray-50">
 				<PrevGame games={games} />
 
 				<NextGame games={games} />

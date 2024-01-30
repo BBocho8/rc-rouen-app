@@ -33,17 +33,17 @@ const NextGame = ({ games, isHomePageHeader = false }: NextGameProps) => {
 
 	return !isHomePageHeader ? (
 		<div>
-			<p className="px-4 uppercase mb-3 mt-4 text-sm font-semibold tracking-tight ">
+			<p className="px-4 uppercase mb-3 mt-4 text-sm font-semibold tracking-tight text-center">
 				Prochain match
 			</p>
-			<div className="py-10 px-7 flex flex-col items-center justify-center bg-gray-100 gap-y-4 rounded-md">
+			<div className="py-10 px-7 flex flex-col items-center justify-center bg-white gap-y-4 rounded-md">
 				<div className="flex flex-col justify-center items-center">
 					<p className="font-medium text-sm uppercase">{nextGameDate}</p>
 					<p className="font-light uppercase text-xs">{competition}</p>
 				</div>
 
 				<div className="flex justify-center items-center gap-x-2">
-					<span className="uppercase font-semibold  max-w-32 text-center line-clamp-2 leading-tight">
+					<span className="uppercase font-medium   text-center line-clamp-2 leading-tight text-sm grow">
 						{homeTeam}
 					</span>
 					<Image
@@ -52,10 +52,12 @@ const NextGame = ({ games, isHomePageHeader = false }: NextGameProps) => {
 						width={50}
 						height={50}
 						className={twMerge(
-							homeTeam.toLowerCase() !== "racing club de rouen" && "opacity-10"
+							homeTeam.toLowerCase() !== "racing club de rouen" &&
+								!homeTeamLogo &&
+								"opacity-10"
 						)}
 					/>
-					<span className="py-2 px-3 text-gray-600  bg-gray-200 rounded-lg">
+					<span className="py-2 px-3 text-gray-600  bg-gray-200 rounded-lg font-semibold">
 						{gameTime}
 					</span>
 
@@ -65,10 +67,12 @@ const NextGame = ({ games, isHomePageHeader = false }: NextGameProps) => {
 						width={50}
 						height={50}
 						className={twMerge(
-							awayTeam.toLowerCase() !== "racing club de rouen" && "opacity-10"
+							awayTeam.toLowerCase() !== "racing club de rouen" &&
+								!awayTeamLogo &&
+								"opacity-10"
 						)}
 					/>
-					<span className="uppercase font-semibold  max-w-32 text-center line-clamp-2 leading-tight">
+					<span className="uppercase font-medium   text-center line-clamp-2 leading-tight text-sm grow">
 						{awayTeam}
 					</span>
 				</div>
@@ -96,9 +100,10 @@ const NextGame = ({ games, isHomePageHeader = false }: NextGameProps) => {
 						height={35}
 						className={twMerge(
 							"translate-x-[5px]",
-							homeTeam.toLowerCase() === "racing club de rouen"
-								? "z-[2]"
-								: "z-[2] opacity-10"
+							homeTeam.toLowerCase() === "racing club de rouen" && "z-[2]",
+							!homeTeamLogo &&
+								homeTeam.toLowerCase() !== "racing club de rouen" &&
+								"opacity-10"
 						)}
 					/>
 					<Image
@@ -108,9 +113,10 @@ const NextGame = ({ games, isHomePageHeader = false }: NextGameProps) => {
 						height={35}
 						className={twMerge(
 							"translate-x-[-5px]",
-							awayTeam.toLowerCase() === "racing club de rouen"
-								? "z-[2]"
-								: "z-[2] opacity-10"
+							awayTeam.toLowerCase() === "racing club de rouen" && "z-[2]",
+							!awayTeamLogo &&
+								awayTeam.toLowerCase() !== "racing club de rouen" &&
+								"opacity-10"
 						)}
 					/>
 					<div className="flex flex-col justify-center items-start">
