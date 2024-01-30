@@ -36,7 +36,7 @@ const PrevGame = ({ games, isHomePageHeader = false }: PrevGameProps) => {
 				</div>
 
 				<div className="flex justify-center items-center gap-x-2">
-					<span className="uppercase font-medium   text-center line-clamp-2 leading-tight text-sm grow">
+					<span className="uppercase font-medium   text-center line-clamp-3 sm:line-clamp-2 leading-tight text-xs sm:text-sm grow">
 						{homeTeam}
 					</span>
 					<Image
@@ -82,7 +82,7 @@ const PrevGame = ({ games, isHomePageHeader = false }: PrevGameProps) => {
 								"opacity-10"
 						)}
 					/>
-					<span className="uppercase font-medium   text-center line-clamp-2 leading-tight text-sm grow">
+					<span className="uppercase font-medium   text-center line-clamp-3 sm:line-clamp-2 leading-tight text-xs sm:text-sm grow">
 						{awayTeam}
 					</span>
 				</div>
