@@ -17,7 +17,7 @@ const getFooterMenu = ({ name, arr }: getFooterMenuProps) => {
 			<ul className="flex flex-col gap-y-0.5 items-start">
 				{arr.map((item) => {
 					return (
-						<li key={item.link} className="capitalize">
+						<li key={`${item.link} - ${item.name}`} className="capitalize">
 							<Link
 								href={item.link}
 								className="hover:border-b hover:pb-0.5 hover:border-black text-lg"
