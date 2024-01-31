@@ -45,6 +45,13 @@ const post = {
 			of: [{ type: "reference", to: { type: "category" } }],
 		},
 		{
+			name: "team",
+			title: "Team",
+
+			type: "reference",
+			to: { type: "teams" },
+		},
+		{
 			name: "publishedAt",
 			title: "Published at",
 			type: "datetime",

@@ -1,6 +1,6 @@
-const category = {
-	name: "category",
-	title: "Category",
+const etiquettes = {
+	name: "etiquettes",
+	title: "Etiquettes",
 	type: "document",
 	fields: [
 		{
@@ -24,4 +24,4 @@ const category = {
 	],
 }
 
-export default category
+export default etiquettes

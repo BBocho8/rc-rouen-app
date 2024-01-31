@@ -10,8 +10,14 @@ import NavbarTopDrawer from "./NavbarTopDrawer"
 import NavbarLeftDrawer from "./NavbarLeftDrawer"
 
 import { GrContact } from "react-icons/gr"
+import { Team } from "@/sanity/types/Team"
+import { Etiquettes } from "@/sanity/types/Etiquettes"
 
-const Navbar = () => {
+type NavbarProps = {
+	teams: Team[]
+	etiquettes: Etiquettes[]
+}
+const Navbar = ({ teams, etiquettes }: NavbarProps) => {
 	const [isOpen, setIsOpen] = useState(false)
 
 	return (
@@ -28,10 +34,19 @@ const Navbar = () => {
 						onToggle={() => setIsOpen(!isOpen)}
 					/>
 					<div className="md:hidden block ">
-						<NavbarLeftDrawer isOpen={isOpen} setIsOpen={setIsOpen} />
+						<NavbarLeftDrawer
+							isOpen={isOpen}
+							setIsOpen={setIsOpen}
+							teams={teams}
+							etiquettes={etiquettes}
+						/>
 					</div>
 					<div className="hidden md:block">
-						<NavbarTopDrawer isOpen={isOpen} setIsOpen={setIsOpen} />
+						<NavbarTopDrawer
+							isOpen={isOpen}
+							setIsOpen={setIsOpen}
+							teams={teams}
+						/>
 					</div>
 					<span
 						className="uppercase hidden lg:block cursor-pointer text-sm tracking-[0.9px] font-bold "

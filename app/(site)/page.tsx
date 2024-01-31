@@ -10,10 +10,14 @@ import Contact from "../components/landingPage/contact/Contact"
 import FeaturedArticles from "../components/landingPage/FeaturedArticles"
 import ShopPromotion from "../components/landingPage/ShopPromotion"
 import Newsletter from "../components/landingPage/Newsletter"
+import { getTeams } from "@/sanity/utils/blog/getEquipes"
+import { getEtiquettes } from "@/sanity/utils/blog/getEtiquettes"
 
 export default async function Home() {
 	const games = await getGames()
 	const posts = await getPosts()
+	const teams = await getTeams()
+	const etiquettes = await getEtiquettes()
 
 	return (
 		<div className=" ">

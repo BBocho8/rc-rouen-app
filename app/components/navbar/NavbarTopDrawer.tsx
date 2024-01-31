@@ -5,17 +5,20 @@ import List from "@mui/material/List"
 
 import NestedList from "./NestedList"
 import { menuItem, shopItem } from "./NavbarMenuItems"
+import { Team } from "@/sanity/types/Team"
 
 type Anchor = "top" | "left" | "bottom" | "right"
 
 type NavbarTopDrawerProps = {
 	isOpen: boolean
 	setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
+	teams: Team[]
 }
 
 export default function NavbarTopDrawer({
 	isOpen,
 	setIsOpen,
+	teams,
 }: NavbarTopDrawerProps) {
 	const toggleDrawer =
 		(anchor: Anchor, open: boolean) =>
@@ -50,29 +53,20 @@ export default function NavbarTopDrawer({
 					paddingX: "32px",
 				}}
 			>
-				<NestedList
-					setIsOpen={setIsOpen}
-					isOpen={isOpen}
-					title="équipe-première"
-					isLeftDrawer={false}
-					list={menuItem}
-				/>
-				<NestedList
-					setIsOpen={setIsOpen}
-					isOpen={isOpen}
-					title="équipe-féminine"
-					borderColor="border-b-accent"
-					isLeftDrawer={false}
-					list={menuItem}
-				/>
-				<NestedList
-					setIsOpen={setIsOpen}
-					isOpen={isOpen}
-					title="autres-équipes"
-					borderColor="border-b-gray-500"
-					isLeftDrawer={false}
-					list={menuItem}
-				/>
+				{teams.map((team) => {
+					return (
+						<NestedList
+							key={team._id}
+							setIsOpen={setIsOpen}
+							isOpen={isOpen}
+							title={team.slug}
+							borderColor={team.color}
+							isLeftDrawer={false}
+							list={menuItem}
+						/>
+					)
+				})}
+
 				<NestedList
 					setIsOpen={setIsOpen}
 					isOpen={isOpen}

@@ -5,6 +5,7 @@ export interface Post {
 	slug: string
 	author: string
 	categories: string[]
+	team: string
 	title: string
 	publishedAt: string
 	image_url: string

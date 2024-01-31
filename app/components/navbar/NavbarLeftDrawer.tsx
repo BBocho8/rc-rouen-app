@@ -6,17 +6,23 @@ import NestedList from "./NestedList"
 import SearchInput from "./SearchInput"
 import Etiquettes from "./Etiquettes"
 import { menuItem, shopItem } from "./NavbarMenuItems"
+import { Team } from "@/sanity/types/Team"
+import { Etiquettes as EtiquettesType } from "@/sanity/types/Etiquettes"
 
 type Anchor = "top" | "left" | "bottom" | "right"
 
 type NavbarLeftDrawerProps = {
 	isOpen: boolean
 	setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
+	teams: Team[]
+	etiquettes: EtiquettesType[]
 }
 
 export default function NavbarLeftDrawer({
 	isOpen,
 	setIsOpen,
+	teams,
+	etiquettes,
 }: NavbarLeftDrawerProps) {
 	const toggleDrawer =
 		(anchor: Anchor, open: boolean) =>
@@ -48,12 +54,26 @@ export default function NavbarLeftDrawer({
 			<SearchInput />
 
 			<div className="mb-4">
-				<Etiquettes setIsOpen={setIsOpen} />
+				<Etiquettes setIsOpen={setIsOpen} etiquettes={etiquettes} />
 			</div>
 			{/* <Divider variant="middle" /> */}
 
 			{/* <List> */}
-			<NestedList
+
+			{teams.map((team) => {
+				return (
+					<NestedList
+						key={team._id}
+						setIsOpen={setIsOpen}
+						isOpen={isOpen}
+						title={team.slug}
+						isLeftDrawer={true}
+						list={menuItem}
+						borderColor={team.color}
+					/>
+				)
+			})}
+			{/* <NestedList
 				setIsOpen={setIsOpen}
 				isOpen={isOpen}
 				title="équipe-première"
@@ -75,7 +95,7 @@ export default function NavbarLeftDrawer({
 				borderColor="border-b-gray-500"
 				isLeftDrawer={true}
 				list={menuItem}
-			/>
+			/> */}
 			<NestedList
 				setIsOpen={setIsOpen}
 				isOpen={isOpen}

@@ -1,6 +1,6 @@
-const category = {
-	name: "category",
-	title: "Category",
+const teams = {
+	name: "teams",
+	title: "Teams",
 	type: "document",
 	fields: [
 		{
@@ -9,7 +9,6 @@ const category = {
 			type: "string",
 			validation: (Rule: any) => Rule.required(),
 		},
-
 		{
 			name: "slug",
 			title: "Slug",
@@ -21,7 +20,12 @@ const category = {
 				maxLength: 96,
 			},
 		},
+		{
+			name: "color",
+			title: "Color",
+			type: "string",
+		},
 	],
 }
 
-export default category
+export default teams
