@@ -48,7 +48,7 @@ export default function NavbarLeftDrawer({
 			<SearchInput />
 
 			<div className="mb-4">
-				<Etiquettes />
+				<Etiquettes setIsOpen={setIsOpen} />
 			</div>
 			{/* <Divider variant="middle" /> */}
 
