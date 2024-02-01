@@ -3,7 +3,6 @@ import "@/app/styles/globals.css"
 import { Roboto } from "next/font/google"
 
 import Image from "next/image"
-import heroForEquipe from "@/public/heroForEquipe.jpg"
 import { getGlobalConfigImages } from "@/sanity/utils/blog/getConfig"
 
 const roboto = Roboto({
@@ -29,13 +28,13 @@ export default async function RootLayout({
 	)
 	return (
 		<>
-			<div className="w-full max-h-96 overflow-hidden bg-white ">
+			<div className="w-full max-h-96 overflow-hidden bg-white">
 				<Image
 					src={heroImage[0].image_url}
 					alt={heroImage[0].image_alt}
-					width={0}
-					height={0}
-					className="object-cover  aspect-video"
+					width={1400}
+					height={788}
+					className="object-cover aspect-video"
 				/>
 			</div>
 

@@ -19,7 +19,7 @@ const SingleFeaturedPost = ({
 	return (
 		<>
 			{display === "icon" && (
-				<Link href={`/equipes/${post.categories[0]}/content/${post.slug}`}>
+				<Link href={`/content/${post.slug}`}>
 					<div className="flex flex-col gap-y-2">
 						<Image
 							src={post.image_url}
@@ -43,7 +43,7 @@ const SingleFeaturedPost = ({
 			)}
 
 			{display === "list" && (
-				<Link href={`/equipes/${post.categories[0]}/content/${post.slug}`}>
+				<Link href={`/content/${post.slug}`}>
 					<div className="border-l-4 border-l-gray-300 pl-4 flex flex-col gap-y-2 py-2 max-h-24">
 						<p className="font-bold  text-body line-clamp-1 sm:line-clamp-2">
 							{post.title}
@@ -60,7 +60,7 @@ const SingleFeaturedPost = ({
 			)}
 
 			{display === "listIcon" && (
-				<Link href={`/equipes/${post.categories[0]}/content/${post.slug}`}>
+				<Link href={`/content/${post.slug}`}>
 					<div className="flex justify-start items-center gap-x-2 ">
 						<Image
 							src={post.image_url}
