@@ -1,21 +1,28 @@
-import {
-	Product,
-	FooterBanner,
-	HeroBanner,
-	Footer,
-} from "@/app/components/shop"
+import { Product } from "@/app/components/shop"
 import HeroHeader from "@/app/components/shop/HeroHeader"
 import HomeCollection from "@/app/components/shop/HomeCollection"
 import { getBanner, getProducts } from "@/sanity/sanity-utils"
-import img from "@/public/HeroCollectionTest.jpg"
-import img2 from "@/public/HeroCollectionTest1.jpg"
+
+import { getGlobalConfigImages } from "@/sanity/utils/blog/getConfig"
 
 const ShopHome = async () => {
 	const banner = await getBanner()
 	const products = await getProducts()
+	const globalConfigImages = await getGlobalConfigImages()
+
+	const heroImage = globalConfigImages.filter(
+		(image) => image.slug === "shop-hero-header"
+	)
+
+	const collectionImages = globalConfigImages.filter(
+		(image) =>
+			image.slug === "promo-collection-1-shop" ||
+			image.slug === "promo-collection-2-shop"
+	)
+
 	return (
 		<div className="flex flex-col gap-y-10 ">
-			<HeroHeader />
+			<HeroHeader image={heroImage} />
 			<div className="text-center">
 				<h2 className="text-[2.5rem] font-extrabold text-primary-dark ">
 					Best Selling Products
@@ -34,14 +41,14 @@ const ShopHome = async () => {
 			<div className="grid grid-cols-2 mx-auto px-2 gap-x-2 sm:gap-x-8">
 				<div className="flex justify-center items-start">
 					<HomeCollection
-						image={img}
+						image={collectionImages[0]}
 						title="Nouveautés Mode"
 						buttonText="Acheter Ici"
 					/>
 				</div>
 				<div className="flex justify-center items-start">
 					<HomeCollection
-						image={img2}
+						image={collectionImages[1]}
 						title="Nouveautés Chaussures"
 						buttonText="Acheter Ici"
 					/>

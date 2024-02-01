@@ -2,15 +2,20 @@
 import { CurrentNextGame } from "@/app/types/games"
 import Image from "next/image"
 import Link from "next/link"
-import logo from "@/public/logoTest.png"
 import { getFullFormattedDate } from "@/app/utils/getFormattedDate"
 import { twMerge } from "tailwind-merge"
+import { GlobalConfigImagesApiResponse } from "@/sanity/types/GlobalConfigImages"
 type PrevGameProps = {
 	games: CurrentNextGame
 	isHomePageHeader?: boolean
+	image: GlobalConfigImagesApiResponse
 }
 
-const PrevGame = ({ games, isHomePageHeader = false }: PrevGameProps) => {
+const PrevGame = ({
+	games,
+	isHomePageHeader = false,
+	image,
+}: PrevGameProps) => {
 	const prevGameDate = getFullFormattedDate(games.results[0].date)
 	const competition = games.results[0].competition.name
 	const competitionShort = games.results[0].competition.levelName
@@ -40,8 +45,8 @@ const PrevGame = ({ games, isHomePageHeader = false }: PrevGameProps) => {
 						{homeTeam}
 					</span>
 					<Image
-						src={homeTeamLogo || logo}
-						alt="PSG"
+						src={homeTeamLogo || image[0].image_url}
+						alt="Home Team Logo"
 						width={50}
 						height={50}
 						className={twMerge(
@@ -72,8 +77,8 @@ const PrevGame = ({ games, isHomePageHeader = false }: PrevGameProps) => {
 					</div>
 
 					<Image
-						src={awayTeamLogo || logo}
-						alt="Metz"
+						src={awayTeamLogo || image[0].image_url}
+						alt="Away Team Logo"
 						width={50}
 						height={50}
 						className={twMerge(
@@ -103,8 +108,8 @@ const PrevGame = ({ games, isHomePageHeader = false }: PrevGameProps) => {
 
 			<div className="flex items-center justify-center col-span-2">
 				<Image
-					src={homeTeamLogo || logo}
-					alt="Paris"
+					src={homeTeamLogo || image[0].image_url}
+					alt="Home Team Logo"
 					width={35}
 					height={35}
 					className={twMerge(
@@ -116,8 +121,8 @@ const PrevGame = ({ games, isHomePageHeader = false }: PrevGameProps) => {
 					)}
 				/>
 				<Image
-					src={awayTeamLogo || logo}
-					alt="Metz"
+					src={awayTeamLogo || image[0].image_url}
+					alt="Away Team Logo"
 					width={35}
 					height={35}
 					className={twMerge(

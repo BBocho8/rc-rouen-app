@@ -15,6 +15,7 @@ import { legal, menu, support } from "./footerMenus"
 import { AiFillInstagram } from "react-icons/ai"
 import moment from "moment"
 import Image from "next/image"
+import { GlobalConfigImagesApiResponse } from "@/sanity/types/GlobalConfigImages"
 
 const paymentMethods = [
 	{
@@ -34,8 +35,10 @@ const paymentMethods = [
 		icon: <FaCcApplePay size={40} className="text-gray-500 " />,
 	},
 ]
-
-const Footer = () => {
+type FooterProps = {
+	image: GlobalConfigImagesApiResponse
+}
+const Footer = ({ image }: FooterProps) => {
 	const date = moment().year()
 
 	return (
@@ -43,8 +46,8 @@ const Footer = () => {
 			<div className="grid items-start justify-start grid-cols-2 px-4 py-8 mx-auto sm:grid-cols-4 gap-x-2 gap-y-4 bg-gray-50">
 				<div className="flex items-center justify-start col-span-2 sm:justify-center sm:self-center sm:col-span-1 gap-x-2 sm:gap-x-4">
 					<Image
-						src="/logoTest.png"
-						alt="Logo"
+						src={image[0].image_url}
+						alt={image[0].image_alt}
 						width={35}
 						height={35}
 						className="aspect-square"

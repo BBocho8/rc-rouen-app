@@ -28,7 +28,7 @@ const ActualitePage: FC = async () => {
 						)
 					})}
 				</div>
-				<div className="flex flex-col justify-center items-center px-2 gap-y-3 md:hidden">
+				<div className="flex flex-col justify-center items-start px-2 gap-y-3 md:hidden">
 					{posts.map((post) => {
 						return (
 							<SingleFeaturedPost

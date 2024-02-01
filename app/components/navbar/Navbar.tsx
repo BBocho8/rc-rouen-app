@@ -12,12 +12,14 @@ import NavbarLeftDrawer from "./NavbarLeftDrawer"
 import { GrContact } from "react-icons/gr"
 import { Team } from "@/sanity/types/Team"
 import { Etiquettes } from "@/sanity/types/Etiquettes"
+import { GlobalConfigImagesApiResponse } from "@/sanity/types/GlobalConfigImages"
 
 type NavbarProps = {
 	teams: Team[]
 	etiquettes: Etiquettes[]
+	image: GlobalConfigImagesApiResponse
 }
-const Navbar = ({ teams, etiquettes }: NavbarProps) => {
+const Navbar = ({ teams, etiquettes, image }: NavbarProps) => {
 	const [isOpen, setIsOpen] = useState(false)
 
 	return (
@@ -75,8 +77,8 @@ const Navbar = ({ teams, etiquettes }: NavbarProps) => {
 				<Link href="/">
 					<Image
 						className="md:hidden absolute top-[8px] ml-[-21px] left-[50%]"
-						src="/logoTest.png"
-						alt="logo"
+						src={image[0].image_url}
+						alt={image[0].image_alt}
 						height="42"
 						width="42"
 						priority
@@ -86,8 +88,8 @@ const Navbar = ({ teams, etiquettes }: NavbarProps) => {
 				<Link href="/">
 					<Image
 						className="hidden md:block md:absolute md:top-[12px] md:ml-[-21px] md:left-[50%]"
-						src="/logoTest.png"
-						alt="logo"
+						src={image[0].image_url}
+						alt={image[0].image_alt}
 						height="72"
 						width="72"
 						priority

@@ -1,8 +1,12 @@
-import Image, { StaticImageData } from "next/image"
+import {
+	GlobalConfigImage,
+	GlobalConfigImagesApiResponse,
+} from "@/sanity/types/GlobalConfigImages"
+import Image from "next/image"
 import Link from "next/link"
 
 type HomeCollectionProps = {
-	image: string | StaticImageData
+	image: GlobalConfigImage
 	title: string
 	buttonText: string
 }
@@ -14,8 +18,8 @@ const HomeCollection = ({ image, title, buttonText }: HomeCollectionProps) => {
 			className="bg-white flex flex-col gap-y-3 justify-center items-center"
 		>
 			<Image
-				src={image}
-				alt="test"
+				src={image.image_url}
+				alt={image.image_alt}
 				width={501}
 				height={334}
 				className="aspect-3/2"

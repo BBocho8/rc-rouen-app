@@ -1,15 +1,19 @@
 import img from "@/public/testHeroShop.jpeg"
+import { GlobalConfigImagesApiResponse } from "@/sanity/types/GlobalConfigImages"
 import Image from "next/image"
 import Link from "next/link"
-const HeroHeader = () => {
+type HeroHeaderProps = {
+	image: GlobalConfigImagesApiResponse
+}
+const HeroHeader = ({ image }: HeroHeaderProps) => {
 	return (
 		<div className="relative">
 			<Image
-				src={img}
+				src={image[0].image_url}
+				alt={image[0].image_alt}
 				width={2048}
 				height={1365}
 				priority
-				alt="hero shop"
 				className="object-cover aspect-3/2 bg-gradient-to-r from-indigo-500 to-blue-500"
 			/>
 			<p className="z-1  absolute left-1/2 top-1/2 translate-x-[-50%] translate-y-[-50%]  text-white flex flex-col items-center gap-y-1 text-center w-full">

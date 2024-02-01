@@ -20,6 +20,7 @@ import { FaChevronRight } from "react-icons/fa"
 import Link from "next/link"
 import MobileCart from "./MobileCart"
 import DesktopCart from "./DesktopCart"
+import { GlobalConfigImagesApiResponse } from "@/sanity/types/GlobalConfigImages"
 
 interface Props {
 	/**
@@ -52,9 +53,13 @@ const theme = createTheme({
 	},
 })
 
-export default function NavbarMui(props: Props) {
+type NavbarMuiProps = {
+	window?: () => Window
+	image: GlobalConfigImagesApiResponse
+}
+export default function NavbarMui({ window, image }: NavbarMuiProps) {
 	const { showCart, setShowCart, totalQuantities } = useStateContext()
-	const { window } = props
+
 	const [mobileOpen, setMobileOpen] = React.useState(false)
 
 	const handleDrawerToggle = () => {
@@ -66,10 +71,10 @@ export default function NavbarMui(props: Props) {
 			<Link href="/shop">
 				<div className="flex items-center justify-center gap-x-1 py-4 cursor-pointer">
 					<Image
-						src="/logoTest.png"
+						src={image[0].image_url}
+						alt={image[0].image_alt}
 						width={45}
 						height={45}
-						alt="logo rcr"
 						className="cursor-pointer"
 					/>
 					<div className="flex flex-col items-start justify-center cursor-pointer">
@@ -134,10 +139,10 @@ export default function NavbarMui(props: Props) {
 						<Link href="/shop">
 							<div className="flex items-center justify-start lg:justify-center  gap-x-1 sm:grow cursor-pointer ">
 								<Image
-									src="/logoTest.png"
+									src={image[0].image_url}
+									alt={image[0].image_alt}
 									width={45}
 									height={45}
-									alt="logo rcr"
 								/>
 								<div className="flex flex-col items-start justify-center">
 									<span className="uppercase text-xs font-medium">

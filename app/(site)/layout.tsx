@@ -9,6 +9,7 @@ import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { getTeams } from "@/sanity/utils/blog/getEquipes"
 import { getEtiquettes } from "@/sanity/utils/blog/getEtiquettes"
+import { getGlobalConfigImages } from "@/sanity/utils/blog/getConfig"
 
 const roboto = Roboto({
 	subsets: ["latin"],
@@ -28,11 +29,17 @@ export default async function RootLayout({
 }) {
 	const teams = await getTeams()
 	const etiquettes = await getEtiquettes()
+	const globalConfigImages = await getGlobalConfigImages()
+
+	const logoClub = globalConfigImages.filter(
+		(image) => image.slug === "logo-club"
+	)
+
 	return (
 		<html lang="en" className={`${roboto.variable} font-sans`}>
 			<body className="">
 				<header>
-					<Navbar teams={teams} etiquettes={etiquettes} />
+					<Navbar teams={teams} etiquettes={etiquettes} image={logoClub} />
 				</header>
 				<main className=" bg-white pt-14 md:pt-24">
 					<ToastContainer position="top-center" />
@@ -41,7 +48,7 @@ export default async function RootLayout({
 					<Analytics />
 				</main>
 				<footer>
-					<Footer />
+					<Footer image={logoClub} />
 				</footer>
 			</body>
 		</html>

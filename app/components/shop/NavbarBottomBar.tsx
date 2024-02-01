@@ -2,6 +2,7 @@
 
 import Link from "next/link"
 import { navItems } from "./NavbarMui"
+import { GlobalConfigImagesApiResponse } from "@/sanity/types/GlobalConfigImages"
 
 const NavbarBottomBar = () => {
 	return (

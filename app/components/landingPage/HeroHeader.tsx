@@ -5,17 +5,21 @@ import { CurrentNextGame } from "@/app/types/games"
 import PrevGame from "../games/PrevGame"
 import moment from "moment"
 import NextGame from "../games/NextGame"
+import { GlobalConfigImagesApiResponse } from "@/sanity/types/GlobalConfigImages"
 
 type HeroHeaderProps = {
 	games: CurrentNextGame
+	image: GlobalConfigImagesApiResponse
 }
-const HeroHeader = ({ games }: HeroHeaderProps) => {
+const HeroHeader = ({ games, image }: HeroHeaderProps) => {
+	const heroImage = image.filter((image) => image.slug === "hero-header-blog")
+	const logoClub = image.filter((image) => image.slug === "logo-club")
 	return (
 		<div className="lg:grid  lg:grid-cols-5 lg:grid-rows-1  bg-white ">
 			<div className="relative lg:row-span-1 h-80 sm:h-96 lg:h-screen-lg-nav lg:col-span-3 hero w-full   md:h-screen-lg-nav-full">
 				<Image
-					src={testHero}
-					alt="hero"
+					src={heroImage[0].image_url}
+					alt={heroImage[0].image_alt}
 					fill
 					sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
 					priority
@@ -38,9 +42,9 @@ const HeroHeader = ({ games }: HeroHeaderProps) => {
 				<div className="mx-auto shadow-md w-full">
 					{moment(games.results[1].date).fromNow() <
 					moment(games.results[0].date).fromNow() ? (
-						<NextGame games={games} isHomePageHeader />
+						<NextGame games={games} isHomePageHeader image={logoClub} />
 					) : (
-						<PrevGame games={games} isHomePageHeader />
+						<PrevGame games={games} isHomePageHeader image={logoClub} />
 					)}
 				</div>
 			</div>

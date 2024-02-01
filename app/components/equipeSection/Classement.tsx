@@ -3,13 +3,13 @@
 import { Classement } from "@/app/types/classement"
 import styles from "./Classement.module.css"
 import { twMerge } from "tailwind-merge"
-import { text } from "stream/consumers"
-import logo from "@/public/logoTest.png"
+
 import notAvailable from "@/public/notAvailable.png"
 import Image from "next/image"
 
 type ClassementProps = {
 	classement: Classement
+	logoRcr: string
 }
 
 const theadItem = [
@@ -25,7 +25,7 @@ const theadItem = [
 	"diff.",
 ]
 
-const Classement = ({ classement }: ClassementProps) => {
+const Classement = ({ classement, logoRcr }: ClassementProps) => {
 	const rankings = classement.rankings[0].teams
 
 	return (
@@ -56,7 +56,7 @@ const Classement = ({ classement }: ClassementProps) => {
 						const teamLogo = ranking.logo
 							? `https://v1.scorenco.com${ranking.logo}`
 							: ranking.name.toLowerCase() === "racing club de rouen"
-							? logo
+							? logoRcr
 							: notAvailable
 
 						return (
