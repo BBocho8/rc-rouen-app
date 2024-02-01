@@ -66,36 +66,15 @@ export default function NavbarLeftDrawer({
 						key={team._id}
 						setIsOpen={setIsOpen}
 						isOpen={isOpen}
-						title={team.slug}
+						title={team.title}
+						slug={team.slug}
 						isLeftDrawer={true}
 						list={menuItem}
 						borderColor={team.color}
 					/>
 				)
 			})}
-			{/* <NestedList
-				setIsOpen={setIsOpen}
-				isOpen={isOpen}
-				title="équipe-première"
-				isLeftDrawer={true}
-				list={menuItem}
-			/>
-			<NestedList
-				setIsOpen={setIsOpen}
-				isOpen={isOpen}
-				title="équipe-féminine"
-				borderColor="border-b-accent"
-				isLeftDrawer={true}
-				list={menuItem}
-			/>
-			<NestedList
-				setIsOpen={setIsOpen}
-				isOpen={isOpen}
-				title="autres-équipes"
-				borderColor="border-b-gray-500"
-				isLeftDrawer={true}
-				list={menuItem}
-			/> */}
+
 			<NestedList
 				setIsOpen={setIsOpen}
 				isOpen={isOpen}

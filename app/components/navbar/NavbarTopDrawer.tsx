@@ -59,7 +59,8 @@ export default function NavbarTopDrawer({
 							key={team._id}
 							setIsOpen={setIsOpen}
 							isOpen={isOpen}
-							title={team.slug}
+							title={team.title}
+							slug={team.slug}
 							borderColor={team.color}
 							isLeftDrawer={false}
 							list={menuItem}

@@ -18,12 +18,14 @@ type NestedListProps = {
 	isLeftDrawer?: boolean
 	list: { name: string; id: string }[]
 	isDefaultLink?: boolean
+	slug?: string
 }
 
 export default function NestedList({
 	isOpen,
 	setIsOpen,
 	title = "",
+	slug = "",
 	borderColor = "border-b-primary",
 	isLeftDrawer = false,
 	list,
@@ -52,9 +54,7 @@ export default function NestedList({
 				onClick={handleClick}
 			>
 				<div className="flex justify-between border-b w-[16.8rem] border-b-gray-300 pb-1 relative ">
-					<span className="uppercase font-medium  text-xl  ">
-						{formattedTitle}
-					</span>
+					<span className="uppercase font-medium  text-xl  ">{title}</span>
 
 					<div className="flex items-center">
 						{isNestedListOpen && isLeftDrawer ? (
@@ -91,7 +91,7 @@ export default function NestedList({
 									<Link
 										href={
 											isDefaultLink
-												? `/equipes/${formattedLinkCategory}/${item.id}`
+												? `/equipes/${slug}/${item.id}`
 												: `/${item.id}`
 										}
 									>
