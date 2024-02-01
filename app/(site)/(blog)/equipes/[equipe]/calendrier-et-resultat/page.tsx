@@ -3,6 +3,15 @@ import NextGame from "@/app/components/games/NextGame"
 import PrevGame from "@/app/components/games/PrevGame"
 import { getGames } from "@/app/utils/getPrevNextGames"
 import { getGlobalConfigImages } from "@/sanity/utils/blog/getConfig"
+import { getTeams } from "@/sanity/utils/blog/getEquipes"
+
+export async function generateStaticParams() {
+	const teams = await getTeams()
+
+	return teams.map((equipe) => ({
+		equipe: equipe.slug,
+	}))
+}
 
 const CalendrierResultatsPage = async () => {
 	const games = await getGames()

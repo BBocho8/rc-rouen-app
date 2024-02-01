@@ -3,6 +3,15 @@ import SingleFeaturedPost from "@/app/components/blog/SingleFeaturedPost"
 
 import { getPosts } from "@/sanity/sanity-utils"
 import { FC } from "react"
+import { getTeams } from "@/sanity/utils/blog/getEquipes"
+
+export async function generateStaticParams() {
+	const teams = await getTeams()
+
+	return teams.map((equipe) => ({
+		equipe: equipe.slug,
+	}))
+}
 
 const ActualitePage: FC = async () => {
 	const posts = await getPosts()
