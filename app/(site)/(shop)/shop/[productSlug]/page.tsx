@@ -2,6 +2,19 @@ import ProductDetails from "@/app/components/shop/ProductDetails"
 import { getProduct, getProducts } from "@/sanity/sanity-utils"
 import NotFound from "./not-found"
 
+export async function generateMetadata({
+	params,
+}: {
+	params: { productSlug: string }
+}) {
+	const product = await getProduct(params.productSlug)
+	const title = product.name
+
+	return {
+		title,
+	}
+}
+
 export async function generateStaticParams() {
 	const products = await getProducts()
 
