@@ -115,7 +115,7 @@ export default function NestedList({
 									<Link
 										href={
 											isDefaultLink
-												? `/equipes/${formattedLinkCategory}/${item.id}`
+												? `/equipes/${slug}/${item.id}`
 												: `/${item.id}`
 										}
 									>
