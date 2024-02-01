@@ -18,8 +18,17 @@ const roboto = Roboto({
 })
 
 export const metadata: Metadata = {
-	title: "RC Rouen - Official Website",
+	metadataBase: new URL(`${process.env.NEXT_PUBLIC_BASE_URL}`),
+
+	title: {
+		default: "RC Rouen - Official Website",
+		template: "%s - RC Rouen - Official Website",
+	},
 	description: "Site web officiel du Racing Club de Rouen",
+
+	twitter: {
+		card: "summary_large_image",
+	},
 }
 
 export default async function RootLayout({

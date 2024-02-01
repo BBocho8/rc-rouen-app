@@ -1,6 +1,18 @@
 import SinglePost from "@/app/components/blog/SinglePost"
 import { getPost } from "@/sanity/sanity-utils"
-import Image from "next/image"
+
+export async function generateMetadata({
+	params,
+}: {
+	params: { postSlug: string }
+}) {
+	const post = await getPost(params.postSlug)
+	const { title } = post
+
+	return {
+		title,
+	}
+}
 
 const SinglePostPage = async ({
 	params,
