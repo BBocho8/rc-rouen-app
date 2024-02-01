@@ -13,7 +13,7 @@ const Etiquettes = ({ setIsOpen, etiquettes }: EtiquettesProps) => {
 				return (
 					<Link
 						key={etiquette._id}
-						href={etiquette.slug}
+						href={`/${etiquette.slug}`}
 						onClick={() => setIsOpen(false)}
 					>
 						<div className="w-32 bg-gray-300 p-1.5 rounded-sm hover:bg-gray-400 cursor-pointer ">
