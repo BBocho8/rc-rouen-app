@@ -19,7 +19,16 @@ const roboto = Roboto({
 
 export const metadata: Metadata = {
 	metadataBase: new URL(`${process.env.NEXT_PUBLIC_BASE_URL}`),
-
+	openGraph: {
+		images: [
+			{
+				url: "@/public/opengraph-image.png",
+				width: 1200,
+				height: 630,
+				alt: "OpenGraph Image",
+			},
+		],
+	},
 	title: {
 		default: "RC Rouen - Official Website",
 		template: "%s - RC Rouen - Official Website",
