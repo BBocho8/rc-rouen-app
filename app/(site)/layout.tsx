@@ -25,7 +25,7 @@ export const metadata: Metadata = {
 				url: new URL(`${process.env.NEXT_PUBLIC_OPEN_GRAPH_IMAGE}`),
 				width: 1200,
 				height: 630,
-				alt: "OpenGraph Image",
+				alt: "OpenGraph Image of the website",
 			},
 		],
 	},
