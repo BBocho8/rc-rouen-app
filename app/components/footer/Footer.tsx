@@ -66,19 +66,19 @@ const Footer = ({ image }: FooterProps) => {
 					&#169; Racing Club de Rouen - {date} - All rights reserved
 				</p>
 				<div className="flex  gap-[10px] justify-center items-center">
-					<Link href="https://www.instagram.com/">
+					<Link href={new URL(`${process.env.NEXT_PUBLIC_FACEBOOK_URL}`)}>
 						<AiFillInstagram
 							className="cursor-pointer text-slate-200 hover:text-slate-50"
 							size={22}
 						/>
 					</Link>
-					<Link href="https://twitter.com/">
+					<Link href={new URL(`${process.env.NEXT_PUBLIC_TWITTER_URL}`)}>
 						<FaXTwitter
 							className="cursor-pointer text-slate-200 hover:text-slate-50"
 							size={20}
 						/>
 					</Link>
-					<Link href="https://facebook.com/">
+					<Link href={new URL(`${process.env.NEXT_PUBLIC_INSTAGRAM_URL}`)}>
 						<FaFacebook
 							className="cursor-pointer text-slate-200 hover:text-slate-50"
 							size={20}
