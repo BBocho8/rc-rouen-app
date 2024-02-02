@@ -7,6 +7,7 @@ import globalConfig from "./global-images"
 import post from "./post-schema"
 import product from "./product"
 import project from "./project-schema"
+import shopRubriques from "./shop-rubriques"
 import teams from "./teams-schema"
 
 const schemas = [
@@ -20,6 +21,7 @@ const schemas = [
 	product,
 	banner,
 	etiquettes,
+	shopRubriques,
 ]
 
 export default schemas

@@ -1,17 +1,23 @@
 "use client"
 
 import Link from "next/link"
-import { navItems } from "./NavbarMui"
-import { GlobalConfigImagesApiResponse } from "@/sanity/types/GlobalConfigImages"
+import { ShopRubriquesApiResponse } from "@/sanity/types/ShopRubriques"
 
-const NavbarBottomBar = () => {
+type NavbarBottomBarProps = {
+	shopRubriques: ShopRubriquesApiResponse
+}
+
+const NavbarBottomBar = ({ shopRubriques }: NavbarBottomBarProps) => {
 	return (
 		<div className="hidden max-w-app mx-auto md:flex md:justify-center md:items-center md:bg-secondary  ">
-			{navItems.map((item) => (
-				<Link key={item} href={`/shop/category/${item.toLowerCase()}`}>
+			{shopRubriques.map((rubrique) => (
+				<Link
+					key={rubrique._id}
+					href={`/shop/category/${rubrique.slug.toLowerCase()}`}
+				>
 					<button className="px-4 py-1.5 hover:bg-secondary-dark ">
 						<span className="text-primary-dark font-semibold uppercase">
-							{item}
+							{rubrique.title}
 						</span>
 					</button>
 				</Link>

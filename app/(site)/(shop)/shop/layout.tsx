@@ -12,6 +12,7 @@ import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
 import NavbarMui from "@/app/components/shop/NavbarMui"
 import { getGlobalConfigImages } from "@/sanity/utils/blog/getConfig"
+import { getShopRubriques } from "@/sanity/utils/shop/getShopRubriques"
 
 const roboto = Roboto({
 	subsets: ["latin"],
@@ -31,6 +32,8 @@ export default async function RootLayout({
 }) {
 	const globalConfigImages = await getGlobalConfigImages()
 
+	const shopRubriques = await getShopRubriques()
+
 	const logoClub = globalConfigImages.filter(
 		(image) => image.slug === "logo-club"
 	)
@@ -39,8 +42,8 @@ export default async function RootLayout({
 			<StateContext>
 				<header className="relative">
 					<div className="h-[100px] max-w-app w-full mx-auto fixed top-0 z-[100]">
-						<NavbarMui image={logoClub} />
-						<NavbarBottomBar />
+						<NavbarMui image={logoClub} shopRubriques={shopRubriques} />
+						<NavbarBottomBar shopRubriques={shopRubriques} />
 					</div>
 				</header>
 				<main className="main-container  bg-white pb-10">

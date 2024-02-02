@@ -21,6 +21,7 @@ import Link from "next/link"
 import MobileCart from "./MobileCart"
 import DesktopCart from "./DesktopCart"
 import { GlobalConfigImagesApiResponse } from "@/sanity/types/GlobalConfigImages"
+import { ShopRubriquesApiResponse } from "@/sanity/types/ShopRubriques"
 
 interface Props {
 	/**
@@ -31,7 +32,6 @@ interface Props {
 }
 
 const drawerWidth = 300
-export const navItems = ["MAILLOTS", "HOMME", "FEMME", "ENFANT", "PROMOTIONS"]
 
 const theme = createTheme({
 	breakpoints: {
@@ -56,8 +56,13 @@ const theme = createTheme({
 type NavbarMuiProps = {
 	window?: () => Window
 	image: GlobalConfigImagesApiResponse
+	shopRubriques: ShopRubriquesApiResponse
 }
-export default function NavbarMui({ window, image }: NavbarMuiProps) {
+export default function NavbarMui({
+	window,
+	image,
+	shopRubriques,
+}: NavbarMuiProps) {
 	const { showCart, setShowCart, totalQuantities } = useStateContext()
 
 	const [mobileOpen, setMobileOpen] = React.useState(false)
@@ -89,10 +94,15 @@ export default function NavbarMui({ window, image }: NavbarMuiProps) {
 			</Link>
 			<Divider />
 			<ul className="">
-				{navItems.map((item) => (
-					<Link key={item} href={`/shop/category/${item.toLowerCase()}`}>
+				{shopRubriques.map((rubrique) => (
+					<Link
+						key={rubrique._id}
+						href={`/shop/category/${rubrique.slug.toLowerCase()}`}
+					>
 						<li className="pl-4 pr-2 flex justify-between items-center py-3 cursor-pointer border-b border-b-gray-200 hover:bg-gray-100 transition">
-							<span className="pl-2 uppercase text-sm font-medium">{item}</span>
+							<span className="pl-2 uppercase text-sm font-medium">
+								{rubrique.title}
+							</span>
 							<FaChevronRight size={15} />
 						</li>
 					</Link>
