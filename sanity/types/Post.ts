@@ -8,6 +8,7 @@ export interface Post {
 	team: string
 	title: string
 	publishedAt: string
+	_updatedAt: string
 	image_url: string
 	image_alt: string
 	body: Body[]

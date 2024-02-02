@@ -39,6 +39,7 @@ export async function getPosts(): Promise<PostApiResponse> {
       _id,
       title,
       publishedAt,
+_updatedAt,
       'slug': slug.current,
         
         "image_url": mainImage.asset->url,
@@ -57,6 +58,7 @@ export async function getPost(postSlug: string): Promise<Post> {
       _id,
       title,
       publishedAt,
+      _updatedAt,
       'slug': slug.current,
         
         "image_url": mainImage.asset->url,
