@@ -66,19 +66,31 @@ const Footer = ({ image }: FooterProps) => {
 					&#169; Racing Club de Rouen - {date} - All rights reserved
 				</p>
 				<div className="flex  gap-[10px] justify-center items-center">
-					<Link href={new URL(`${process.env.NEXT_PUBLIC_FACEBOOK_URL}`)}>
+					<Link
+						href={new URL(`${process.env.NEXT_PUBLIC_INSTAGRAM_URL}`)}
+						rel="noopener noreferrer"
+						target="_blank"
+					>
 						<AiFillInstagram
 							className="cursor-pointer text-slate-200 hover:text-slate-50"
 							size={22}
 						/>
 					</Link>
-					<Link href={new URL(`${process.env.NEXT_PUBLIC_TWITTER_URL}`)}>
+					<Link
+						href={new URL(`${process.env.NEXT_PUBLIC_TWITTER_URL}`)}
+						rel="noopener noreferrer"
+						target="_blank"
+					>
 						<FaXTwitter
 							className="cursor-pointer text-slate-200 hover:text-slate-50"
 							size={20}
 						/>
 					</Link>
-					<Link href={new URL(`${process.env.NEXT_PUBLIC_INSTAGRAM_URL}`)}>
+					<Link
+						href={new URL(`${process.env.NEXT_PUBLIC_FACEBOOK_URL}`)}
+						rel="noopener noreferrer"
+						target="_blank"
+					>
 						<FaFacebook
 							className="cursor-pointer text-slate-200 hover:text-slate-50"
 							size={20}
