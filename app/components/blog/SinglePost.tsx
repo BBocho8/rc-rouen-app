@@ -6,6 +6,8 @@ import { getFullFormattedDate } from "@/app/utils/getFormattedDate"
 import { CiShare1 } from "react-icons/ci"
 import Link from "next/link"
 import SingleFeaturedPost from "./SingleFeaturedPost"
+import ShareButtons from "./ShareButtons"
+import { usePathname } from "next/navigation"
 
 type SinglePostProps = {
 	post: Post
@@ -16,7 +18,6 @@ const tags = ["equipe premiere", "reactions", "coach", "resultat"]
 const SinglePost = ({ post }: SinglePostProps) => {
 	const createdAt = getFullFormattedDate(post.publishedAt)
 	const category = post.categories[0].replace("-", " ")
-
 	return (
 		<section>
 			<div className="w-full max-h-[32rem] overflow-hidden relative ">
@@ -45,21 +46,13 @@ const SinglePost = ({ post }: SinglePostProps) => {
 						</div>
 
 						<div className="flex justify-end items-center   ">
-							<div className="hidden sm:flex  gap-x-1">
-								<span className="text-body transition-all text-xs font-light uppercase cursor-pointer  hover:font-bold  ">
-									Partager
-								</span>
-								<CiShare1 className="text-body cursor-pointer   transition-all  " />
+							<div className="hidden sm:flex">
+								<ShareButtons size={25} />
 							</div>
 						</div>
 					</div>
 					<div className="flex justify-center items-center sm:hidden mt-3  ">
-						<div className="flex  gap-x-1">
-							<span className="text-body transition-all text-xs font-light uppercase cursor-pointer  hover:font-bold  ">
-								Partager
-							</span>
-							<CiShare1 className="text-body cursor-pointer   transition-all  " />
-						</div>
+						<ShareButtons size={25} gap="gap-x-1" />
 					</div>
 					<div className="border-b border-b-gray-100 my-5 sm:my-8  "></div>
 					<ProseableText post={post.body} />
@@ -80,12 +73,13 @@ const SinglePost = ({ post }: SinglePostProps) => {
 					<div className="border-b border-b-gray-100 my-6  "></div>
 
 					<div className="flex justify-end items-center   ">
-						<div className="flex  gap-x-1">
+						<ShareButtons size={35} gap="gap-x-2" />
+						{/* <div className="flex  gap-x-1">
 							<span className=" text-body transition-all text-xs font-light uppercase cursor-pointer  hover:font-bold  ">
 								Partager
 							</span>
 							<CiShare1 className="text-body cursor-pointer   transition-all  " />
-						</div>
+						S</div> */}
 					</div>
 				</Paper>
 				<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-4 px-6 xl:gap-x-0 xl:flex xl:flex-col xl:py-12 xl:px-8 xl:items-center xl:justify-start xl:col-span-1 xl:mx-auto xl:gap-y-4">
