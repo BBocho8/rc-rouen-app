@@ -11,6 +11,16 @@ export async function generateMetadata({
 
 	return {
 		title,
+		openGraph: {
+			images: [
+				{
+					url: new URL(`${post.image_url}`),
+					width: 1200,
+					height: 630,
+					alt: "OpenGraph Image of the website",
+				},
+			],
+		},
 	}
 }
 
