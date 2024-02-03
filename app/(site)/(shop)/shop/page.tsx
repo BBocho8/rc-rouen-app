@@ -20,27 +20,27 @@ const ShopHome = async () => {
 			image.slug === "promo-collection-2-shop"
 	)
 
-	// const handleTest = async () => {
-	// 	const response = await fetch(
-	// 		`${process.env.NEXT_PUBLIC_BASE_URL}/api/session`,
-	// 		{
-	// 			method: "POST",
-	// 			headers: {
-	// 				"Content-Type": "application/json",
-	// 			},
-	// 			body: JSON.stringify({
-	// 				id: "cs_test_b1Foww00dldESPXV6KGUuMzT3UnvG62T7uLkay17GB5B4wTYxzfYua6m9s",
-	// 			}),
-	// 		}
-	// 	)
-	// 	if (response.status === 500) return
+	const handleTest = async () => {
+		const response = await fetch(
+			`${process.env.NEXT_PUBLIC_BASE_URL}/api/session`,
+			{
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({
+					id: "cs_test_b1fxp9UQlYvPF9jd8bqIP39DV86Goi8I9GpZ3UmcXfqM6ygeTrqdD2VIYG",
+				}),
+			}
+		)
+		if (response.status === 500) return
 
-	// 	const data = await response.json()
-	// 	return data
-	// }
+		const data = await response.json()
+		return data
+	}
 
-	// const data = await handleTest()
-	// console.log(data)
+	const data = await handleTest()
+	console.log(data)
 
 	return (
 		<div className="flex flex-col gap-y-10 ">

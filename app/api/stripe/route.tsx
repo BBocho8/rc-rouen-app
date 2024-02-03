@@ -8,17 +8,13 @@ const stripe = new Stripe(process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY as string)
 export async function POST(req: Request) {
 	const body = await req.json()
 
-	console.log(body[0])
-
 	try {
 		const session = await stripe.checkout.sessions.create({
 			submit_type: "pay",
 			mode: "payment",
 			payment_method_types: ["card"],
 			billing_address_collection: "auto",
-			metadata: body.map((item: any) => {
-				cartItem: item
-			}),
+			metadata: { name: "Brice Ocho", Age: "14 Years Old" },
 			shipping_options: [
 				{ shipping_rate: "shr_1OZdyNLKK6Ppv4DFSkdo2MV6" },
 				{ shipping_rate: "shr_1OZdzOLKK6Ppv4DFlnr4Ozwg" },
