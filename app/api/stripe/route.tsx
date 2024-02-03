@@ -47,6 +47,8 @@ export async function POST(req: Request) {
 			cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/shop`,
 		})
 
+		console.log("Session from Checkout Page --------", session)
+
 		return NextResponse.json({ session }, { status: 200 })
 	} catch (error: any) {
 		return NextResponse.json({ error: error.message }, { status: 500 })
