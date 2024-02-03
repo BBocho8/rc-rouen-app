@@ -9,9 +9,14 @@ export async function POST(req: Request) {
 	try {
 		const session = await stripe.checkout.sessions.retrieve(id)
 
-		const lineItems = await stripe.checkout.sessions.listLineItems(id)
+		const lineItems = await stripe.checkout.sessions.listLineItems(id, {
+			expand: ["data.price.product"],
+		})
 
-		return NextResponse.json({ session, lineItems }, { status: 200 })
+		return NextResponse.json(
+			{ session, items: lineItems.data[0].price },
+			{ status: 200 }
+		)
 	} catch (error: any) {
 		return NextResponse.json({ error: error.message }, { status: 400 })
 	}

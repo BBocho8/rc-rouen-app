@@ -28,7 +28,7 @@ export async function POST(req: Request) {
 						product_data: {
 							name: item.name,
 							images: [img],
-							metadata: { size: item.size || "none" },
+							metadata: { size: item.size || "none", id: item._id },
 						},
 
 						// unit_amount: item.price * 100,
