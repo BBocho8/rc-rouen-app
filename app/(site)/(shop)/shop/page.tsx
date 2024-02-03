@@ -22,7 +22,7 @@ const ShopHome = async () => {
 
 	// const handleTest = async () => {
 	// 	const response = await fetch(
-	// 		`${process.env.NEXT_PUBLIC_BASE_URL}/api/stripe/session`,
+	// 		`${process.env.NEXT_PUBLIC_BASE_URL}/api/session`,
 	// 		{
 	// 			method: "POST",
 	// 			headers: {
