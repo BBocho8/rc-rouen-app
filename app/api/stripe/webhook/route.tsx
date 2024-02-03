@@ -28,6 +28,7 @@ export async function POST(req: Request) {
 		console.log("SESSION -----", session)
 		const lineItems = await stripe.checkout.sessions.listLineItems(session.id)
 		console.log("LIST OF ITEMS -----", lineItems)
+		console.log("LIST OF ITEMS PRICE OBJECT -----", lineItems.data[0].price)
 	} else {
 		console.warn(`🤷‍♀️ Unhandled event type: ${event.type}`)
 	}
