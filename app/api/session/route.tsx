@@ -11,10 +11,7 @@ export async function POST(req: Request) {
 
 		const lineItems = await stripe.checkout.sessions.listLineItems(id)
 
-		return NextResponse.json(
-			{ session, items: lineItems.data[0].price?.metadata },
-			{ status: 200 }
-		)
+		return NextResponse.json({ session, lineItems }, { status: 200 })
 	} catch (error: any) {
 		return NextResponse.json({ error: error.message }, { status: 400 })
 	}
