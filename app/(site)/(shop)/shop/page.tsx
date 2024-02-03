@@ -20,9 +20,32 @@ const ShopHome = async () => {
 			image.slug === "promo-collection-2-shop"
 	)
 
+	// const handleTest = async () => {
+	// 	const response = await fetch(
+	// 		`${process.env.NEXT_PUBLIC_BASE_URL}/api/stripe/session`,
+	// 		{
+	// 			method: "POST",
+	// 			headers: {
+	// 				"Content-Type": "application/json",
+	// 			},
+	// 			body: JSON.stringify({
+	// 				id: "cs_test_b1Foww00dldESPXV6KGUuMzT3UnvG62T7uLkay17GB5B4wTYxzfYua6m9s",
+	// 			}),
+	// 		}
+	// 	)
+	// 	if (response.status === 500) return
+
+	// 	const data = await response.json()
+	// 	return data
+	// }
+
+	// const data = await handleTest()
+	// console.log(data)
+
 	return (
 		<div className="flex flex-col gap-y-10 ">
 			<HeroHeader image={heroImage} />
+
 			<div className="text-center">
 				<h2 className="text-[2.5rem] font-extrabold text-primary-dark ">
 					Best Selling Products

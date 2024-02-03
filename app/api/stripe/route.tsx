@@ -14,6 +14,7 @@ export async function POST(req: Request) {
 			mode: "payment",
 			payment_method_types: ["card"],
 			billing_address_collection: "auto",
+			metadata: body,
 			shipping_options: [
 				{ shipping_rate: "shr_1OZdyNLKK6Ppv4DFSkdo2MV6" },
 				{ shipping_rate: "shr_1OZdzOLKK6Ppv4DFlnr4Ozwg" },
