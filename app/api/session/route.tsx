@@ -14,7 +14,7 @@ export async function POST(req: Request) {
 		})
 
 		return NextResponse.json(
-			{ session, items: lineItems.data[0].price },
+			{ session, items: lineItems.data[0].price?.product },
 			{ status: 200 }
 		)
 	} catch (error: any) {
