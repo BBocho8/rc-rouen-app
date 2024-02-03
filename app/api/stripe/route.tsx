@@ -2,6 +2,7 @@ import { NextResponse } from "next/server"
 
 import Stripe from "stripe"
 import { Product } from "@/sanity/types/Product"
+import { allowedCountries } from "../../utils/shop/allowedCountries"
 
 const stripe = new Stripe(process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY as string)
 
@@ -43,6 +44,9 @@ export async function POST(req: Request) {
 					quantity: item.quantity,
 				}
 			}),
+			shipping_address_collection: {
+				allowed_countries: allowedCountries as any,
+			},
 
 			success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/shop/success`,
 			cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/shop`,

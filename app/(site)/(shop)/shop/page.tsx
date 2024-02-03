@@ -1,6 +1,7 @@
 import { Product } from "@/app/components/shop"
 import HeroHeader from "@/app/components/shop/HeroHeader"
 import HomeCollection from "@/app/components/shop/HomeCollection"
+import { orderResponse } from "@/app/types/orderResponse"
 import { getBanner, getProducts } from "@/sanity/sanity-utils"
 
 import { getGlobalConfigImages } from "@/sanity/utils/blog/getConfig"
@@ -29,7 +30,7 @@ const ShopHome = async () => {
 	// 				"Content-Type": "application/json",
 	// 			},
 	// 			body: JSON.stringify({
-	// 				id: "cs_test_b149We8ylHFlNeUmvJzh44SKUphJqLSsFxsayo1IjNPOswnPjuG9QHNL1h",
+	// 				id: "cs_test_a1rjsup0prFgFkUnurLWqPLURsIsSXwTOwWL2OJsZDMoYpUtJMw5MAg5Kq",
 	// 			}),
 	// 		}
 	// 	)
@@ -39,8 +40,8 @@ const ShopHome = async () => {
 	// 	return data
 	// }
 
-	// const data = await handleTest()
-	// console.log(data)
+	// const data: orderResponse = await handleTest()
+	// console.log(data.products[0])
 
 	return (
 		<div className="flex flex-col gap-y-10 ">

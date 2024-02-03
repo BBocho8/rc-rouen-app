@@ -13,8 +13,28 @@ export async function POST(req: Request) {
 			expand: ["data.price.product"],
 		})
 
+		const products = lineItems.data.map((item) => {
+			return {
+				amount_subtotal: item.amount_subtotal,
+				amount_total: item.amount_total,
+				productID: item.price?.product,
+				quantity: item.quantity,
+			}
+		})
+
 		return NextResponse.json(
-			{ session, items: lineItems.data[0].price?.product },
+			{
+				session: {
+					sessionID: session.id,
+					amount_subtotal: session.amount_subtotal,
+					amount_total: session.amount_total,
+					payment_intent: session.payment_intent,
+					shipping: session.shipping_cost,
+					address: session.shipping_details?.address,
+					client: session.shipping_details?.name,
+				},
+				products,
+			},
 			{ status: 200 }
 		)
 	} catch (error: any) {
