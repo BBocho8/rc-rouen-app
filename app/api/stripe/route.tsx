@@ -48,6 +48,7 @@ export async function POST(req: Request) {
 		})
 
 		console.log("Session from Checkout Page --------", session)
+		console.log("Body from Checkout Page --------", body)
 
 		return NextResponse.json({ session }, { status: 200 })
 	} catch (error: any) {
