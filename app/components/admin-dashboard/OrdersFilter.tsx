@@ -20,8 +20,6 @@ export default function SelectLabels() {
 		setStatus(event.target.value)
 	}
 
-	console.log(status)
-
 	return (
 		<div>
 			<FormControl sx={{ m: 1, minWidth: 200 }}>
