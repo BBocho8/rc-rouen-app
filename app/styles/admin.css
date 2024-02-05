@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	html {
+		padding: 0;
+		margin: 0;
+		@apply bg-white;
+	}
+	body {
+		margin: 0 auto;
+
+		@apply max-w-app;
+	}
+}
