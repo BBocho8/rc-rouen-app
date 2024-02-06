@@ -51,6 +51,7 @@ type OrderDetails = {
 }
 
 export const createOrderSanity = async (orderDetails: OrderDetails) => {
+	console.log(orderDetails)
 	try {
 		const response = await fetch(
 			`https://${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}.api.sanity.io/v1/data/mutate/production`,
@@ -67,15 +68,13 @@ export const createOrderSanity = async (orderDetails: OrderDetails) => {
 						{
 							create: {
 								_id: orderDetails._id,
-								date: 1706993437,
-								client_name: "Brice Ocho",
-								// date: orderDetails.date,
-								// client_name: orderDetails.client_name,
+								date: orderDetails.date,
+								client_name: orderDetails.client_name,
 								// client_address: orderDetails.client_address,
-								// order_subtotal_amount: orderDetails.order_subtotal_amount,
+								order_subtotal_amount: orderDetails.order_subtotal_amount,
 								// shipping_rate: orderDetails.shipping_rate,
-								// order_total_amount: orderDetails.order_total_amount,
-								// status: "pending",
+								order_total_amount: orderDetails.order_total_amount,
+								status: "pending",
 
 								_type: "orders",
 							},

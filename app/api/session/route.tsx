@@ -9,6 +9,8 @@ export async function POST(req: Request) {
 	try {
 		const session = await stripe.checkout.sessions.retrieve(id)
 
+		console.log(session)
+
 		const lineItems = await stripe.checkout.sessions.listLineItems(id, {
 			expand: ["data.price.product"],
 		})
@@ -26,6 +28,7 @@ export async function POST(req: Request) {
 			{
 				session: {
 					sessionID: session.id,
+
 					amount_subtotal: session.amount_subtotal,
 					amount_total: session.amount_total,
 					payment_intent: session.payment_intent,
