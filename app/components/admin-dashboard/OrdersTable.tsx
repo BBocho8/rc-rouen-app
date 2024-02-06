@@ -6,6 +6,7 @@ const orderStatus = [
 	"Shipped",
 	"Delivered",
 	"Cancelled",
+	"Refunded",
 ]
 
 const OrdersTable = () => {

@@ -11,6 +11,7 @@ const orderStatus = [
 	"Shipped",
 	"Delivered",
 	"Cancelled",
+	"Refunded",
 ]
 
 export default function SelectLabels() {
