@@ -4,16 +4,6 @@ const orders = {
 	type: "document",
 	fields: [
 		{
-			name: "stripe_id",
-			title: "Stripe Session ID",
-			type: "slug",
-			validation: (Rule: any) => Rule.required(),
-			options: {
-				source: "name",
-				maxLength: 90,
-			},
-		},
-		{
 			name: "date",
 			title: "Date",
 			type: "number",
