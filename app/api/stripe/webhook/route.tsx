@@ -28,7 +28,8 @@ export async function POST(req: Request) {
 	const amount_total = session.amount_total
 	const shipping = session.shipping_cost
 	const address = session.shipping_details?.address
-	const client = session.shipping_details?.name
+	const client = session.customer_details?.name
+	const email = session.customer_details?.email
 
 	const orderDetails = {
 		_id: sessionID,
@@ -38,6 +39,7 @@ export async function POST(req: Request) {
 		shipping,
 		address,
 		client,
+		email,
 	}
 
 	if (event.type === "checkout.session.completed") {

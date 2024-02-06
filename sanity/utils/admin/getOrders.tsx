@@ -1,6 +1,7 @@
 import { createClient, groq } from "next-sanity"
 import clientConfig from "@/sanity/config/client-config"
 import { ClientAddress, Order, OrdersApiResponse } from "@/sanity/types/Order"
+import Stripe from "stripe"
 
 export async function getOrders(): Promise<OrdersApiResponse> {
 	return createClient(clientConfig).fetch(
@@ -8,6 +9,7 @@ export async function getOrders(): Promise<OrdersApiResponse> {
       _id,
       date,
       client_name,
+      client_mail,
       client_address,
       order_subtotal_amount,
       shipping_rate,
@@ -25,6 +27,7 @@ export async function getOrder(stripe_id: string): Promise<Order> {
       _id,
       date,
       client_name,
+      client_mail,
       client_address,
       order_subtotal_amount,
       shipping_rate,
@@ -39,19 +42,16 @@ export async function getOrder(stripe_id: string): Promise<Order> {
 
 type OrderDetails = {
 	_id: string
-
-	date?: number
-	client_name?: string
-	client_address?: ClientAddress
-
-	order_subtotal_amount?: number
-	shipping_rate?: number
-	order_total_amount?: number
-	status?: string
+	created: number
+	amount_subtotal: number | null
+	amount_total: number | null
+	shipping: Stripe.Checkout.Session.ShippingCost | null
+	address: Stripe.Address | undefined
+	client: string | null | undefined
+	email: string | null | undefined
 }
 
 export const createOrderSanity = async (orderDetails: OrderDetails) => {
-	console.log(orderDetails)
 	try {
 		const response = await fetch(
 			`https://${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}.api.sanity.io/v1/data/mutate/production`,
@@ -68,12 +68,13 @@ export const createOrderSanity = async (orderDetails: OrderDetails) => {
 						{
 							create: {
 								_id: orderDetails._id,
-								date: orderDetails.date,
-								client_name: orderDetails.client_name,
+								date: orderDetails.created,
+								client_name: orderDetails.client,
+								client_mail: orderDetails.email,
 								// client_address: orderDetails.client_address,
-								order_subtotal_amount: orderDetails.order_subtotal_amount,
+								order_subtotal_amount: orderDetails.amount_subtotal,
 								// shipping_rate: orderDetails.shipping_rate,
-								order_total_amount: orderDetails.order_total_amount,
+								order_total_amount: orderDetails.amount_total,
 								status: "pending",
 
 								_type: "orders",

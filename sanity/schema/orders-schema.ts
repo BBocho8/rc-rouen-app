@@ -14,6 +14,11 @@ const orders = {
 			type: "string",
 		},
 		{
+			name: "client_mail",
+			title: "Client Mail",
+			type: "string",
+		},
+		{
 			name: "client_address",
 			title: "Client Address",
 			type: "array",
