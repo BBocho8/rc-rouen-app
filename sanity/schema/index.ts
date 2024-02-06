@@ -4,6 +4,7 @@ import blockContent from "./block-quote"
 import category from "./category-schema"
 import etiquettes from "./etiquettes"
 import globalConfig from "./global-images"
+import orders from "./orders-schema"
 import post from "./post-schema"
 import product from "./product"
 import project from "./project-schema"
@@ -22,6 +23,7 @@ const schemas = [
 	banner,
 	etiquettes,
 	shopRubriques,
+	orders,
 ]
 
 export default schemas

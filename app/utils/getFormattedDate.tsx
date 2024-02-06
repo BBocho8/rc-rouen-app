@@ -16,3 +16,9 @@ export const getFormattedTime = (date: string) => {
 
 	return event
 }
+
+export const getFormattedDateFromUnix = (date: number) => {
+	const event = moment.unix(date).format("MM/DD/YYYY")
+
+	return event
+}

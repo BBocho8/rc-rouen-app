@@ -1,5 +1,6 @@
 import Stripe from "stripe"
 import { NextResponse } from "next/server"
+import { createOrderSanity } from "@/sanity/utils/admin/getOrders"
 
 const stripe = new Stripe(process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY as string)
 
@@ -21,14 +22,35 @@ export async function POST(req: Request) {
 
 	const session = event.data.object as Stripe.Checkout.Session
 
-	console.log("✅ Success:", event.id)
+	const sessionID = session.id
+	const created = session.created
+	const amount_subtotal = session.amount_subtotal
+	const amount_total = session.amount_total
+	const shipping = session.shipping_cost
+	const address = session.shipping_details?.address
+	const client = session.shipping_details?.name
+
+	const orderDetails = {
+		_id: sessionID,
+		created,
+		amount_subtotal,
+		amount_total,
+		shipping,
+		address,
+		client,
+	}
 
 	if (event.type === "checkout.session.completed") {
-		console.log(`💰  Payment received!`)
-		console.log("SESSION -----", session)
-		const lineItems = await stripe.checkout.sessions.listLineItems(session.id)
-		console.log("LIST OF ITEMS -----", lineItems)
-		console.log("LIST OF ITEMS PRICE OBJECT -----", lineItems.data[0].price)
+		try {
+			await createOrderSanity(orderDetails)
+		} catch (error) {
+			console.log("CREATE ORDER SANITY PB", error)
+		}
+		// console.log(`💰  Payment received!`)
+		// console.log("SESSION -----", session)
+		// const lineItems = await stripe.checkout.sessions.listLineItems(session.id)
+		// console.log("LIST OF ITEMS -----", lineItems)
+		// console.log("LIST OF ITEMS PRICE OBJECT -----", lineItems.data[0].price)
 	} else {
 		console.warn(`🤷‍♀️ Unhandled event type: ${event.type}`)
 	}

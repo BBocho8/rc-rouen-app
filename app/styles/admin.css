@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	html {
+		padding: 0;
+		margin: 0;
+		@apply bg-white;
+	}
+	body {
+		margin: 0 auto;
+
+		@apply max-w-app;
+	}
+}
+
+@layer components {
+	.table-header {
+		@apply text-center pb-2 text-primary-dark text-sm font-medium tracking-wide;
+	}
+	.table-data {
+		@apply text-center font-medium uppercase;
+	}
+}
