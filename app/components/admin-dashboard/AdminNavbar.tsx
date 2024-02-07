@@ -15,6 +15,7 @@ import { GiHamburgerMenu } from "react-icons/gi"
 import Link from "next/link"
 import { ThemeProvider } from "@emotion/react"
 import { createTheme } from "@mui/material"
+import { RxAvatar } from "react-icons/rx"
 
 const pages = [
 	{
@@ -75,24 +76,25 @@ function AdminNavbar() {
 			<AppBar position="static">
 				<Container>
 					<Toolbar disableGutters>
-						<Link href="/admin-dashboard">
-							<Typography
-								variant="h6"
-								noWrap
-								component="a"
-								sx={{
-									mr: 2,
-									display: { xs: "none", md: "flex" },
-									fontFamily: "monospace",
-									fontWeight: 700,
-									letterSpacing: ".3rem",
-									color: "inherit",
-									textDecoration: "none",
-								}}
-							>
-								ADMIN
-							</Typography>
-						</Link>
+						{/* <Link href="/admin-dashboard"> */}
+						<Typography
+							variant="h6"
+							noWrap
+							component="a"
+							href="/admin-dashboard"
+							sx={{
+								mr: 2,
+								display: { xs: "none", md: "flex" },
+								fontFamily: "monospace",
+								fontWeight: 700,
+								letterSpacing: ".3rem",
+								color: "inherit",
+								textDecoration: "none",
+							}}
+						>
+							ADMIN
+						</Typography>
+						{/* </Link> */}
 
 						<Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
 							<IconButton
@@ -173,7 +175,7 @@ function AdminNavbar() {
 						<Box sx={{ flexGrow: 0 }}>
 							<Tooltip title="Open settings">
 								<IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-									<Avatar alt="Remy Sharp" src="/public/heroForEquipe.jpg" />
+									<RxAvatar />
 								</IconButton>
 							</Tooltip>
 							<Menu
