@@ -61,7 +61,17 @@ type OrderDetails = {
 }
 
 export const createOrderSanity = async (orderDetails: OrderDetails) => {
-	console.log(orderDetails.products)
+	// const order_items = orderDetails.products.map((product)=>{
+	// 	return {
+	// 		_key: product._key,
+	// 		product_ID: product.productID.metadata.id as string,
+	// 		size: product.size,
+	// 		quantity: product.quantity,
+	// 		amount_subtotal: product.amount_subtotal,
+	// 		amount_total: product.amount_total
+	// 	}
+	// })
+	// console.log(orderDetails.products)
 	try {
 		const response = await fetch(
 			`https://${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}.api.sanity.io/v1/data/mutate/production`,

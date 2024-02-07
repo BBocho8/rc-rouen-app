@@ -91,6 +91,11 @@ const orders = {
 					type: "object",
 					fields: [
 						{
+							name: "_key",
+							title: "_key",
+							type: "string",
+						},
+						{
 							name: "product_ID",
 							type: "string",
 							title: "Product ID",
