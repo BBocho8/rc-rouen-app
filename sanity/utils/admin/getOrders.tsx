@@ -3,6 +3,7 @@ import clientConfig from "@/sanity/config/client-config"
 import { ClientAddress, Order, OrdersApiResponse } from "@/sanity/types/Order"
 import Stripe from "stripe"
 import { nanoid } from "nanoid"
+import next from "next"
 export async function getOrders(): Promise<OrdersApiResponse> {
 	return createClient(clientConfig).fetch(
 		groq`*[_type == "orders"] {
@@ -17,7 +18,8 @@ export async function getOrders(): Promise<OrdersApiResponse> {
    
       order_items,
       status,
-    }`
+    }`,
+		{ cache: "no-store" }
 	)
 }
 
@@ -36,7 +38,7 @@ export async function getOrder(stripe_id: string): Promise<Order> {
       order_items,
       status,
     }`,
-		{ stripe_id }
+		{ stripe_id, cache: "no-store" }
 	)
 }
 
