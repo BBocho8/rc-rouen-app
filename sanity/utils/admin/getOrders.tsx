@@ -52,6 +52,7 @@ type OrderDetails = {
 }
 
 export const createOrderSanity = async (orderDetails: OrderDetails) => {
+	console.log(orderDetails)
 	try {
 		const response = await fetch(
 			`https://${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}.api.sanity.io/v1/data/mutate/production`,
