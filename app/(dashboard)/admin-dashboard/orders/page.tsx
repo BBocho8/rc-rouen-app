@@ -7,6 +7,8 @@ import { getOrders } from "@/sanity/utils/admin/getOrders"
 const OrdersPage = async () => {
 	const orders = await getOrders()
 
+	console.log(orders)
+
 	// if (!orders.length) {
 	// 	return <div>Order not found</div>
 	// }

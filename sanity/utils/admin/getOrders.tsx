@@ -17,7 +17,7 @@ export async function getOrders(): Promise<OrdersApiResponse> {
       order_total_amount,
    
       order_items,
-      status,
+      status, 
     }`,
 		{ cache: "no-store" }
 	)
