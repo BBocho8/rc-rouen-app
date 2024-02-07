@@ -40,6 +40,14 @@ export async function getOrder(stripe_id: string): Promise<Order> {
 	)
 }
 
+type Product = {
+	amount_subtotal: number
+	amount_total: number
+	productID: string | Stripe.Product | Stripe.DeletedProduct | undefined
+	quantity: number | null
+	_key: string
+}
+
 type OrderDetails = {
 	_id: string
 	created: number
@@ -49,9 +57,11 @@ type OrderDetails = {
 	address: (Stripe.Address & { _key: string }) | undefined
 	client: string | null | undefined
 	email: string | null | undefined
+	products: Product[]
 }
 
 export const createOrderSanity = async (orderDetails: OrderDetails) => {
+	console.log(orderDetails.products)
 	try {
 		const response = await fetch(
 			`https://${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}.api.sanity.io/v1/data/mutate/production`,

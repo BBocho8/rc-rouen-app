@@ -34,6 +34,19 @@ export async function POST(req: Request) {
 	const client = session.customer_details?.name
 	const email = session.customer_details?.email
 
+	const lineItems = await stripe.checkout.sessions.listLineItems(session.id, {
+		expand: ["data.price.product"],
+	})
+
+	const products = lineItems.data.map((item) => {
+		return {
+			amount_subtotal: item.amount_subtotal,
+			amount_total: item.amount_total,
+			productID: item.price?.product,
+			quantity: item.quantity,
+			_key: nanoid(),
+		}
+	})
 	const orderDetails = {
 		_id: sessionID,
 		created,
@@ -43,6 +56,7 @@ export async function POST(req: Request) {
 		address,
 		client,
 		email,
+		products,
 	}
 
 	if (event.type === "checkout.session.completed") {
