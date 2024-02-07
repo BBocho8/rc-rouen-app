@@ -43,7 +43,7 @@ export async function getOrder(stripe_id: string): Promise<Order> {
 type Product = {
 	amount_subtotal: number
 	amount_total: number
-	productID: string | Stripe.Product | Stripe.DeletedProduct | undefined
+	productID: any
 	quantity: number | null
 	_key: string
 }
@@ -61,17 +61,17 @@ type OrderDetails = {
 }
 
 export const createOrderSanity = async (orderDetails: OrderDetails) => {
-	// const order_items = orderDetails.products.map((product)=>{
-	// 	return {
-	// 		_key: product._key,
-	// 		product_ID: product.productID.metadata.id as string,
-	// 		size: product.size,
-	// 		quantity: product.quantity,
-	// 		amount_subtotal: product.amount_subtotal,
-	// 		amount_total: product.amount_total
-	// 	}
-	// })
-	// console.log(orderDetails.products)
+	const order_items = orderDetails.products.map((product) => {
+		return {
+			_key: product._key,
+			product_ID: product.productID.metadata.id as string,
+			size: product.productID.metadata.size,
+			quantity: product.quantity,
+			amount_subtotal: product.amount_subtotal,
+			amount_total: product.amount_total,
+		}
+	})
+
 	try {
 		const response = await fetch(
 			`https://${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}.api.sanity.io/v1/data/mutate/production`,
@@ -92,7 +92,7 @@ export const createOrderSanity = async (orderDetails: OrderDetails) => {
 								client_name: orderDetails.client,
 								client_mail: orderDetails.email,
 								client_address: [orderDetails.address],
-
+								order_items: order_items,
 								order_subtotal_amount: orderDetails.amount_subtotal,
 								shipping_rate: orderDetails.shipping?.amount_total,
 								order_total_amount: orderDetails.amount_total,
