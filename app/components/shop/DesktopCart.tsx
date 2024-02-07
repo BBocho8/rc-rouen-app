@@ -57,7 +57,7 @@ const DesktopCart = () => {
 				</div>
 			) : (
 				<>
-					<div className="bg-white h-full max-w-3xl mx-auto">
+					<div className="bg-white h-full max-w-3xl mx-auto overflow-y-scroll">
 						<p
 							onClick={() => setShowCart(false)}
 							title="Close cart"
