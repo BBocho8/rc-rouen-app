@@ -72,9 +72,9 @@ export const createOrderSanity = async (orderDetails: OrderDetails) => {
 								date: orderDetails.created,
 								client_name: orderDetails.client,
 								client_mail: orderDetails.email,
-								// client_address: orderDetails.client_address,
+								client_address: orderDetails.address,
 								order_subtotal_amount: orderDetails.amount_subtotal,
-								// shipping_rate: orderDetails.shipping_rate,
+								shipping_rate: orderDetails.shipping?.amount_total,
 								order_total_amount: orderDetails.amount_total,
 								status: "pending",
 
