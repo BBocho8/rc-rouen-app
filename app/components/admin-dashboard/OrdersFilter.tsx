@@ -5,17 +5,20 @@ import FormControl from "@mui/material/FormControl"
 import Select, { SelectChangeEvent } from "@mui/material/Select"
 
 const orderStatus = [
-	"All",
-	"Pending",
-	"Processing",
-	"Shipped",
-	"Delivered",
-	"Cancelled",
-	"Refunded",
+	"all",
+	"pending",
+	"processing",
+	"shipped",
+	"delivered",
+	"cancelled",
+	"refunded",
 ]
 
-export default function SelectLabels() {
-	const [status, setStatus] = React.useState("All")
+type SelectLabelsProps = {
+	dbstatus?: string
+}
+export default function SelectLabels({ dbstatus }: SelectLabelsProps) {
+	const [status, setStatus] = React.useState(dbstatus || "all")
 
 	const handleChange = (event: SelectChangeEvent) => {
 		setStatus(event.target.value)
@@ -34,7 +37,7 @@ export default function SelectLabels() {
 					{orderStatus.map((status) => {
 						return (
 							<MenuItem key={status} value={status}>
-								{status}
+								<span className="capitalize">{status}</span>
 							</MenuItem>
 						)
 					})}

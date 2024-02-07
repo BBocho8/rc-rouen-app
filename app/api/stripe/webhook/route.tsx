@@ -60,7 +60,6 @@ export async function POST(req: Request) {
 	}
 
 	if (event.type === "checkout.session.completed") {
-		console.log(lineItems)
 		try {
 			await createOrderSanity(orderDetails)
 		} catch (error) {

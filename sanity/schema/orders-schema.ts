@@ -56,11 +56,11 @@ const orders = {
 							type: "string",
 							title: "State",
 						},
-						{
-							name: "_key",
-							title: "_key",
-							type: "string",
-						},
+						// {
+						// 	name: "_key",
+						// 	title: "_key",
+						// 	type: "string",
+						// },
 					],
 				},
 			],
@@ -90,11 +90,11 @@ const orders = {
 				{
 					type: "object",
 					fields: [
-						{
-							name: "_key",
-							title: "_key",
-							type: "string",
-						},
+						// {
+						// 	name: "_key",
+						// 	title: "_key",
+						// 	type: "string",
+						// },
 						{
 							name: "product_ID",
 							type: "string",

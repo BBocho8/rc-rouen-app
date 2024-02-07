@@ -5,7 +5,7 @@ export type Order = {
 
 	date?: number
 	client_name?: string
-	client_address?: ClientAddress
+	client_address?: ClientAddress[]
 
 	order_subtotal_amount?: number
 	shipping_rate?: number

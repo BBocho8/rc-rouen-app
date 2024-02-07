@@ -23,7 +23,7 @@ export async function getOrders(): Promise<OrdersApiResponse> {
 
 export async function getOrder(stripe_id: string): Promise<Order> {
 	return createClient(clientConfig).fetch(
-		groq`*[_type == "orders"] {
+		groq`*[_type == "orders" && _id == $stripe_id][0] {
       _id,
       date,
       client_name,
