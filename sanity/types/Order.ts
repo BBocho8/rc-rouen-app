@@ -28,4 +28,5 @@ export type ClientAddress = {
 	line2?: string
 	country: string
 	city: string
+	_key: string
 }

@@ -1,7 +1,7 @@
 import Stripe from "stripe"
 import { NextResponse } from "next/server"
 import { createOrderSanity } from "@/sanity/utils/admin/getOrders"
-
+import { nanoid } from "nanoid"
 const stripe = new Stripe(process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY as string)
 
 export async function POST(req: Request) {
@@ -27,7 +27,10 @@ export async function POST(req: Request) {
 	const amount_subtotal = session.amount_subtotal
 	const amount_total = session.amount_total
 	const shipping = session.shipping_cost
-	const address = session.shipping_details?.address
+	const address: (Stripe.Address & { _key: string }) | undefined = session
+		.shipping_details?.address
+		? { ...session.shipping_details.address, _key: nanoid() }
+		: undefined
 	const client = session.customer_details?.name
 	const email = session.customer_details?.email
 

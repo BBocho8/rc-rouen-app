@@ -56,6 +56,11 @@ const orders = {
 							type: "string",
 							title: "State",
 						},
+						{
+							name: "_key",
+							title: "_key",
+							type: "string",
+						},
 					],
 				},
 			],

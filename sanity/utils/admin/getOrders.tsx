@@ -2,7 +2,7 @@ import { createClient, groq } from "next-sanity"
 import clientConfig from "@/sanity/config/client-config"
 import { ClientAddress, Order, OrdersApiResponse } from "@/sanity/types/Order"
 import Stripe from "stripe"
-
+import { nanoid } from "nanoid"
 export async function getOrders(): Promise<OrdersApiResponse> {
 	return createClient(clientConfig).fetch(
 		groq`*[_type == "orders"] {
@@ -46,7 +46,7 @@ type OrderDetails = {
 	amount_subtotal: number | null
 	amount_total: number | null
 	shipping: Stripe.Checkout.Session.ShippingCost | null
-	address: Stripe.Address | undefined
+	address: (Stripe.Address & { _key: string }) | undefined
 	client: string | null | undefined
 	email: string | null | undefined
 }
@@ -72,6 +72,7 @@ export const createOrderSanity = async (orderDetails: OrderDetails) => {
 								client_name: orderDetails.client,
 								client_mail: orderDetails.email,
 								client_address: [orderDetails.address],
+
 								order_subtotal_amount: orderDetails.amount_subtotal,
 								shipping_rate: orderDetails.shipping?.amount_total,
 								order_total_amount: orderDetails.amount_total,
