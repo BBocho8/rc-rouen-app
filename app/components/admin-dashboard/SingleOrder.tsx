@@ -16,6 +16,8 @@ const SingleOrder = ({ products, order }: SingleOrderProps) => {
 		return { foundProduct, item }
 	})
 
+	console.log(orderWithFoundProduct)
+
 	return (
 		<div className="my-8">
 			<div className="flex justify-center w-96 mx-auto bg-red-200 my-4 py-6 px-8 rounded-sm">
@@ -86,9 +88,14 @@ const SingleOrder = ({ products, order }: SingleOrderProps) => {
 									{order.order_items?.[index]?.size}
 								</td>
 								<td className="table-data  ">
-									{getFormattedStripePrice(
-										order.order_items?.[index]?.amount_subtotal as number
-									)}
+									{order.order_items &&
+									order.order_items[index]?.amount_subtotal &&
+									order.order_items[index]?.quantity
+										? getFormattedStripePrice(
+												(order.order_items[index]?.amount_subtotal /
+													order.order_items[index]?.quantity) as number
+										  )
+										: null}
 								</td>
 								<td className="table-data text-lg ">
 									{getFormattedStripePrice(
