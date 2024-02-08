@@ -1,28 +1,27 @@
 import ProductDetails from "@/app/components/shop/ProductDetails"
 import { getProduct, getProducts } from "@/sanity/sanity-utils"
 import NotFound from "./not-found"
-import { nanoid } from "nanoid"
 
-// export async function generateMetadata({
-// 	params,
-// }: {
-// 	params: { productSlug: string }
-// }) {
-// 	const product = await getProduct(params.productSlug)
-// 	const title = product.name
+export async function generateMetadata({
+	params,
+}: {
+	params: { productSlug: string }
+}) {
+	const product = await getProduct(params.productSlug)
+	const title = product.name
 
-// 	return {
-// 		title,
-// 	}
-// }
+	return {
+		title,
+	}
+}
 
-// export async function generateStaticParams() {
-// 	const products = await getProducts()
+export async function generateStaticParams() {
+	const products = await getProducts()
 
-// 	return products.map((product) => ({
-// 		productSlug: product.slug,
-// 	}))
-// }
+	return products.map((product) => ({
+		productSlug: product.slug,
+	}))
+}
 
 const ProductDetailsPage = async ({
 	params,
