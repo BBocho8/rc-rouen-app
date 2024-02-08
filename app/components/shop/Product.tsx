@@ -5,12 +5,19 @@ import Link from "next/link"
 
 type ProductProps = {
 	product: Product
+	isAdmin?: boolean
 }
 
-const Product = ({ product }: ProductProps) => {
+const Product = ({ product, isAdmin }: ProductProps) => {
 	return (
 		<div>
-			<Link href={`/shop/${product.slug}`}>
+			<Link
+				href={
+					isAdmin
+						? `/admin-dashboard/products/${product.slug}`
+						: `/shop/${product.slug}`
+				}
+			>
 				<div className="cursor-pointer hover:scale-110 transition">
 					<Image
 						src={product.image[0].url}

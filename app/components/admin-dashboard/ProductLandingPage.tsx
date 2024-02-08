@@ -15,6 +15,8 @@ import { create } from "domain"
 import { createProductSanity } from "@/sanity/sanity-utils"
 import { nanoid } from "nanoid"
 import { toast } from "react-toastify"
+import { ProductApiResponse } from "@/sanity/types/Product"
+import { Product as ProductCard } from "../shop"
 
 type ProductCategoryCardProps = {
 	text: string
@@ -370,7 +372,10 @@ function CreateNewProduct({
 	)
 }
 
-const ProductLandingPage = () => {
+type ProductLandingPageProps = {
+	products: ProductApiResponse
+}
+const ProductLandingPage = ({ products }: ProductLandingPageProps) => {
 	const [seeAllProducts, setSeeAllProducts] = useState(false)
 	const [seeCreateNewProduct, setSeeCreateNewProduct] = useState(false)
 	const categories = ["NEW PRODUCT", "SEE ALL PRODUCTS"]
@@ -390,29 +395,42 @@ const ProductLandingPage = () => {
 	})
 
 	return (
-		<div>
-			<div className="flex justify-center items-center gap-x-8 my-4 ">
-				{categories.map((category) => (
-					<ProductCategoryCard
-						key={category}
-						text={category}
-						seeAllProducts={seeAllProducts}
-						setSeeAllProducts={setSeeAllProducts}
+		<>
+			<div>
+				<div className="flex justify-center items-center gap-x-8 my-4 ">
+					{categories.map((category) => (
+						<ProductCategoryCard
+							key={category}
+							text={category}
+							seeAllProducts={seeAllProducts}
+							setSeeAllProducts={setSeeAllProducts}
+							seeCreateNewProduct={seeCreateNewProduct}
+							setSeeCreateNewProduct={setSeeCreateNewProduct}
+						/>
+					))}
+				</div>
+				{seeAllProducts && (
+					<div className="grid px-2 sm:px-4 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-x-1 sm:gap-x-2 mx-auto">
+						{products.map((product) => (
+							<div
+								key={product._id}
+								className="flex justify-center items-start"
+							>
+								<ProductCard product={product} isAdmin />
+							</div>
+						))}
+					</div>
+				)}
+				{seeCreateNewProduct && (
+					<CreateNewProduct
 						seeCreateNewProduct={seeCreateNewProduct}
 						setSeeCreateNewProduct={setSeeCreateNewProduct}
+						newProduct={newProduct}
+						setNewProduct={setNewProduct}
 					/>
-				))}
+				)}
 			</div>
-			{seeAllProducts && "here are the products"}
-			{seeCreateNewProduct && (
-				<CreateNewProduct
-					seeCreateNewProduct={seeCreateNewProduct}
-					setSeeCreateNewProduct={setSeeCreateNewProduct}
-					newProduct={newProduct}
-					setNewProduct={setNewProduct}
-				/>
-			)}
-		</div>
+		</>
 	)
 }
 export default ProductLandingPage

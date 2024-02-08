@@ -14,7 +14,7 @@ const ProductsPage = async () => {
 				Products in store : {products.length}
 			</p>
 
-			<ProductLandingPage />
+			<ProductLandingPage products={products} />
 		</div>
 	)
 }
