@@ -20,7 +20,7 @@ export async function generateStaticParams() {
 	const products = await getProducts()
 
 	return products.map((product) => ({
-		productSlug: product.slug || nanoid(),
+		productSlug: product.slug,
 	}))
 }
 
@@ -29,7 +29,7 @@ const ProductDetailsPage = async ({
 }: {
 	params: { productSlug: string }
 }) => {
-	const product = await getProduct(params.productSlug || nanoid())
+	const product = await getProduct(params.productSlug)
 	const products = await getProducts()
 
 	if (product === null) {
