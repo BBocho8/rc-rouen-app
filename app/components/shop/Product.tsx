@@ -19,13 +19,15 @@ const Product = ({ product, isAdmin }: ProductProps) => {
 				}
 			>
 				<div className="cursor-pointer hover:scale-110 transition">
-					<Image
-						src={product.image[0].url}
-						alt={product.image[0].alt}
-						width={250}
-						height={250}
-						className="aspect-square object-cover bg-white "
-					/>
+					{product.image && (
+						<Image
+							src={product.image[0].url}
+							alt={product.image[0].alt}
+							width={250}
+							height={250}
+							className="aspect-square object-cover bg-white "
+						/>
+					)}
 					{/* <p className="product-price px-2">
 						{getFormattedPrice(product.price)}
 					</p> */}

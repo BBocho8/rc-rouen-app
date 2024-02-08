@@ -10,7 +10,7 @@ export interface Product {
 	description: string
 	details: string[]
 
-	images: FileList | null
+	images?: FileList | null
 	sizes: Size[]
 }
 

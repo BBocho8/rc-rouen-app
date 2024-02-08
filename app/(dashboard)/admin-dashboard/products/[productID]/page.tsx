@@ -1,4 +1,6 @@
+import SingleProduct from "@/app/components/admin-dashboard/SingleProduct"
 import { getProduct, getProducts } from "@/sanity/sanity-utils"
+import { redirect } from "next/navigation"
 
 export async function generateStaticParams() {
 	const products = await getProducts()
@@ -12,14 +14,15 @@ const OrderPage = async ({ params }: { params: { productID: string } }) => {
 	const product = await getProduct(params.productID)
 
 	if (!product) {
-		return <div>Order not found</div>
+		redirect("/admin-dashboard/products")
 	}
 
 	return (
 		<div className="my-8 mx-auto flex justify-center items-center">
-			<p>{product.name}</p>
-			HELLOOOO
+			<SingleProduct product={product} />
 		</div>
 	)
 }
 export default OrderPage
+
+export const dynamic = "force-dynamic"
