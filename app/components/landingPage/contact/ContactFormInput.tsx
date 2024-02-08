@@ -10,6 +10,7 @@ interface FormInputProps {
 	defaultValue?: string
 	autoComplete?: string
 	size?: string
+	disabled?: boolean
 	placeholder?: string
 	required?: boolean
 	id: string
@@ -40,6 +41,7 @@ const FormInput = ({
 	size,
 	value,
 	required,
+	disabled,
 	autoComplete,
 	id,
 	onChange,
@@ -58,6 +60,7 @@ const FormInput = ({
 				type={type}
 				ref={innerRef}
 				id={id}
+				disabled={disabled}
 				autoComplete={autoComplete}
 				name={name}
 				value={value}

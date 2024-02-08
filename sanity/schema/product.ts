@@ -12,7 +12,7 @@ const product = {
 		{
 			name: "slug",
 			title: "Slug",
-			type: "slug",
+			type: "string",
 			validation: (Rule: any) => Rule.required(),
 			options: {
 				source: "name",
@@ -65,7 +65,7 @@ const product = {
 			name: "image",
 			title: "Image",
 			type: "array",
-			validation: (Rule: any) => Rule.required(),
+			// validation: (Rule: any) => Rule.required(),
 			of: [
 				{
 					type: "image",

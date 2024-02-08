@@ -1,6 +1,8 @@
 import AdminNavbar from "@/app/components/admin-dashboard/AdminNavbar"
 import { Roboto } from "next/font/google"
 import "@/app/styles/admin.css"
+import { ToastContainer } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
 
 export const metadata = {
 	title: "Admin Dashboard",
@@ -23,7 +25,10 @@ export default function RootLayout({
 				<header>
 					<AdminNavbar />
 				</header>
-				{children}
+				<main>
+					<ToastContainer position="top-center" />
+					{children}
+				</main>
 			</body>
 		</html>
 	)
