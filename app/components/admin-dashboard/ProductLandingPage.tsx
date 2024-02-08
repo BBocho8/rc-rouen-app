@@ -48,7 +48,7 @@ function ProductCategoryCard({
 				onClick={handleProducts}
 			>
 				<span className="font-bold text-xl">
-					{seeAllProducts ? text : "HIDE ALL PRODUCTS"}
+					{seeAllProducts ? "HIDE ALL PRODUCTS" : text}
 				</span>
 			</button>
 		)
