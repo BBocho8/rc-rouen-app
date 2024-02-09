@@ -19,6 +19,10 @@ import { RxAvatar } from "react-icons/rx"
 
 const pages = [
 	{
+		name: "Blog Posts",
+		link: "/blog",
+	},
+	{
 		name: "Produits",
 		link: "/products",
 	},

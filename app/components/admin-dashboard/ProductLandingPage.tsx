@@ -142,7 +142,6 @@ function CreateNewProduct({
 					onSubmit={(e) => {
 						e.preventDefault()
 						setIsProductReady(true)
-						console.log(newProduct)
 					}}
 				>
 					<div className="w-1/2 flex flex-col ">

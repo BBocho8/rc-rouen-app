@@ -16,8 +16,6 @@ const SingleOrder = ({ products, order }: SingleOrderProps) => {
 		return { foundProduct, item }
 	})
 
-	console.log(orderWithFoundProduct)
-
 	return (
 		<div className="my-8">
 			<div className="flex justify-center w-96 mx-auto bg-red-200 my-4 py-6 px-8 rounded-sm">

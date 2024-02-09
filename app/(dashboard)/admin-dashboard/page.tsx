@@ -2,6 +2,10 @@ import Link from "next/link"
 
 const boxes = [
 	{
+		name: "Blog Posts",
+		link: "/blog",
+	},
+	{
 		name: "Produits",
 		link: "/products",
 	},
