@@ -95,7 +95,7 @@ export async function getProducts(): Promise<ProductApiResponse> {
 }
 export async function getProduct(productSlug: string): Promise<Product> {
 	return createClient(clientConfig).fetch(
-		groq`*[_type == "product" && slug == $productSlug][0] {
+		groq`*[_type == "product" && slug.current == $productSlug][0] {
       _id,
       name,
       price,
