@@ -267,3 +267,39 @@ export const deleteProductSanity = async (id: string) => {
 		console.error("Error during the creation of the document:", error)
 	}
 }
+
+// UPLOAD IMAGE TEST
+
+export const uploadImages = async (images: File[]) => {
+	try {
+		const response = await fetch(
+			`https://${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}.api.sanity.io/v1/assets/images/production`,
+			{
+				method: "POST",
+				headers: {
+					"Content-type": "application/json",
+					Authorization: `Bearer ${
+						process.env.NEXT_PUBLIC_SANITY_API_TOKEN as string
+					}`,
+				},
+				body: JSON.stringify({
+					mutations: [
+						{
+							create: images[0],
+						},
+					],
+				}),
+			}
+		)
+
+		if (!response.ok) {
+			throw new Error("Failed to update document in Sanity")
+		}
+
+		const data = await response.json()
+
+		console.log("Image successfully added to Sanity", data)
+	} catch (error) {
+		console.error("Error during the creation of the document:", error)
+	}
+}
