@@ -19,7 +19,7 @@ const AdminDashboard = () => {
 	return (
 		<>
 			<h1 className="my-4 text-center text-3xl font-medium">ADMIN DASHBOARD</h1>
-			<div className="my-8 mx-auto flex flex-wrap justify-center items-center gap-x-8">
+			<div className="my-8 mx-auto flex flex-wrap justify-center items-center gap-x-8 gap-y-8">
 				{boxes.map((box) => {
 					return (
 						<div
