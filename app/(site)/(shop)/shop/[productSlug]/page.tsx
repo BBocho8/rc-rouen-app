@@ -15,13 +15,13 @@ export async function generateMetadata({
 	}
 }
 
-// export async function generateStaticParams() {
-// 	const products = await getProducts()
+export async function generateStaticParams() {
+	const products = await getProducts()
 
-// 	return products.map((product) => ({
-// 		productSlug: product.slug,
-// 	}))
-// }
+	return products.map((product) => ({
+		productSlug: product.slug,
+	}))
+}
 
 const ProductDetailsPage = async ({
 	params,
