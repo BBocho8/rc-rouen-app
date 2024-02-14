@@ -1,6 +1,6 @@
 import { defineDocument } from "sanity-typed-queries"
 
-const { document } = defineDocument("project", {
+const { document } = defineDocument("legalPages", {
 	name: {
 		type: "string",
 		title: "Name",
@@ -8,29 +8,12 @@ const { document } = defineDocument("project", {
 	slug: {
 		type: "slug",
 		title: "Slug",
+		validation: (Rule) => Rule.required(),
 		options: {
 			source: "name",
 		},
 	},
 
-	image: {
-		type: "image",
-		title: "Image",
-		options: {
-			hotspot: true,
-		},
-		fields: [
-			{
-				name: "alt",
-				type: "string",
-				title: "Alt",
-			},
-		],
-	},
-	url: {
-		type: "url",
-		title: "URL",
-	},
 	content: {
 		type: "array",
 		title: "Content",

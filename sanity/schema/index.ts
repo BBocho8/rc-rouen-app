@@ -10,6 +10,7 @@ import product from "./product"
 import project from "./project-schema"
 import shopRubriques from "./shop-rubriques"
 import teams from "./teams-schema"
+import legalPages from "./legal-page-schema"
 
 const schemas = [
 	globalConfig,
@@ -24,6 +25,7 @@ const schemas = [
 	etiquettes,
 	shopRubriques,
 	orders,
+	legalPages,
 ]
 
 export default schemas

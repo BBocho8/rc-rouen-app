@@ -18,14 +18,14 @@ import { createTheme } from "@mui/material"
 import { RxAvatar } from "react-icons/rx"
 
 const pages = [
-	{
-		name: "Blog Posts",
-		link: "/blog",
-	},
-	{
-		name: "Produits",
-		link: "/products",
-	},
+	// {
+	// 	name: "Blog Posts",
+	// 	link: "/blog",
+	// },
+	// {
+	// 	name: "Produits",
+	// 	link: "/products",
+	// },
 	{
 		name: "Commandes",
 		link: "/orders",

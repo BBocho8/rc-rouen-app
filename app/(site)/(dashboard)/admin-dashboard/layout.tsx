@@ -20,16 +20,14 @@ export default function RootLayout({
 	children: React.ReactNode
 }) {
 	return (
-		<html lang="en" className={`${roboto.variable} font-sans `}>
-			<body>
-				<header>
-					<AdminNavbar />
-				</header>
-				<main>
-					<ToastContainer position="top-center" />
-					{children}
-				</main>
-			</body>
-		</html>
+		<div className={`${roboto.variable} font-sans`}>
+			<header>
+				<AdminNavbar />
+			</header>
+			<main>
+				<ToastContainer position="top-center" />
+				{children}
+			</main>
+		</div>
 	)
 }

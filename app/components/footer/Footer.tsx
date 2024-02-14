@@ -16,6 +16,7 @@ import { AiFillInstagram } from "react-icons/ai"
 import moment from "moment"
 import Image from "next/image"
 import { GlobalConfigImagesApiResponse } from "@/sanity/types/GlobalConfigImages"
+import { LegalPage } from "@/sanity/types/LegalPages"
 
 const paymentMethods = [
 	{
@@ -37,9 +38,17 @@ const paymentMethods = [
 ]
 type FooterProps = {
 	image: GlobalConfigImagesApiResponse
+	legalPages: LegalPage[]
 }
-const Footer = ({ image }: FooterProps) => {
+const Footer = ({ image, legalPages }: FooterProps) => {
 	const date = moment().year()
+
+	const legals = legalPages.map((legalPage) => {
+		return {
+			name: legalPage.name,
+			link: `/legal/${legalPage.slug}`,
+		}
+	})
 
 	return (
 		<>
@@ -59,7 +68,7 @@ const Footer = ({ image }: FooterProps) => {
 
 				{getFooterMenu({ name: "Menu", arr: menu })}
 				{getFooterMenu({ name: "Support", arr: support })}
-				{getFooterMenu({ name: "Legal", arr: legal })}
+				{getFooterMenu({ name: "Legal", arr: legals })}
 			</div>
 			<div className="flex flex-col items-center justify-center w-full py-3 text-xs font-light text-white sm:text-sm bg-primary gap-y-2 md:px-8 md:gap-y-0 md:flex-row md:justify-between">
 				<p className="text-slate-200">

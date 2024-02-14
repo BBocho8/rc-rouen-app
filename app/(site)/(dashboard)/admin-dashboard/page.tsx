@@ -1,14 +1,14 @@
 import Link from "next/link"
 
 const boxes = [
-	{
-		name: "Blog Posts",
-		link: "/blog",
-	},
-	{
-		name: "Produits",
-		link: "/products",
-	},
+	// {
+	// 	name: "Blog Posts",
+	// 	link: "/blog",
+	// },
+	// {
+	// 	name: "Produits",
+	// 	link: "/products",
+	// },
 	{
 		name: "Commandes",
 		link: "/orders",
