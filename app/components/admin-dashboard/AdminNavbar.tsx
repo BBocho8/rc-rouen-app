@@ -16,6 +16,7 @@ import Link from "next/link"
 import { ThemeProvider } from "@emotion/react"
 import { createTheme } from "@mui/material"
 import { RxAvatar } from "react-icons/rx"
+import { UserButton } from "@clerk/nextjs"
 
 const pages = [
 	// {
@@ -177,11 +178,10 @@ function AdminNavbar() {
 						</Box>
 
 						<Box sx={{ flexGrow: 0 }}>
-							<Tooltip title="Open settings">
-								<IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-									<RxAvatar />
-								</IconButton>
-							</Tooltip>
+							<IconButton sx={{ p: 0 }}>
+								<UserButton afterSignOutUrl="/" />
+							</IconButton>
+
 							<Menu
 								sx={{ mt: "45px" }}
 								id="menu-appbar"

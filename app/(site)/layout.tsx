@@ -11,6 +11,7 @@ import { getTeams } from "@/sanity/utils/blog/getEquipes"
 import { getEtiquettes } from "@/sanity/utils/blog/getEtiquettes"
 import { getGlobalConfigImages } from "@/sanity/utils/blog/getConfig"
 import { getLegalPages } from "@/sanity/utils/blog/getLegalPages"
+import { ClerkProvider } from "@clerk/nextjs"
 
 const roboto = Roboto({
 	subsets: ["latin"],
@@ -56,21 +57,23 @@ export default async function RootLayout({
 	)
 
 	return (
-		<html lang="en" className={`${roboto.variable} font-sans`}>
-			<body className="">
-				<header>
-					<Navbar teams={teams} etiquettes={etiquettes} image={logoClub} />
-				</header>
-				<main className=" bg-white pt-14 md:pt-24">
-					<ToastContainer position="top-center" />
-					{children}
-					<SpeedInsights />
-					<Analytics />
-				</main>
-				<footer>
-					<Footer image={logoClub} legalPages={legalPages} />
-				</footer>
-			</body>
-		</html>
+		<ClerkProvider>
+			<html lang="en" className={`${roboto.variable} font-sans`}>
+				<body className="">
+					<header>
+						<Navbar teams={teams} etiquettes={etiquettes} image={logoClub} />
+					</header>
+					<main className=" bg-white pt-14 md:pt-24">
+						<ToastContainer position="top-center" />
+						{children}
+						<SpeedInsights />
+						<Analytics />
+					</main>
+					<footer>
+						<Footer image={logoClub} legalPages={legalPages} />
+					</footer>
+				</body>
+			</html>
+		</ClerkProvider>
 	)
 }

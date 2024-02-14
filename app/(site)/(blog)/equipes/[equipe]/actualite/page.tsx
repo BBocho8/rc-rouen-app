@@ -57,6 +57,7 @@ const ActualitePage: FC = async () => {
 						)
 					})}
 				</div>
+				{/* //TODO: Pagination with React Paginate */}
 				<button className="flex justify-center mt-8 py-2 px-3 rounded border bg-primary uppercase text-white text-xs font-medium hover:bg-opacity-80 ">
 					voir plus
 				</button>
