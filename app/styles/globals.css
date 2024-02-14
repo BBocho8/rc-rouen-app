@@ -55,4 +55,11 @@
 	.nav-icon {
 		@apply text-[25px]  cursor-pointer relative transition-transform duration-300 ease-in-out border-none bg-transparent hover:scale-110;
 	}
+
+	.table-header {
+		@apply text-center pb-2 text-primary-dark text-sm font-medium tracking-wide;
+	}
+	.table-data {
+		@apply text-center font-medium uppercase;
+	}
 }
