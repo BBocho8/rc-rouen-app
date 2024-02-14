@@ -1,7 +1,0 @@
-.table {
-	@apply table-auto border-collapse w-full;
-}
-
-.borderX {
-	@apply border-x border-slate-200;
-}
