@@ -12,7 +12,7 @@ const ShopPromotion = ({ image, title, buttonText }: ShopPromotionProps) => {
 	return (
 		<Link
 			href="/shop"
-			className="bg-white flex flex-col gap-y-3  justify-center items-center px-4 lg:px-10 py-10 "
+			className="bg-white flex flex-col gap-y-3  justify-center items-center  py-10 "
 		>
 			<Image
 				src={image[0].image_url}

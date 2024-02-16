@@ -7,7 +7,7 @@ type FeaturedArticlesProps = {
 
 const FeaturedArticles = ({ posts }: FeaturedArticlesProps) => {
 	return (
-		<section className="flex flex-col items-center py-10 px-4 lg:px-10 gap-y-8">
+		<section className="flex flex-col items-center py-10  gap-y-8">
 			<div className="grid gap-y-4   md:grid-cols-2 md:gap-x-6 md:gap-y-8 lg:gap-y-0 lg:grid-cols-3  ">
 				<div>
 					<SingleFeaturedPost display="icon" post={posts[0]} />

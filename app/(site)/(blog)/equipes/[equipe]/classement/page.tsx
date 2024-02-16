@@ -13,7 +13,10 @@ export async function generateStaticParams() {
 }
 
 const ClassementPage = async () => {
-	const classement = await getClassement()
+	const clubID = process.env.NEXT_PUBLIC_SCORENCO_CLUB_ID as string
+	const teamID = process.env.NEXT_PUBLIC_SCORENCO_FIRST_TEAM_ID as string
+
+	const classement = await getClassement(clubID, teamID)
 	const globalConfigImages = await getGlobalConfigImages()
 
 	const logoRcr = globalConfigImages.filter(

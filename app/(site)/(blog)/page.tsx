@@ -13,7 +13,9 @@ import Newsletter from "../../components/landingPage/Newsletter"
 import { getGlobalConfigImages } from "@/sanity/utils/blog/getConfig"
 
 export default async function Home() {
-	const games = await getGames()
+	const teamID = process.env.NEXT_PUBLIC_SCORENCO_FIRST_TEAM_ID as string
+
+	const games = await getGames(teamID)
 	const posts = await getPosts()
 
 	const globalConfigImages = await getGlobalConfigImages()

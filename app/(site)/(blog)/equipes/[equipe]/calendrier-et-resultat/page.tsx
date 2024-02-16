@@ -14,7 +14,9 @@ export async function generateStaticParams() {
 }
 
 const CalendrierResultatsPage = async () => {
-	const games = await getGames()
+	const teamID = process.env.NEXT_PUBLIC_SCORENCO_FIRST_TEAM_ID as string
+
+	const games = await getGames(teamID)
 
 	const globalConfigImages = await getGlobalConfigImages()
 
