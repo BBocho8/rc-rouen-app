@@ -1,28 +1,23 @@
 import { getPosts } from "@/sanity/sanity-utils"
 
-import HeroHeader from "../components/landingPage/HeroHeader"
-import { getGames } from "../utils/getPrevNextGames"
-import PrevGame from "../components/games/PrevGame"
-import NextGame from "../components/games/NextGame"
+import HeroHeader from "../../components/landingPage/HeroHeader"
+import { getGames } from "../../utils/getPrevNextGames"
+import PrevGame from "../../components/games/PrevGame"
+import NextGame from "../../components/games/NextGame"
 
-import Contact from "../components/landingPage/contact/Contact"
-import FeaturedArticles from "../components/landingPage/FeaturedArticles"
-import ShopPromotion from "../components/landingPage/ShopPromotion"
-import Newsletter from "../components/landingPage/Newsletter"
-import { getTeams } from "@/sanity/utils/blog/getEquipes"
-import { getEtiquettes } from "@/sanity/utils/blog/getEtiquettes"
+import Contact from "../../components/landingPage/contact/Contact"
+import FeaturedArticles from "../../components/landingPage/FeaturedArticles"
+import ShopPromotion from "../../components/landingPage/ShopPromotion"
+import Newsletter from "../../components/landingPage/Newsletter"
+
 import { getGlobalConfigImages } from "@/sanity/utils/blog/getConfig"
 
 export default async function Home() {
 	const games = await getGames()
 	const posts = await getPosts()
-	const teams = await getTeams()
-	const etiquettes = await getEtiquettes()
+
 	const globalConfigImages = await getGlobalConfigImages()
 
-	const heroImage = globalConfigImages.filter(
-		(image) => image.slug === "hero-header-blog"
-	)
 	const logoClub = globalConfigImages.filter(
 		(image) => image.slug === "logo-club"
 	)
@@ -34,9 +29,7 @@ export default async function Home() {
 		<div className=" ">
 			<HeroHeader games={games} image={globalConfigImages} />
 			<FeaturedArticles posts={posts} />
-			{/* <div className="py-16">
-				<FeaturedPosts />
-			</div> */}
+
 			<div className="grid px-4 py-4 mx-auto gap-y-4 md:gap-y-0 md:grid-cols-2 md:gap-x-4 md:px-4 bg-gray-50">
 				<PrevGame games={games} image={logoClub} />
 

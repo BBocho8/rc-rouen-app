@@ -1,14 +1,12 @@
 import type { Metadata } from "next"
 import "@/app/styles/globals.css"
 import { Roboto } from "next/font/google"
-import Navbar from "../components/navbar/Navbar"
 import Footer from "../components/footer/Footer"
 import "react-toastify/dist/ReactToastify.css"
 import { ToastContainer } from "react-toastify"
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/next"
-import { getTeams } from "@/sanity/utils/blog/getEquipes"
-import { getEtiquettes } from "@/sanity/utils/blog/getEtiquettes"
+
 import { getGlobalConfigImages } from "@/sanity/utils/blog/getConfig"
 import { getLegalPages } from "@/sanity/utils/blog/getLegalPages"
 import { ClerkProvider } from "@clerk/nextjs"
@@ -47,9 +45,8 @@ export default async function RootLayout({
 }: {
 	children: React.ReactNode
 }) {
-	const teams = await getTeams()
 	const legalPages = await getLegalPages()
-	const etiquettes = await getEtiquettes()
+
 	const globalConfigImages = await getGlobalConfigImages()
 
 	const logoClub = globalConfigImages.filter(
@@ -60,15 +57,11 @@ export default async function RootLayout({
 		<ClerkProvider>
 			<html lang="en" className={`${roboto.variable} font-sans`}>
 				<body className="">
-					<header>
-						<Navbar teams={teams} etiquettes={etiquettes} image={logoClub} />
-					</header>
-					<main className=" bg-white pt-14 md:pt-24">
-						<ToastContainer position="top-center" />
-						{children}
-						<SpeedInsights />
-						<Analytics />
-					</main>
+					<ToastContainer position="top-center" />
+					{children}
+					<SpeedInsights />
+					<Analytics />
+
 					<footer>
 						<Footer image={logoClub} legalPages={legalPages} />
 					</footer>
