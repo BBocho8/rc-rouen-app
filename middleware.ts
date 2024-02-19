@@ -11,14 +11,14 @@ export default authMiddleware({
 			return redirectToSignIn({ returnBackUrl: req.url })
 		}
 		// Redirect logged in users to organization selection page if they are not active in an organization
-		if (
-			auth.userId &&
-			!auth.orgId &&
-			req.nextUrl.pathname !== "/admin-dashboard"
-		) {
-			const orgSelection = new URL("/admin-dashboard", req.url)
-			return NextResponse.redirect(orgSelection)
-		}
+		// if (
+		// 	auth.userId &&
+		// 	!auth.orgId &&
+		// 	req.nextUrl.pathname !== "/admin-dashboard"
+		// ) {
+		// 	const orgSelection = new URL("/admin-dashboard", req.url)
+		// 	return NextResponse.redirect(orgSelection)
+		// }
 		// If the user is logged in and trying to access a protected route, allow them to access route
 		if (auth.userId && !auth.isPublicRoute) {
 			return NextResponse.next()

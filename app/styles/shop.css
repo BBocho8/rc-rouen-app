@@ -51,6 +51,7 @@
 		max-width: 1400px;
 		margin: auto;
 		width: 100%;
+		@apply bg-white pt-14 sm:pt-16 md:pt-[100px];
 	}
 	.layout {
 		padding: 10px;

@@ -46,7 +46,7 @@ export default async function RootLayout({
 						<NavbarBottomBar shopRubriques={shopRubriques} />
 					</div>
 				</header>
-				<main className="main-container  bg-white pb-10">
+				<main className="main-container  bg-white pb-10 ">
 					<ToastContainer position="top-center" style={{ zIndex: 101 }} />
 					{children}
 				</main>
